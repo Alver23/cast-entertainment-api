@@ -1,0 +1,17 @@
+{
+  "roots": ["<rootDir>/src"],
+  "collectCoverage": true,
+  "coverageDirectory": "./coverage",
+  "collectCoverageFrom": ["**/*.ts", "!**/index.ts", "!**/*-mock.ts"],
+  "coveragePathIgnorePatterns": ["core", "config", "bin", "api/__mocks__", "api/auth/strategies"],
+  "testMatch": ["**/?(*.)+(spec).+(ts)"],
+  "globals": {
+    "ts-jest": {
+      "tsConfig": "./tsconfig.spec.json"
+    }
+  },
+  "testEnvironment": "node",
+  "transform": {
+    "^.+\\.(ts|tsx)$": "ts-jest"
+  }
+}

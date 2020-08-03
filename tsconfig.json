@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "build",
+    "target": "es2017",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["ES2018", "dom"],
+    "resolveJsonModule": true
+  },
+  "include": ["src"],
+  "exclude": ["src/**/*.spec.ts", "src/**/*-mocks.ts"]
+}
