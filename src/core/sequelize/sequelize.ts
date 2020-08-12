@@ -4,13 +4,12 @@ import { Sequelize } from 'sequelize';
 // Config
 import { config } from '../../config';
 
-const {
-	appName,
-	databaseConfig: { url },
-} = config;
-const debug = require('debug')(`${appName}:sequalize-connection`);
+const debug = require('debug')(`${config.appName}:sequalize-connection`);
+const databaseConfig = require('../../database/config/config')[config.environment];
 
-export const sequelize = new Sequelize(url);
+const { database, username, password } = databaseConfig;
+
+export const sequelize = new Sequelize(database, username, password, databaseConfig);
 
 sequelize
 	.authenticate()

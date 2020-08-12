@@ -6,7 +6,7 @@ import { IPersonService } from "./person-service-interface";
 import { Person } from "../../../database/models/person";
 
 // Mocks
-import mocks from './mocks.json';
+import mocks from '../mocks.json';
 
 jest.mock('../../../database/models/person', () => ({
   Person: {
@@ -20,7 +20,6 @@ jest.mock('../../../database/models/person', () => ({
 
 describe('PersonService', () => {
   let personService: IPersonService;
-  const mockData = {...mocks, date_of_birth: new Date()};
 
   beforeEach(() => {
     personService = new PersonService();
@@ -30,9 +29,9 @@ describe('PersonService', () => {
     it('should get an new person', () => {
       const personModel = jest.spyOn(Person, 'create');
       return personService
-        .create(mockData)
+        .create(mocks)
         .then(() => {
-          expect(personModel).toHaveBeenCalledWith(mockData)
+          expect(personModel).toHaveBeenCalledWith(mocks)
         });
     });
   });
@@ -42,9 +41,9 @@ describe('PersonService', () => {
       const personModel = jest.spyOn(Person, 'update');
       const id = 1;
       return personService
-        .update(id, mockData)
+        .update(id, mocks)
         .then(() => {
-          expect(personModel).toHaveBeenCalledWith(mockData, { where: { id } })
+          expect(personModel).toHaveBeenCalledWith(mocks, { where: { id } })
         });
     });
   });

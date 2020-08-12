@@ -3,6 +3,7 @@
     "baseUrl": ".",
     "outDir": "build",
     "target": "es2017",
+    "allowJs": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "declaration": true,

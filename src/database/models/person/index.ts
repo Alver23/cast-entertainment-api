@@ -10,51 +10,53 @@ import { PersonModel } from './person-interface';
 export class Person extends Model<PersonModel> {
 	public id!: number;
 
-	public first_name: string;
+	public firstName: string;
 
-	public middle_name: string;
+	public middleName: string;
 
-	public last_name: string;
+	public lastName: string;
 
 	public email: string;
 
-	public date_of_birth?: Date;
+	public dateOfBirth?: string;
 
 	public address?: string;
 
 	public city?: string;
 
-	public zip_code?: string;
+	public ziCode?: string;
 
-	public home_phone?: string;
+	public homePhone?: string;
 
-	public cell_phone?: string;
+	public cellPhone?: string;
 
 	// timestamps!
-	public readonly created_at!: Date;
+	public readonly createdAt!: Date;
 
-	public readonly updated_at!: Date;
+	public readonly updatedAt!: Date;
 
-	public readonly deleted_at?: Date;
+	public readonly deletedAt?: Date;
 }
 
 Person.init(
 	{
-		first_name: DataTypes.STRING,
-		middle_name: DataTypes.STRING,
-		last_name: DataTypes.STRING,
+		firstName: DataTypes.STRING,
+		middleName: DataTypes.STRING,
+		lastName: DataTypes.STRING,
 		email: DataTypes.STRING,
-		date_of_birth: DataTypes.DATE,
+		dateOfBirth: DataTypes.DATE,
 		address: DataTypes.STRING,
 		city: DataTypes.STRING,
-		zip_code: DataTypes.STRING,
-		home_phone: DataTypes.STRING,
-		cell_phone: DataTypes.STRING,
-		ip_address: DataTypes.STRING,
-		deleted_at: DataTypes.DATE,
+		zipCode: DataTypes.STRING,
+		homePhone: DataTypes.STRING,
+		cellPhone: DataTypes.STRING,
+		ipAddress: DataTypes.STRING,
 	},
 	{
 		sequelize,
 		modelName: 'Person',
+		tableName: 'people',
+		underscored: true,
+		paranoid: true,
 	},
 );

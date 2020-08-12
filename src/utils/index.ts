@@ -1,1 +1,2 @@
-export { setResponse } from './set-response/set-response';
+export { setResponse, setResponseForDelete } from './set-response/set-response';
+export { HttpMessages } from './messages/http-messages';

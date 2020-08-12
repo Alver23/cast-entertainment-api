@@ -1,20 +1,20 @@
 export interface PersonRequest {
-	first_name: string;
-	middle_name: string;
-	last_name: string;
+	firstName: string;
+	middleName: string;
+	lastName: string;
 	email: string;
-	date_of_birth?: Date;
+	dateOfBirth?: string;
 	address?: string;
 	city?: string;
-	zip_code?: string;
-	home_phone?: string;
-	cell_phone?: string;
+	zipCode?: string;
+	homePhone?: string;
+	cellPhone?: string;
 }
 
 export interface PersonModel extends PersonRequest {
 	id?: number;
-	ip_address?: string;
-	created_at?: Date;
-	updated_at?: Date;
-	deleted_at?: Date;
+	ipAddress?: string;
+	createdAt?: Date;
+	updatedAt?: Date;
+	deletedAt?: Date;
 }
