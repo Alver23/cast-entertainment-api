@@ -11,7 +11,7 @@ const {
 	staticFiles: { directory },
 } = config;
 
-const basePath = '/cas-entertainment';
+const basePath = '';
 
 const server: express.Application = express();
 server.disable('x-powered-by');
@@ -22,6 +22,7 @@ if (config.env) {
 
 const healthCheck: any = require('express-healthcheck')();
 
+server.set('trust proxy', true);
 server.use(cookieParser());
 
 server.use(`/${directory}`, express.static(path.join(__dirname, directory)));

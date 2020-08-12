@@ -16,7 +16,8 @@
     "lint:fix": "npm run lint -- --fix --cache",
     "prettier": "prettier --config .prettierrc.json --ignore-path ./.prettierignore --write src/**/*.ts",
     "db:migration": "npx sequelize-cli db:migrate --config src/database/config/config.js",
-    "db:undo": "npx sequelize-cli db:migrate:undo --config src/database/config/config.js"
+    "db:migration:rollback": "npx sequelize-cli db:migrate:undo --config src/database/config/config.js",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
