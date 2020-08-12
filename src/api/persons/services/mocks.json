@@ -1,0 +1,12 @@
+{
+	"first_name": "fake first name",
+	"middle_name": "fake middle name",
+	"last_name": "fake last name",
+	"email": "fake@fake.com",
+	"date_of_birth": "12/12/2020",
+	"address": "fake address",
+	"city": "fake city",
+	"zip_code": "fake zip code",
+	"home_phone": "fake home phone",
+	"cell_phone": "fake cell phone"
+}
