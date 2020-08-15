@@ -1,31 +1,19 @@
 // Controllers
-import {PersonController} from "./person-controller";
+import { PersonController } from "./person-controller";
 
 // Services
-import {IPersonService, PersonService} from "./services";
+import { personServiceInstance } from "../services";
 
 // Mocks
 import mocks from './mocks.json';
-import { mockRequest, mockResponse } from '../__mocks__/fake-request';
-jest.mock('./services', () => ({
-  PersonService: jest.fn().mockImplementation(() => {
-    return {
-      create: () => jest.fn(),
-      update: () => jest.fn(),
-      findAll: () => jest.fn(),
-      findOne: () => jest.fn(),
-      deleteOne: () => jest.fn(),
-    };
-  })
-}));
+import { mockRequest, mockResponse } from '../../__mocks__/fake-request';
+jest.mock('../services', () => require('../services/person-service-mock').mockPersonService);
 
 describe('PersonController', () => {
-  let personServices: IPersonService;
   let controller: PersonController;
 
   beforeEach(() => {
-    personServices = new PersonService();
-    controller = new PersonController(personServices);
+    controller = new PersonController(personServiceInstance);
   });
 
   describe('getPersons method', () => {
@@ -41,7 +29,7 @@ describe('PersonController', () => {
 
     it('should return an error', async () => {
       const errorMessage: Error = new Error('Network Error');
-      jest.spyOn(personServices, 'findAll').mockRejectedValue(errorMessage);
+      jest.spyOn(personServiceInstance, 'findAll').mockRejectedValue(errorMessage);
       const request: any = mockRequest({ body: {} });
       const response: any = mockResponse();
       const next: any = jest.fn();
@@ -63,7 +51,7 @@ describe('PersonController', () => {
     });
 
     it('should return 404 when person not found', async () => {
-      jest.spyOn(personServices, 'findOne').mockResolvedValue(null);
+      jest.spyOn(personServiceInstance, 'findOne').mockResolvedValue(null);
       const request = mockRequest({ params: { id: 1 } });
       const response: any = {status: 404};
       const next = jest.fn();
@@ -73,7 +61,7 @@ describe('PersonController', () => {
 
     it('should return an error', async () => {
       const errorMessage: Error = new Error('Network Error');
-      jest.spyOn(personServices, 'findOne').mockRejectedValue(errorMessage);
+      jest.spyOn(personServiceInstance, 'findOne').mockRejectedValue(errorMessage);
       const request: any = mockRequest({ params: {} });
       const response: any = mockResponse();
       const next: any = jest.fn();
@@ -95,7 +83,7 @@ describe('PersonController', () => {
 
     it('should return an error', async () => {
       const errorMessage: Error = new Error('Network Error');
-      jest.spyOn(personServices, 'create').mockRejectedValue(errorMessage);
+      jest.spyOn(personServiceInstance, 'create').mockRejectedValue(errorMessage);
       const request: any = mockRequest({ body: {} });
       const response: any = mockResponse();
       const next: any = jest.fn();
@@ -117,7 +105,7 @@ describe('PersonController', () => {
 
     it('should return an error', async () => {
       const errorMessage: Error = new Error('Network Error');
-      jest.spyOn(personServices, 'update').mockRejectedValue(errorMessage);
+      jest.spyOn(personServiceInstance, 'update').mockRejectedValue(errorMessage);
       const request: any = mockRequest({ body: {}, params: {}});
       const response: any = mockResponse();
       const next: any = jest.fn();
@@ -130,7 +118,7 @@ describe('PersonController', () => {
   describe('deletePerson method', () => {
 
     it('should remove a person by id', async () => {
-      jest.spyOn(personServices, 'deleteOne').mockResolvedValue(1)
+      jest.spyOn(personServiceInstance, 'deleteOne').mockResolvedValue(1)
       const request = mockRequest({ params: { id: 1 } });
       const response = mockResponse();
       const next = jest.fn();
@@ -141,7 +129,7 @@ describe('PersonController', () => {
 
     it('should return an error', async () => {
       const errorMessage: Error = new Error('Network Error');
-      jest.spyOn(personServices, 'deleteOne').mockRejectedValue(errorMessage);
+      jest.spyOn(personServiceInstance, 'deleteOne').mockRejectedValue(errorMessage);
       const request: any = mockRequest({ params: {} });
       const response: any = mockResponse();
       const next: any = jest.fn();

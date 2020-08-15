@@ -8,5 +8,6 @@
 	"city": "fake city",
 	"zipCode": "fake zip code",
 	"homePhone": "fake home phone",
-	"cellPhone": "fake cell phone"
+	"cellPhone": "fake cell phone",
+	"ipAddress": "127.0.0.1"
 }

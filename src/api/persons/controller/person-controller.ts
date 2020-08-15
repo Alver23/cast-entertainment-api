@@ -1,12 +1,12 @@
 // Dependencies
 import { Request, Response, NextFunction } from 'express';
-import { NOT_FOUND, OK } from 'http-status-codes';
+import { NOT_FOUND, OK, CREATED } from 'http-status-codes';
 
 // Services
-import { PersonService, IPersonService } from './services';
+import { personServiceInstance, IPersonService } from '../services';
 
 // Utils
-import { setResponse, HttpMessages, setResponseForDelete } from '../../utils';
+import { setResponse, HttpMessages, setResponseForDelete } from '../../../utils';
 
 export class PersonController {
 	constructor(private readonly personService: IPersonService) {}
@@ -37,7 +37,7 @@ export class PersonController {
 		try {
 			const { body } = req;
 			const data = await this.personService.create(body);
-			res.json(setResponse({ message: HttpMessages.CREATED, data }));
+			res.status(CREATED).json(setResponse({ message: HttpMessages.CREATED, data }));
 		} catch (error) {
 			next(error);
 		}
@@ -70,4 +70,4 @@ export class PersonController {
 	}
 }
 
-export default new PersonController(new PersonService());
+export const personController = new PersonController(personServiceInstance);
