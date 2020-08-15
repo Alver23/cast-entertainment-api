@@ -1,7 +1,7 @@
 // Dependencies
-import { Router, RequestHandler, Request, Response, NextFunction, Application } from 'express';
+import { Router, Request, Response, NextFunction, Application } from 'express';
 
-import personController from './person-controller';
+import { personController } from '../controller/person-controller';
 
 export const personRouter = (app: Application): void => {
 	const basePath = '/persons';

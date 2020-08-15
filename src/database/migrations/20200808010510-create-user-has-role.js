@@ -9,10 +9,24 @@ module.exports = {
         type: Sequelize.INTEGER.UNSIGNED
       },
       user_id: {
-        type: Sequelize.INTEGER.UNSIGNED
+        allowNull: false,
+        type: Sequelize.INTEGER.UNSIGNED,
+        references: {
+          model: {
+            tableName: 'users',
+          },
+          key: 'id'
+        },
       },
       rol_id: {
-        type: Sequelize.INTEGER.UNSIGNED
+        allowNull: false,
+        type: Sequelize.INTEGER.UNSIGNED,
+        references: {
+          model: {
+            tableName: 'roles',
+          },
+          key: 'id'
+        },
       },
       ip_address: {
         type: Sequelize.STRING

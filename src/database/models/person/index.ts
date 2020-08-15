@@ -5,9 +5,9 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../../../core/sequelize/sequelize';
 
 // Models
-import { PersonModel } from './person-interface';
+import { PersonModel, PersonCreationAttributes } from './person-interface';
 
-export class Person extends Model<PersonModel> {
+export class Person extends Model<PersonModel, PersonCreationAttributes> implements PersonModel {
 	public id!: number;
 
 	public firstName: string;
@@ -30,16 +30,23 @@ export class Person extends Model<PersonModel> {
 
 	public cellPhone?: string;
 
+	public ipAddress: string;
+
 	// timestamps!
 	public readonly createdAt!: Date;
 
 	public readonly updatedAt!: Date;
 
-	public readonly deletedAt?: Date;
+	public readonly deletedAt!: Date;
 }
 
 Person.init(
 	{
+		id: {
+			type: DataTypes.INTEGER.UNSIGNED,
+			autoIncrement: true,
+			primaryKey: true,
+		},
 		firstName: DataTypes.STRING,
 		middleName: DataTypes.STRING,
 		lastName: DataTypes.STRING,

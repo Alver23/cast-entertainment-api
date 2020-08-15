@@ -1,37 +1,23 @@
 // Services
-import { PersonService } from "./person-service";
+import { personServiceInstance } from "./person-service";
 
 // Models
-import { IPersonService } from "./person-service-interface";
 import { Person } from "../../../database/models/person";
 
 // Mocks
-import mocks from '../mocks.json';
+import mocks from '../controller/mocks.json';
 
-jest.mock('../../../database/models/person', () => ({
-  Person: {
-    findAll: () => [{ ...mocks}],
-    create: () => ({ ...mocks }),
-    findOne: () => ({ ...mocks, id: 1 }),
-    update: () => [1],
-    destroy: () => 1,
-  }
-}));
+jest.mock('../../../database/models/person', () => require('./../../../database/models/person/person-mock').mockPerson);
 
 describe('PersonService', () => {
-  let personService: IPersonService;
-
-  beforeEach(() => {
-    personService = new PersonService();
-  });
 
   describe('create method', () => {
     it('should get an new person', () => {
       const personModel = jest.spyOn(Person, 'create');
-      return personService
+      return personServiceInstance
         .create(mocks)
         .then(() => {
-          expect(personModel).toHaveBeenCalledWith(mocks)
+          expect(personModel).toHaveBeenCalledWith(mocks, { transaction : undefined})
         });
     });
   });
@@ -40,7 +26,7 @@ describe('PersonService', () => {
     it('should updated person', () => {
       const personModel = jest.spyOn(Person, 'update');
       const id = 1;
-      return personService
+      return personServiceInstance
         .update(id, mocks)
         .then(() => {
           expect(personModel).toHaveBeenCalledWith(mocks, { where: { id } })
@@ -51,8 +37,7 @@ describe('PersonService', () => {
   describe('findAll method', () => {
     it('should get all persons', () => {
       const personModel = jest.spyOn(Person, 'findAll');
-      const id = 1;
-      return personService
+      return personServiceInstance
         .findAll()
         .then(() => {
           expect(personModel).toHaveBeenCalled();
@@ -64,7 +49,7 @@ describe('PersonService', () => {
     it('should get a person', () => {
       const personModel = jest.spyOn(Person, 'findOne');
       const id = 1;
-      return personService
+      return personServiceInstance
         .findOne({ query: { id }})
         .then(() => {
           expect(personModel).toHaveBeenCalled();
@@ -76,10 +61,22 @@ describe('PersonService', () => {
     it('should removed a person', () => {
       const personModel = jest.spyOn(Person, 'destroy');
       const id = 1;
-      return personService
+      return personServiceInstance
         .deleteOne(id)
         .then(() => {
           expect(personModel).toHaveBeenCalledWith({ where: { id }})
+        });
+    });
+  });
+
+  describe('findOrCreate method', () => {
+    it('should get a new user', () => {
+      const personModel = jest.spyOn(Person, 'findOrCreate');
+      const id = 1;
+      return personServiceInstance
+        .findOrCreate({ query: { id }, data: mocks})
+        .then(() => {
+          expect(personModel).toHaveBeenCalledTimes(id);
         });
     });
   });

@@ -4,21 +4,8 @@ import { IPersonService } from './person-service-interface';
 import { PersonRequest } from '../../../database/models/person/person-interface';
 
 export class PersonService implements IPersonService {
-	private readonly attributes = [
-		'first_name',
-		'middle_name',
-		'last_name',
-		'email',
-		'date_of_birth',
-		'address',
-		'city',
-		'zip_code',
-		'home_phone',
-		'cell_phone',
-	];
-
-	public async create(data: PersonRequest): Promise<any> {
-		return Person.create<Person>(data);
+	public async create(data: PersonRequest, transaction?: any): Promise<any> {
+		return Person.create<Person>(data, { transaction });
 	}
 
 	public async update(id: number, data: PersonRequest): Promise<any> {
@@ -26,19 +13,20 @@ export class PersonService implements IPersonService {
 	}
 
 	public async findAll(): Promise<any> {
-		return Person.findAll<Person>({
-			attributes: this.attributes,
-		});
+		return Person.findAll<Person>();
 	}
 
 	public async findOne({ query }): Promise<any> {
-		return Person.findOne<Person>({
-			attributes: this.attributes,
-			where: query,
-		});
+		return Person.findOne<Person>({ where: query });
+	}
+
+	public async findOrCreate({ query, data, transaction = null }) {
+		return Person.findOrCreate<Person>({ where: query, defaults: data, transaction });
 	}
 
 	public async deleteOne(id: number): Promise<any> {
 		return Person.destroy({ where: { id } });
 	}
 }
+
+export const personServiceInstance = new PersonService();

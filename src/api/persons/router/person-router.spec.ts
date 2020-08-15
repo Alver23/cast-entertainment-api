@@ -2,31 +2,12 @@
 import supertest = require('supertest');
 
 // Server
-import { fakeServer } from "../__mocks__/fake-server";
+import { fakeServer } from "../../__mocks__/fake-server";
 
 // Router
 import { personRouter } from "./person-router";
 
-jest.mock('./person-controller', () => {
-  const fakeResponse = (res) => res.status(200).send('fake message');
-  return {
-    getPersons: (req, res, next) => {
-      return fakeResponse(res);
-    },
-    getPersonById: (req, res, next) => {
-      return fakeResponse(res);
-    },
-    createPerson: (req, res, next) => {
-      return fakeResponse(res);
-    },
-    updatePerson: (req, res, next) => {
-      return fakeResponse(res);
-    },
-    deletePerson: (req, res, next) => {
-      return fakeResponse(res);
-    },
-  }
-});
+jest.mock('../controller/person-controller', () => require('./../controller/person-controller-mock').mockPersonController);
 
 describe('Person router', () => {
   const path = '/persons';

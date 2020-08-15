@@ -9,7 +9,8 @@ import * as helmet from 'helmet';
 import { errorHandler, fourOFour, logErrors, wrapError, appendIpAddressToBody } from '../core/middlewares';
 
 // Routers
-import { personRouter } from './persons/person-router';
+import { personRouter } from './persons/router/person-router';
+import { userRouter } from './users/router/user-router';
 
 const api: express.Application = express();
 
@@ -32,6 +33,7 @@ api.use(bodyParser.urlencoded({ extended: false }));
 api.use(appendIpAddressToBody);
 
 personRouter(api);
+userRouter(api);
 
 api.use(fourOFour);
 api.use(logErrors);

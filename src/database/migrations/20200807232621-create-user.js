@@ -9,7 +9,15 @@ module.exports = {
         type: Sequelize.INTEGER.UNSIGNED
       },
       person_id: {
-        type: Sequelize.INTEGER.UNSIGNED
+        allowNull: false,
+        type: Sequelize.INTEGER.UNSIGNED,
+        references: {
+          model: {
+            tableName: 'people',
+          },
+          key: 'id'
+        },
+        onDelete: 'CASCADE',
       },
       password: {
         type: Sequelize.STRING
