@@ -7,6 +7,7 @@ import { personServiceInstance } from "@api/persons/services";
 
 // Mocks
 import mocks from '@api/users/mocks.json';
+import personMocks from '@database/models/person/mocks.json';
 import { mockRequest, mockResponse } from '@mocks/fake-request';
 
 jest.mock('@api/users/services', () => require('@api/users/services/user-service-mock').userServiceMock);
@@ -78,7 +79,7 @@ describe('UserController', () => {
   describe('createUser method', () => {
 
     it('should create an new user when user not exists', async () => {
-      jest.spyOn(personServiceInstance, 'findOne').mockResolvedValue(false);
+      jest.spyOn(personServiceInstance, 'findOne').mockResolvedValue(null);
       const request = mockRequest({ body: mocks });
       const response = mockResponse();
       const next = jest.fn();
@@ -88,7 +89,7 @@ describe('UserController', () => {
     });
 
     it('should get an error when create a new user', async () => {
-      jest.spyOn(personServiceInstance, 'findOne').mockResolvedValue(true);
+      jest.spyOn(personServiceInstance, 'findOne').mockResolvedValue(personMocks);
       const request = mockRequest({ body: mocks });
       const response = mockResponse();
       const next = jest.fn();
@@ -99,7 +100,7 @@ describe('UserController', () => {
 
     it('should return an error', async () => {
       const errorMessage: Error = new Error('Network Error');
-      jest.spyOn(personServiceInstance, 'findOne').mockResolvedValue(false);
+      jest.spyOn(personServiceInstance, 'findOne').mockResolvedValue(null);
       jest.spyOn(userServiceInstance, 'create').mockRejectedValue(errorMessage);
       const request: any = mockRequest({ body: {} });
       const response: any = mockResponse();

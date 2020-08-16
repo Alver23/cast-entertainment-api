@@ -23,9 +23,9 @@ const userMockWithPerson = {
 const UserMock = dbMock.define('users');
 
 UserMock.$queryInterface.$useHandler(function(query, queryOptions, done) {
-  if (["findAll", "findOrCreate"].includes(query)) return [UserMock.build(userMockWithPerson)];
-  if (query === "findOne") return UserMock.build(userMockWithPerson);
-  if (query === "findOrCreate") return [UserMock.build(userMockWithPerson)];
+  if (['findAll', 'findOrCreate'].includes(query)) return [UserMock.build(userMockWithPerson)];
+  if (query === 'findOne') return UserMock.build(userMockWithPerson);
+  if (query === 'findOrCreate') return [UserMock.build(userMockWithPerson)];
 });
 
 UserMock.associations = {

@@ -109,8 +109,8 @@
   },
   "lint-staged": {
     "src/**/*.{ts,json}": [
-      "git add",
-      "prettier --write --config .prettierrc.json"
+      "prettier --write --config .prettierrc.json",
+      "git add --force"
     ]
   },
   "commitlint": {
