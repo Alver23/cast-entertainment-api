@@ -52,6 +52,7 @@
     "http-status-codes": "^1.4.0",
     "jsonwebtoken": "^8.5.1",
     "method-override": "^3.0.0",
+    "module-alias": "^2.2.2",
     "mysql2": "^2.1.0",
     "passport": "^0.4.1",
     "passport-http": "^0.3.0",
@@ -92,6 +93,7 @@
     "husky": "^4.2.5",
     "jest": "^26.2.2",
     "lint-staged": "^10.2.11",
+    "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
     "sequelize-cli": "^6.2.0",
     "sequelize-mock": "^0.10.2",
@@ -115,5 +117,12 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "_moduleAliases": {
+    "@api": "build/api",
+    "@config": "build/config",
+    "@core": "build/core",
+    "@database": "build/database",
+    "@utils": "build/utils"
   }
 }

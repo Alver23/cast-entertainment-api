@@ -2,10 +2,10 @@
 import { Sequelize } from 'sequelize';
 
 // Config
-import { config } from '../../config';
+import { config } from '@config/index';
 
 const debug = require('debug')(`${config.appName}:sequalize-connection`);
-const databaseConfig = require('../../database/config/config')[config.environment];
+const databaseConfig = require('@database/config/config')[config.environment];
 
 const { database, username, password } = databaseConfig;
 

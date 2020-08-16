@@ -1,4 +1,6 @@
-import * as http from 'http';
+// Dependencies
+import 'module-alias/register';
+import http from 'http';
 
 import { config } from '../config';
 import { server } from '../index';
