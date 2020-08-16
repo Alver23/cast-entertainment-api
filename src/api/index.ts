@@ -6,7 +6,7 @@ import bodyParser from 'body-parser';
 import helmet from 'helmet';
 
 // Middlewares
-import { errorHandler, fourOFour, logErrors, wrapError, appendIpAddressToBody } from '../core/middlewares';
+import { errorHandler, fourOFour, logErrors, wrapError, appendIpAddressToBody } from '@core/middlewares';
 
 // Routers
 import { personRouter } from './persons/router/person-router';

@@ -93,7 +93,6 @@
     "husky": "^4.2.5",
     "jest": "^26.2.2",
     "lint-staged": "^10.2.11",
-    "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
     "sequelize-cli": "^6.2.0",
     "sequelize-mock": "^0.10.2",
@@ -110,6 +109,7 @@
   },
   "lint-staged": {
     "src/**/*.{ts,json}": [
+      "git add",
       "prettier --write --config .prettierrc.json"
     ]
   },
