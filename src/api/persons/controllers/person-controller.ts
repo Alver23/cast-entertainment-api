@@ -3,10 +3,10 @@ import { Request, Response, NextFunction } from 'express';
 import { NOT_FOUND, OK, CREATED } from 'http-status-codes';
 
 // Services
-import { personServiceInstance, IPersonService } from '../services';
+import { personServiceInstance, IPersonService } from '@api/persons/services';
 
 // Utils
-import { setResponse, HttpMessages, setResponseForDelete } from '../../../utils';
+import { setResponse, HttpMessages, setResponseForDelete } from '@utils/index';
 
 export class PersonController {
 	constructor(private readonly personService: IPersonService) {}

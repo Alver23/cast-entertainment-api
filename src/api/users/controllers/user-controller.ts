@@ -4,11 +4,11 @@ import { CREATED, NOT_FOUND, OK } from 'http-status-codes';
 import { NextFunction, Response, Request } from 'express';
 
 // Services
-import { IUserService, userServiceInstance } from '../services';
-import { IPersonService, personServiceInstance } from '../../persons/services';
+import { IUserService, userServiceInstance } from '@api/users/services';
+import { IPersonService, personServiceInstance } from '@api/persons/services';
 
 // Utils
-import { HttpMessages, setResponse } from '../../../utils';
+import { HttpMessages, setResponse } from '@utils/index';
 
 export class UserController {
 	constructor(private readonly userService: IUserService, private readonly personService: IPersonService) {}

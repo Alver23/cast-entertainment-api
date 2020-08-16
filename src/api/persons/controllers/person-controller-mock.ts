@@ -1,6 +1,6 @@
-import { fakeResponse } from "../../__mocks__/fake-response";
+import { fakeResponse } from "@mocks/fake-response";
 
-export const mockPersonController = {
+export const personControllerMock = {
   personController: {
     getPersons: (req, res, next) => fakeResponse(res),
     getPersonById: (req, res, next) => fakeResponse(res),

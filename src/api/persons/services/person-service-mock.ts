@@ -1,24 +1,25 @@
-// Dependencies
-import mocks from '../controller/mocks.json';
+// Mocks
+import personMocks from '@database/models/person/mocks.json';
+import userMocks from '@database/models/user/mocks.json';
 
-export const mockPersonService = {
+const timestamps = {
+  createdAt: new Date(),
+  updatedAt: new Date(),
+};
+
+export const personServiceMock = {
   personServiceInstance: {
     findAll: () => jest.fn(),
     findOne: () => jest.fn(),
     create: () => ({
       createUser: () => ({
-        toJSON: () => ({
-          id: 1,
-          personId: 1,
-        }),
+        toJSON: () => ({...userMocks,...timestamps}),
       }),
-      toJSON: () => mocks,
+      toJSON: () => ({...personMocks, ...timestamps}),
     }),
     findOrCreate: () => ({
       id: 1,
-      toJSON: () => ({
-        ...mocks,
-      }),
+      toJSON: () => personMocks,
     }),
     update: () => jest.fn(),
     deleteOne: () => jest.fn(),

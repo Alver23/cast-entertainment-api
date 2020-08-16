@@ -13,5 +13,13 @@
   "testEnvironment": "node",
   "transform": {
     "^.+\\.(ts|tsx)$": "ts-jest"
+  },
+  "moduleNameMapper": {
+    "^@api/(.*)$": "<rootDir>/src/api/$1",
+    "^@config/(.*)$": "<rootDir>/src/config/$1",
+    "^@core/(.*)$": "<rootDir>/src/core/$1",
+    "^@database/(.*)$": "<rootDir>/src/database/$1",
+    "^@utils/(.*)$": "<rootDir>/src/utils/$1",
+    "^@mocks/(.*)$": "<rootDir>/src/api/__mocks__/$1"
   }
 }

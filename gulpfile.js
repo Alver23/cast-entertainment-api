@@ -32,8 +32,8 @@ gulp.task('server:watch', (done) => {
   });
 });
 
-
+gulp.task('server:build:clean', shell.task('rm -rf build'))
 gulp.task('server:folder-upload', shell.task('rm -rf build/public && mkdir build/public'))
 
-gulp.task('server:build', gulp.series('server:ts', 'server:folder-upload'));
-gulp.task('server:dev', gulp.series('server:ts', 'server:folder-upload', 'server:watch'));
+gulp.task('server:build', gulp.series('server:build:clean', 'server:ts', 'server:folder-upload'));
+gulp.task('server:dev', gulp.series('server:build:clean', 'server:ts', 'server:folder-upload', 'server:watch'));

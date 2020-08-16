@@ -1,8 +1,8 @@
 // Dependencies
-import { Model, DataTypes } from 'sequelize';
+import { Model, DataTypes, Association } from 'sequelize';
 
 // ORM
-import { sequelize } from '../../../core/sequelize/sequelize';
+import { sequelize } from '@core/sequelize/sequelize';
 
 // Models
 import { UserModel, UserCreationAttributes } from './user-interface';
@@ -25,6 +25,10 @@ export class User extends Model<UserModel, UserCreationAttributes> implements Us
 	public readonly deletedAt!: Date;
 
 	public readonly person: Person;
+
+	public static associations: {
+		person: Association<User, Person>;
+	};
 }
 
 User.init(

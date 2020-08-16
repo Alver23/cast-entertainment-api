@@ -1,12 +1,12 @@
 // Dependencies
-import * as cors from 'cors';
-import * as express from 'express';
-import * as methodOverride from 'method-override';
-import * as bodyParser from 'body-parser';
-import * as helmet from 'helmet';
+import cors from 'cors';
+import express from 'express';
+import methodOverride from 'method-override';
+import bodyParser from 'body-parser';
+import helmet from 'helmet';
 
 // Middlewares
-import { errorHandler, fourOFour, logErrors, wrapError, appendIpAddressToBody } from '../core/middlewares';
+import { errorHandler, fourOFour, logErrors, wrapError, appendIpAddressToBody } from '@core/middlewares';
 
 // Routers
 import { personRouter } from './persons/router/person-router';

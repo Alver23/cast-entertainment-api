@@ -29,6 +29,8 @@
 		"@typescript-eslint/no-explicit-any": "off",
 		"@typescript-eslint/explicit-function-return-type": "off",
 		"@typescript-eslint/camelcase": "off",
-		"camelcase": ["off", { "properties": "never" } ]
+		"camelcase": ["off", { "properties": "never" } ],
+		"import/no-unresolved": "off",
+		"quotes": ["error", "single"]
 	}
 }

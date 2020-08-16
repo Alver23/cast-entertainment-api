@@ -1,6 +1,7 @@
-import * as path from 'path';
-import * as express from 'express';
-import * as cookieParser from 'cookie-parser';
+// Dependencies
+import path from 'path';
+import express from 'express';
+import cookieParser from 'cookie-parser';
 
 import api from './api';
 import { config } from './config';

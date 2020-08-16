@@ -1,4 +1,4 @@
-export const mockSequelize = {
+export const sequelizeMock = {
   sequelize: {
     transaction: (fn) => {
       return new Promise((resolve, reject) => {

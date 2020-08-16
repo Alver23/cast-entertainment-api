@@ -4,10 +4,10 @@ import { NextFunction, Request, Response } from 'express';
 import { badImplementation } from '@hapi/boom';
 
 // Config
-import { config } from '../../../config';
+import { config } from '@config/index';
 
 // Utils
-import { setResponse } from '../../../utils';
+import { setResponse } from '@utils/index';
 
 const debug = require('debug')(`${config.appName}:error-handler`);
 

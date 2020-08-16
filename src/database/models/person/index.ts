@@ -2,7 +2,7 @@
 import { Model, DataTypes } from 'sequelize';
 
 // ORM
-import { sequelize } from '../../../core/sequelize/sequelize';
+import { sequelize } from '@core/sequelize/sequelize';
 
 // Models
 import { PersonModel, PersonCreationAttributes } from './person-interface';

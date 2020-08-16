@@ -1,6 +1,8 @@
-import * as http from 'http';
+// Dependencies
+import 'module-alias/register';
+import http from 'http';
 
-import { config } from '../config';
+import { config } from '@config/index';
 import { server } from '../index';
 
 const debug = require('debug')(`${config.appName}:server`);
