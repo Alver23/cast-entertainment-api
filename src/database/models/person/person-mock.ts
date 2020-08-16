@@ -2,17 +2,20 @@
 const SequelizeMock = require('sequelize-mock');
 const dbMock = new SequelizeMock();
 
-const mock = dbMock.define('people', {}, {
+// Mocks
+import mocks from './mocks.json';
+
+const PersonMock = dbMock.define('Person', {}, {
   instanceMethods: {
-    findAll: () => jest.fn(),
-    create: () => jest.fn(),
-    findOne: () => jest.fn(),
-    update: () => jest.fn(),
-    destroy: () => jest.fn(),
-    findOrCreate: () => jest.fn(),
-  },
+    create: () => jest.fn()
+  }
 });
 
-export const mockPerson = {
-  Person: mock,
+PersonMock.$queryInterface.$useHandler(function(query, queryOptions, done) {
+  if (["findAll", "findOrCreate"].includes(query)) return [PersonMock.build(mocks)];
+  if (query === "findOne") return PersonMock.build(mocks);
+});
+
+export const personMock = {
+  Person: PersonMock,
 }

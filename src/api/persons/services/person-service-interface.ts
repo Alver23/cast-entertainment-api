@@ -1,11 +1,13 @@
-// Models
-import { PersonRequest } from '../../../database/models/person/person-interface';
+// Interfaces
+import { PersonModel, PersonRequest } from '@database/models/person/person-interface';
+
+export type IPersonResponse = PersonModel;
 
 export interface IPersonService {
-	findAll();
-	findOne({ query });
-	findOrCreate({ query, data, transaction });
-	create(data: PersonRequest, transaction?: any);
-	update(id: number, data: PersonRequest);
-	deleteOne(id: number);
+	findAll(): Promise<IPersonResponse[]>;
+	findOne({ query }): Promise<IPersonResponse>;
+	findOrCreate({ query, data, transaction }): Promise<any>;
+	create(data: PersonRequest, transaction?: any): Promise<IPersonResponse>;
+	update(id: number, data: PersonRequest): Promise<any>;
+	deleteOne(id: number): Promise<any>;
 }

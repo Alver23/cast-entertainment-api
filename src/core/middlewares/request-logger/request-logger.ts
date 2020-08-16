@@ -1,6 +1,8 @@
+// Dependencies
 import { RequestHandler, Request, Response, NextFunction } from 'express';
 
-import { config } from '../../../config';
+// Config
+import { config } from '@config/index';
 
 const debug = require('debug')(`${config.appName}:request-logger`);
 

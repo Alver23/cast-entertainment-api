@@ -1,15 +1,35 @@
 // Services
 import { personServiceInstance } from "./person-service";
 
-// Models
-import { Person } from "../../../database/models/person";
+// Database
+import { Person } from "@database/models/person";
 
 // Mocks
-import mocks from '../controller/mocks.json';
+import mocks from '@api/persons/mocks.json';
 
-jest.mock('../../../database/models/person', () => require('./../../../database/models/person/person-mock').mockPerson);
+jest.mock('@database/models/person', () => require('@database/models/person/person-mock').personMock);
 
 describe('PersonService', () => {
+
+  const expectedAttributes = () => ({
+    id: expect.any(Number),
+    firstName: expect.any(String),
+    middleName: expect.any(String),
+    lastName: expect.any(String),
+    email: expect.any(String),
+    dateOfBirth: expect.any(String),
+    address: expect.any(String),
+    city: expect.any(String),
+    zipCode: expect.any(String),
+    homePhone: expect.any(String),
+    cellPhone: expect.any(String),
+    createdAt: expect.any(Date),
+    updatedAt: expect.any(Date),
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  })
 
   describe('create method', () => {
     it('should get an new person', () => {
@@ -17,66 +37,80 @@ describe('PersonService', () => {
       return personServiceInstance
         .create(mocks)
         .then(() => {
-          expect(personModel).toHaveBeenCalledWith(mocks, { transaction : undefined})
+          expect(personModel).toHaveBeenCalledWith(mocks, { transaction: undefined });
         });
     });
   });
 
   describe('update method', () => {
     it('should updated person', () => {
-      const personModel = jest.spyOn(Person, 'update');
       const id = 1;
       return personServiceInstance
         .update(id, mocks)
-        .then(() => {
-          expect(personModel).toHaveBeenCalledWith(mocks, { where: { id } })
+        .then((response) => {
+          expect(response).toEqual([1]);
         });
     });
   });
 
   describe('findAll method', () => {
     it('should get all persons', () => {
-      const personModel = jest.spyOn(Person, 'findAll');
       return personServiceInstance
         .findAll()
-        .then(() => {
-          expect(personModel).toHaveBeenCalled();
+        .then((response) => {
+          expect(response)
+            .toEqual(
+              expect.arrayContaining([
+                expect.objectContaining({
+                  ...expectedAttributes(),
+                }),
+              ]),
+            );
         });
     });
   });
 
   describe('findOne method', () => {
     it('should get a person', () => {
-      const personModel = jest.spyOn(Person, 'findOne');
       const id = 1;
       return personServiceInstance
         .findOne({ query: { id }})
-        .then(() => {
-          expect(personModel).toHaveBeenCalled();
+        .then((response) => {
+          expect(response)
+            .toEqual(
+              expect.objectContaining({
+                ...expectedAttributes(),
+              }),
+            );
         });
     });
   });
 
   describe('deleteOne method', () => {
     it('should removed a person', () => {
-      const personModel = jest.spyOn(Person, 'destroy');
-      const id = 1;
+      const id = 4;
       return personServiceInstance
         .deleteOne(id)
-        .then(() => {
-          expect(personModel).toHaveBeenCalledWith({ where: { id }})
+        .then((response) => {
+          expect(response).toBe(1);
         });
     });
   });
 
   describe('findOrCreate method', () => {
     it('should get a new user', () => {
-      const personModel = jest.spyOn(Person, 'findOrCreate');
       const id = 1;
       return personServiceInstance
         .findOrCreate({ query: { id }, data: mocks})
-        .then(() => {
-          expect(personModel).toHaveBeenCalledTimes(id);
+        .then((response) => {
+          expect(response)
+            .toEqual(
+              expect.arrayContaining([
+                expect.objectContaining({
+                  ...expectedAttributes(),
+                }),
+              ]),
+            );
         });
     });
   });

@@ -8,11 +8,11 @@ import { sequelize } from '@core/sequelize/sequelize';
 import { IPersonService, personServiceInstance } from '@api/persons/services';
 
 // Interfaces
-import { IUserService, IUserResponse } from './user-service-interface';
 import { UserRequest } from '@database/models/user/user-interface';
 
 // Database
 import { User } from '@database/models/user';
+import { IUserService, IUserResponse } from './user-service-interface';
 
 export class UserService implements IUserService {
 	private readonly saltRound = 10;
@@ -37,7 +37,7 @@ export class UserService implements IUserService {
 		try {
 			const { password, ipAddress } = data;
 			return await sequelize.transaction(async (transaction) => {
-				const personInstance = await this.personService.create(data, transaction);
+				const personInstance: any = await this.personService.create(data, transaction);
 				const hashedPassword = await this.hashedPassword(password);
 				const userModel = await personInstance.createUser({ ipAddress, password: hashedPassword }, { transaction });
 				const user = userModel.toJSON();
@@ -58,7 +58,7 @@ export class UserService implements IUserService {
 			const { password, email, ipAddress } = data;
 			return await sequelize.transaction(async (transaction) => {
 				const hashedPassword = await this.hashedPassword(password);
-				const personModel = await this.personService.findOrCreate({ query: { email }, data, transaction });
+				const personModel: any = await this.personService.findOrCreate({ query: { email }, data, transaction });
 				const { id } = personModel;
 				const [userModel] = await User.findOrCreate<User>({
 					where: { personId: id },

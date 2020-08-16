@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import { notFound } from '@hapi/boom';
 
 // Utils
-import { setResponse } from '../../../utils';
+import { setResponse } from '@utils/index';
 
 export const fourOFour = (req: Request, res: Response) => {
 	const {

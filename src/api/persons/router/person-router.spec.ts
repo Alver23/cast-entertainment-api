@@ -1,13 +1,13 @@
 // Dependencies
-import supertest = require('supertest');
+import supertest from 'supertest';
 
 // Server
-import { fakeServer } from "../../__mocks__/fake-server";
+import { fakeServer } from "@mocks/fake-server";
 
 // Router
 import { personRouter } from "./person-router";
 
-jest.mock('../controller/person-controller', () => require('./../controller/person-controller-mock').mockPersonController);
+jest.mock('@api/persons/controllers/person-controller', () => require('@api/persons/controllers/person-controller-mock').personControllerMock);
 
 describe('Person router', () => {
   const path = '/persons';

@@ -17,8 +17,8 @@ describe('UserService', () => {
     id: expect.any(Number),
     personId: expect.any(Number),
     ipAddress: expect.any(String),
-    createdAt: expect.any(String),
-    updatedAt: expect.any(String),
+    createdAt: expect.any(Date),
+    updatedAt: expect.any(Date),
   });
 
   const expectedPerson = () => ({
@@ -33,13 +33,13 @@ describe('UserService', () => {
     zipCode: expect.any(String),
     homePhone: expect.any(String),
     cellPhone: expect.any(String),
-    createdAt: expect.any(String),
-    updatedAt: expect.any(String),
+    createdAt: expect.any(Date),
+    updatedAt: expect.any(Date),
   });
 
   afterEach(() => {
     jest.clearAllMocks();
-  })
+  });
 
   describe('findAll method', () => {
     it('should get all users', () => {
