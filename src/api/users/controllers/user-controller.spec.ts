@@ -2,15 +2,15 @@
 import { UserController } from "./user-controller";
 
 // Services
-import { userServiceInstance } from "../services";
-import { personServiceInstance } from "../../persons/services";
+import { userServiceInstance } from "@api/users/services";
+import { personServiceInstance } from "@api/persons/services";
 
 // Mocks
-import mocks from '../mocks.json';
-import { mockRequest, mockResponse } from '../../__mocks__/fake-request';
+import mocks from '@api/users/mocks.json';
+import { mockRequest, mockResponse } from '@mocks/fake-request';
 
-jest.mock('./../services', () => require('../services/user-service-mock').mockUserService);
-jest.mock('./../../persons/services', () => require('../../persons/services/person-service-mock').mockPersonService);
+jest.mock('@api/users/services', () => require('@api/users/services/user-service-mock').userServiceMock);
+jest.mock('@api/persons/services', () => require('@api/persons/services/person-service-mock').personServiceMock);
 
 describe('UserController', () => {
   let controller: UserController;

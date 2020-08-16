@@ -1,6 +1,6 @@
-// Models
-import { PersonModel, PersonRequest } from '../../../database/models/person/person-interface';
-import { UserModel } from '../../../database/models/user/user-interface';
+// Interfaces
+import { UserModel } from '@database/models/user/user-interface';
+import { PersonModel, PersonRequest } from '@database/models/person/person-interface';
 
 export interface IUserService {
 	findAll();

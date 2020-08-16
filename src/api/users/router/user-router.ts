@@ -2,7 +2,7 @@
 import { Router, Request, Response, NextFunction, Application } from 'express';
 
 // Controller
-import { userController } from '../controller/user-controller';
+import { userController } from '@api/users/controllers/user-controller';
 
 export const userRouter = (app: Application): void => {
 	const basePath = '/users';

@@ -1,4 +1,4 @@
-export const mockUserService = {
+export const userServiceMock = {
   userServiceInstance: {
     findAll: () => jest.fn(),
     findOne: () => jest.fn(),
