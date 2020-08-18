@@ -17,7 +17,8 @@
     "prettier": "prettier --config .prettierrc.json --ignore-path ./.prettierignore --write src/**/*.ts",
     "db:migrate": "sequelize-cli db:migrate --config src/database/config/config.js",
     "db:migrate:rollback": "sequelize-cli db:migrate:undo --config src/database/config/config.js",
-    "db:seed:all": "sequelize-cli db:seed:all",
+    "db:seed": "sequelize-cli db:seed:all",
+    "db:seed:generate": "sequelize-cli seed:generate --name",
     "db:seed:rollback": "sequelize-cli db:seed:undo",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },

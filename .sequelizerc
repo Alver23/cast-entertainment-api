@@ -1,10 +1,8 @@
 // Dependencies
 const path = require('path');
 
-const rootDir = "src/database/"
+const rootDir = 'src/database/';
 const basePath = path.join(__dirname, rootDir);
-
-console.log('basePath', basePath)
 
 module.exports = {
   'config': path.resolve('config', `${basePath}config/config.js`),
