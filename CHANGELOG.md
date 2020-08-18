@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/Alver23/cast-entertainment/compare/v1.2.0...v1.3.0) (2020-08-18)
+
+
+### Features
+
+* add seeder for persons, users and user has roles ([#6](https://github.com/Alver23/cast-entertainment/issues/6)) ([a0a878c](https://github.com/Alver23/cast-entertainment/commit/a0a878c963cad3cf7420bd128cbae216c270dc52))
+
 ## [1.2.0](https://github.com/Alver23/cast-entertainment/compare/v1.1.0...v1.2.0) (2020-08-18)
 
 
