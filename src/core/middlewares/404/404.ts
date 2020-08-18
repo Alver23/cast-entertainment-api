@@ -5,7 +5,7 @@ import { notFound } from '@hapi/boom';
 // Utils
 import { setResponse } from '@utils/index';
 
-export const fourOFour = (req: Request, res: Response) => {
+export const fourOFour = (req: Request, res: Response): void => {
 	const {
 		output: { statusCode, payload },
 	} = notFound();

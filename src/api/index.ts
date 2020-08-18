@@ -11,6 +11,7 @@ import { errorHandler, fourOFour, logErrors, wrapError, appendIpAddressToBody } 
 // Routers
 import { personRouter } from './persons/router/person-router';
 import { userRouter } from './users/router/user-router';
+import { roleRouter } from './roles/router/role-router';
 
 const api: express.Application = express();
 
@@ -34,6 +35,7 @@ api.use(appendIpAddressToBody);
 
 personRouter(api);
 userRouter(api);
+roleRouter(api);
 
 api.use(fourOFour);
 api.use(logErrors);

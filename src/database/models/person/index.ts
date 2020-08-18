@@ -4,7 +4,7 @@ import { Model, DataTypes } from 'sequelize';
 // ORM
 import { sequelize } from '@core/sequelize/sequelize';
 
-// Models
+// Interfaces
 import { PersonModel, PersonCreationAttributes } from './person-interface';
 
 export class Person extends Model<PersonModel, PersonCreationAttributes> implements PersonModel {
@@ -65,5 +65,8 @@ Person.init(
 		tableName: 'people',
 		underscored: true,
 		paranoid: true,
+		defaultScope: {
+			order: [['createdAt', 'DESC']],
+		},
 	},
 );

@@ -8,7 +8,7 @@ interface IResponse {
 	options?: any;
 }
 
-export const setResponse = ({ message, data, status, options }: IResponse) => {
+export const setResponse = ({ message, data, status, options }: IResponse): IResponse => {
 	let statusCode = OK;
 	let additionalOptions = {};
 	if (status) {

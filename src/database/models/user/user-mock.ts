@@ -28,10 +28,6 @@ UserMock.$queryInterface.$useHandler(function(query, queryOptions, done) {
   if (query === 'findOrCreate') return [UserMock.build(userMockWithPerson)];
 });
 
-UserMock.associations = {
-  person: personMocks,
-}
-
 export const userMock = {
   User: UserMock,
 }

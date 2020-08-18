@@ -1,6 +1,7 @@
 // Mocks
 import personMocks from '@database/models/person/mocks.json';
 import userMocks from '@database/models/user/mocks.json';
+import roleMocks from '@database/models/role/mocks.json';
 
 const timestamps = {
   createdAt: new Date(),
@@ -14,6 +15,7 @@ export const personServiceMock = {
     create: () => ({
       createUser: () => ({
         toJSON: () => ({...userMocks,...timestamps}),
+        addRoles: () => (roleMocks),
       }),
       toJSON: () => ({...personMocks, ...timestamps}),
     }),

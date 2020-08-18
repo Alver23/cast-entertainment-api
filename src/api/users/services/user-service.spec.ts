@@ -2,7 +2,7 @@
 import { userServiceInstance } from './user-service';
 
 // ORM
-import { sequelize } from "@core/sequelize/sequelize";
+import { sequelize } from '@core/sequelize/sequelize';
 
 // Mocks
 import mocks from '@api/users/mocks.json';
