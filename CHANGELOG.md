@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/Alver23/cast-entertainment/compare/v1.1.0...v1.2.0) (2020-08-18)
+
+
+### Features
+
+* add roles module and associate with user to create ([#5](https://github.com/Alver23/cast-entertainment/issues/5)) ([034b1cc](https://github.com/Alver23/cast-entertainment/commit/034b1cca6d57895ba21af582b3160f9733ba02af))
+
 ## 1.1.0 (2020-08-16)
 
 
