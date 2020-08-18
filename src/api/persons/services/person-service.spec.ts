@@ -1,7 +1,7 @@
 // Services
 import { personServiceInstance } from "./person-service";
 
-// Database
+// Database Models
 import { Person } from "@database/models/person";
 
 // Mocks
@@ -101,7 +101,7 @@ describe('PersonService', () => {
     it('should get a new user', () => {
       const id = 1;
       return personServiceInstance
-        .findOrCreate({ query: { id }, data: mocks})
+        .findOrCreate({ query: { id }, data: mocks} as any)
         .then((response) => {
           expect(response)
             .toEqual(

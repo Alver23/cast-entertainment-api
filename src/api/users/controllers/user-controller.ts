@@ -13,7 +13,7 @@ import { HttpMessages, setResponse } from '@utils/index';
 export class UserController {
 	constructor(private readonly userService: IUserService, private readonly personService: IPersonService) {}
 
-	public async getUsers(req: Request, res: Response, next: NextFunction) {
+	public async getUsers(req: Request, res: Response, next: NextFunction): Promise<any> {
 		try {
 			const data = await this.userService.findAll();
 			res.json(setResponse({ data, message: HttpMessages.LISTS }));
@@ -22,7 +22,7 @@ export class UserController {
 		}
 	}
 
-	public async getUser(req: Request, res: Response, next: NextFunction) {
+	public async getUser(req: Request, res: Response, next: NextFunction): Promise<any> {
 		try {
 			const {
 				params: { id },
@@ -35,7 +35,7 @@ export class UserController {
 		}
 	}
 
-	public async createUser(req: Request, res: Response, next: NextFunction) {
+	public async createUser(req: Request, res: Response, next: NextFunction): Promise<any> {
 		try {
 			const { body } = req;
 			const { email } = body;

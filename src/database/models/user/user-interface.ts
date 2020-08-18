@@ -6,6 +6,7 @@ import { PersonCreationAttributes } from '../person/person-interface';
 
 export interface UserRequest extends PersonCreationAttributes {
 	password: string;
+	rolesId: number[];
 }
 
 export interface UserModel {

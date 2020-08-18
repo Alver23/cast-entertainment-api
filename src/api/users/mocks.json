@@ -10,5 +10,6 @@
 	"homePhone": "fake home phone",
 	"cellPhone": "fake cell phone",
 	"password": "123456789",
+	"rolesId": [1, 2, 3],
 	"ipAddress": "127.0.0.1"
 }

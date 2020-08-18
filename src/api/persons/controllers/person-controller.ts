@@ -11,7 +11,7 @@ import { setResponse, HttpMessages, setResponseForDelete } from '@utils/index';
 export class PersonController {
 	constructor(private readonly personService: IPersonService) {}
 
-	public async getPersons(req: Request, res: Response, next: NextFunction) {
+	public async getPersons(req: Request, res: Response, next: NextFunction): Promise<any> {
 		try {
 			const data = await this.personService.findAll();
 			res.json(setResponse({ data, message: HttpMessages.LISTS }));
@@ -20,7 +20,7 @@ export class PersonController {
 		}
 	}
 
-	public async getPersonById(req: Request, res: Response, next: NextFunction) {
+	public async getPersonById(req: Request, res: Response, next: NextFunction): Promise<any> {
 		try {
 			const {
 				params: { id },
@@ -33,7 +33,7 @@ export class PersonController {
 		}
 	}
 
-	public async createPerson(req: Request, res: Response, next: NextFunction) {
+	public async createPerson(req: Request, res: Response, next: NextFunction): Promise<any> {
 		try {
 			const { body } = req;
 			const data = await this.personService.create(body);
@@ -43,7 +43,7 @@ export class PersonController {
 		}
 	}
 
-	public async updatePerson(req: Request, res: Response, next: NextFunction) {
+	public async updatePerson(req: Request, res: Response, next: NextFunction): Promise<any> {
 		try {
 			const {
 				body,
@@ -56,7 +56,7 @@ export class PersonController {
 		}
 	}
 
-	public async deletePerson(req: Request, res: Response, next: NextFunction) {
+	public async deletePerson(req: Request, res: Response, next: NextFunction): Promise<any> {
 		try {
 			const {
 				params: { id },

@@ -1,12 +1,15 @@
-// Database
+// Dependencies
+import { Transaction } from 'sequelize';
+
+// Database Models
 import { Person } from '@database/models/person';
 
 // Interfaces
 import { PersonRequest } from '@database/models/person/person-interface';
-import { IPersonResponse, IPersonService } from './person-service-interface';
+import { IPersonResponse, IPersonService, IFindParams, IFindOrCreateParams } from './person-service-interface';
 
 export class PersonService implements IPersonService {
-	public async create(data: PersonRequest, transaction?: any): Promise<IPersonResponse> {
+	public async create(data: PersonRequest, transaction?: Transaction): Promise<IPersonResponse> {
 		return Person.create<Person>(data, { transaction });
 	}
 
@@ -18,11 +21,11 @@ export class PersonService implements IPersonService {
 		return Person.findAll<Person>();
 	}
 
-	public async findOne({ query }): Promise<IPersonResponse> {
+	public async findOne({ query }: IFindParams): Promise<IPersonResponse> {
 		return Person.findOne<Person>({ where: query });
 	}
 
-	public async findOrCreate({ query, data, transaction = null }): Promise<any> {
+	public async findOrCreate({ query, data, transaction = null }: IFindOrCreateParams): Promise<any> {
 		return Person.findOrCreate<Person>({ where: query, defaults: data, transaction });
 	}
 
