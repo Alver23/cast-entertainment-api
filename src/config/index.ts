@@ -15,7 +15,6 @@ export const config = {
 	jwt: {
 		secret: process.env.AUTH_JWT_SECRET,
 		expires: process.env.AUTH_JWT_EXPIRES,
-		refresTokenExpires: parseInt(process.env.AUTH_REFRESH_TOKEN_EXPIRES, 10),
 	},
 	staticFiles: {
 		directory: 'public',

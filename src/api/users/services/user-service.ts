@@ -17,6 +17,10 @@ import { IUserService, IUserResponse, IFindParams } from './user-service-interfa
 export class UserService implements IUserService {
 	private readonly saltRound = 10;
 
+	private readonly relationship = ['person', 'roles'];
+
+	private readonly excludeAttributes = ['PersonId', 'password'];
+
 	constructor(private readonly personService: IPersonService) {}
 
 	private async hashedPassword(password): Promise<string> {
@@ -24,11 +28,19 @@ export class UserService implements IUserService {
 	}
 
 	public async findAll(): Promise<IUserResponse[]> {
-		return User.findAll<User>();
+		return User.findAll<User>({
+			include: this.relationship,
+			order: [['createdAt', 'DESC']],
+			attributes: { exclude: this.excludeAttributes },
+		});
 	}
 
 	public async findOne({ query }: IFindParams): Promise<IUserResponse> {
-		return User.findOne<User>({ where: query });
+		return User.findOne<User>({
+			where: query,
+			attributes: { exclude: this.excludeAttributes },
+			include: this.relationship,
+		});
 	}
 
 	public async create(data: UserRequest): Promise<IUserResponse> {
