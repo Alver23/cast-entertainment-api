@@ -6,7 +6,7 @@ import bodyParser from 'body-parser';
 import helmet from 'helmet';
 
 // Middlewares
-import { errorHandler, fourOFour, logErrors, wrapError, appendIpAddressToBody } from '@core/middlewares';
+import { errorHandler, fourOFour, logErrors, wrapError, appendIpAddressToBody, protectRoutes } from '@core/middlewares';
 
 // Routers
 import { personRouter } from './persons/router/person-router';
@@ -34,10 +34,11 @@ api.use(bodyParser.urlencoded({ extended: false }));
 // Add ip address to body
 api.use(appendIpAddressToBody);
 
+authRouter(api);
+api.use(protectRoutes);
 personRouter(api);
 userRouter(api);
 roleRouter(api);
-authRouter(api);
 
 api.use(fourOFour);
 api.use(logErrors);

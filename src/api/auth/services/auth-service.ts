@@ -17,7 +17,7 @@ import { Token } from '@database/models/token';
 
 // Utils
 import { HttpMessages } from '@utils/messages/http-messages';
-import { IAuthService, IGetUserResponse, IRefreshTokenResponse, IUser } from './auth-service-interface';
+import { IAuthService, IGetUserResponse, IRefreshTokenResponse, IUserAuth } from './auth-service-interface';
 
 // Models
 import { RoleMapper } from './models/role/role-mapper';
@@ -54,7 +54,7 @@ export class AuthService implements IAuthService {
 		};
 	}
 
-	public createToken(user: IUser): string {
+	public createToken(user: IUserAuth): string {
 		const { secret, expires } = config.jwt;
 		const { id } = user;
 		const payload = {
@@ -65,7 +65,7 @@ export class AuthService implements IAuthService {
 		return sign(payload, secret, { expiresIn: expires });
 	}
 
-	public async generateRefreshToken(user: IUser): Promise<string> {
+	public async generateRefreshToken(user: IUserAuth): Promise<string> {
 		const { id: userId } = user;
 		const token = this.ramdonToken();
 		await Token.create<Token>({ token, userId });

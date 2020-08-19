@@ -5,7 +5,7 @@ import { CREATED } from 'http-status-codes';
 import { NextFunction, Response, Request } from 'express';
 
 // Services
-import { authServiceInstance, IAuthService, IUser } from '@api/auth/services';
+import { authServiceInstance, IAuthService, IUserAuth } from '@api/auth/services';
 
 // Utils
 import { setResponse } from '@utils/set-response/set-response';
@@ -18,7 +18,7 @@ export class AuthController {
 	constructor(private readonly authService: IAuthService) {}
 
 	public async login(req: Request, res: Response, next: NextFunction): Promise<any> {
-		return passport.authenticate('basic', (error: any, user: IUser) => {
+		return passport.authenticate('basic', (error: any, user: IUserAuth) => {
 			if (error || !user) {
 				return next(unauthorized(HttpMessages.UNAUTHORIZED));
 			}

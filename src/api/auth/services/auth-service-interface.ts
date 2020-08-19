@@ -1,7 +1,7 @@
 // Interfaces
 import { IRole } from './models/role/role-interface';
 
-export interface IUser {
+export interface IUserAuth {
 	id: number;
 	firstName: string;
 	middleName: string;
@@ -12,12 +12,12 @@ export interface IUser {
 	roles: IRole[];
 }
 
-export interface IGetUserResponse extends IUser {
+export interface IGetUserResponse extends IUserAuth {
 	password: string;
 }
 
 export interface IRefreshTokenResponse {
-	user: IUser;
+	user: IUserAuth;
 	refreshToken: string;
 	token: string;
 }
