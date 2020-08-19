@@ -1,2 +1,2 @@
 export { authServiceInstance, AuthService } from './auth-service';
-export { IAuthService, IUser } from './auth-service-interface';
+export { IAuthService, IUserAuth } from './auth-service-interface';
