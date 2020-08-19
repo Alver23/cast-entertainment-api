@@ -1,0 +1,11 @@
+{
+	"id": 1,
+	"firstName": "fake",
+	"middleName": "fake",
+	"lastName": "fake",
+	"dateOfBirth": "2020-12-12",
+	"address": "fake 123",
+	"password": "123",
+	"email": "fake@fake.com",
+	"roles": []
+}

@@ -11,7 +11,16 @@ const timestamps = {
 export const personServiceMock = {
   personServiceInstance: {
     findAll: () => jest.fn(),
-    findOne: () => jest.fn(),
+    findOne: () => {
+      return {
+        ...personMocks,
+        getUser: () => ({
+          ...userMocks,
+          password: '123',
+          getRoles: () => ([roleMocks])
+        }),
+      }
+    },
     create: () => ({
       createUser: () => ({
         toJSON: () => ({...userMocks,...timestamps}),

@@ -17,6 +17,7 @@
     "prettier": "prettier --config .prettierrc.json --ignore-path ./.prettierignore --write src/**/*.ts",
     "db:migrate": "sequelize-cli db:migrate --config src/database/config/config.js",
     "db:migrate:rollback": "sequelize-cli db:migrate:undo --config src/database/config/config.js",
+    "db:migration:generate:skeleton": "npx sequelize-cli migration:generate --name migration-skeleton",
     "db:seed": "sequelize-cli db:seed:all",
     "db:seed:generate": "sequelize-cli seed:generate --name",
     "db:seed:rollback": "sequelize-cli db:seed:undo",
@@ -60,6 +61,7 @@
     "passport": "^0.4.1",
     "passport-http": "^0.3.0",
     "passport-jwt": "^4.0.0",
+    "rand-token": "^1.0.1",
     "sequelize": "^6.3.4"
   },
   "devDependencies": {

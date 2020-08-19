@@ -44,13 +44,6 @@ User.init(
 		tableName: 'users',
 		underscored: true,
 		paranoid: true,
-		defaultScope: {
-			attributes: {
-				exclude: ['password', 'PersonId'],
-			},
-			include: ['person', 'roles'],
-			order: [['createdAt', 'DESC']],
-		},
 	},
 );
 
