@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/Alver23/cast-entertainment/compare/v1.4.0...v1.5.0) (2020-08-19)
+
+
+### Features
+
+* add middleware for protect routes ([#8](https://github.com/Alver23/cast-entertainment/issues/8)) ([13a6daa](https://github.com/Alver23/cast-entertainment/commit/13a6daad668f5a8dd2bcbfc9b3cd6474bcdf3b5f))
+
 ## [1.4.0](https://github.com/Alver23/cast-entertainment/compare/v1.3.0...v1.4.0) (2020-08-19)
 
 
