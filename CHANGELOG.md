@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/Alver23/cast-entertainment/compare/v1.3.0...v1.4.0) (2020-08-19)
+
+
+### Features
+
+* add auth modules ([#7](https://github.com/Alver23/cast-entertainment/issues/7)) ([d8e4db8](https://github.com/Alver23/cast-entertainment/commit/d8e4db8a3098a5dc0d643ce2bcc18c5412dd46c6))
+
 ## [1.3.0](https://github.com/Alver23/cast-entertainment/compare/v1.2.0...v1.3.0) (2020-08-18)
 
 
