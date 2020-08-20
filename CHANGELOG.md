@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/Alver23/cast-entertainment/compare/v1.5.0...v1.6.0) (2020-08-20)
+
+
+### Features
+
+* add docker files for node and nginx ([#9](https://github.com/Alver23/cast-entertainment/issues/9)) ([c13f73f](https://github.com/Alver23/cast-entertainment/commit/c13f73f3dfb8ca593029dccd0a67b1118961dd8f))
+
 ## [1.5.0](https://github.com/Alver23/cast-entertainment/compare/v1.4.0...v1.5.0) (2020-08-19)
 
 
