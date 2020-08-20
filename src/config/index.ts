@@ -21,4 +21,9 @@ export const config = {
 		pathUploads: 'uploads/',
 	},
 	sentryDsn: process.env.SENTRY_DSN,
+	newrelic: {
+		appName: [process.env.APP_NAME],
+		license: process.env.NEWRELIC_LICENSE_KEY,
+		logLevel: process.env.NEWRELIC_LOG_LEVEL,
+	},
 };

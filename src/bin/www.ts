@@ -1,4 +1,5 @@
 // Dependencies
+import 'newrelic';
 import 'module-alias/register';
 import http from 'http';
 
