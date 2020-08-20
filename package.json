@@ -3,6 +3,8 @@
   "version": "1.5.0",
   "description": "",
   "scripts": {
+    "env:dev": "cp ./environments/.env.development .env",
+    "env:prod": "cp ./environments/.env.production .env",
     "build": "gulp server:build",
     "start": "node build/bin/www.js",
     "start:dev": "DEBUG=cast-entertnaiment-api:* gulp server:dev",
