@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/Alver23/cast-entertainment/compare/v1.6.0...v1.7.0) (2020-08-20)
+
+
+### Features
+
+* add newrelic configuration ([#10](https://github.com/Alver23/cast-entertainment/issues/10)) ([5b24bdc](https://github.com/Alver23/cast-entertainment/commit/5b24bdcf8e2eda1f20cf01f72ac5d552b83525d0))
+
 ## [1.6.0](https://github.com/Alver23/cast-entertainment/compare/v1.5.0...v1.6.0) (2020-08-20)
 
 
