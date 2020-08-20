@@ -4,14 +4,13 @@ WORKDIR /opt/app
 FROM base as installer
 COPY package*.json .sequelizerc tsconfig.json gulpfile.js ./
 COPY src/ ./src
-RUN npm install --silent
+RUN npm install
 
 FROM installer as build
-RUN npm run build
-COPY build/ build/
 COPY environments/ environments/
 RUN touch .env
 RUN npm run env:prod
+RUN npm run build
 COPY --from=installer /opt/app ./
 
 FROM node:10-alpine as run
