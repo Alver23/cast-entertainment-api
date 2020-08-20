@@ -1,0 +1,16 @@
+.git
+.idea
+.gitignore
+.editorconfig
+.eslintignore
+.eslintrc
+.nvmrc
+.travis.yml
+.prettierignore
+.prettierrc.json
+CHANGELOG.md
+node_modules
+docker-run.sh
+README.md
+.vscode
+npm-debug.log

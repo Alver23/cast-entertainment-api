@@ -1,8 +1,17 @@
 version: '3.7'
 services:
+  reverse_proxy:
+    container_name: cas-entertainment-nginx
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    ports:
+    - 80:80
+    depends_on:
+      - server_node
   server_mysql:
     image: mysql:5.7.30
-    container_name: cas_entertainment_mysql
+    container_name: cas-entertainment-mysql
     ports:
       - 3306:3306
     environment:
@@ -14,5 +23,24 @@ services:
       - type: volume
         source: mysql_db
         target: /var/lib/mysql
+    restart: always
+  server_node:
+    container_name: cas-entertainment-node
+    build:
+      context: ./..
+      dockerfile: ./docker/node/Dockerfile
+    depends_on:
+      - server_mysql
+    volumes:
+      - type: volume
+        source: node_app
+        target: /opt/app/build/
+    environment:
+      - NODE_ENV=${ENV}
+    ports:
+      - 5001:5001
+    restart: always
+
 volumes:
   mysql_db:
+  node_app:
