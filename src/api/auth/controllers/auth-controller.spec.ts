@@ -87,5 +87,5 @@ describe('AuthController', () => {
       expect(res.json).not.toHaveBeenCalled();
     });
   });
-  
+
 });

@@ -17,7 +17,7 @@ export const personServiceMock = {
         getUser: () => ({
           ...userMocks,
           password: '123',
-          getRoles: () => ([roleMocks])
+          getRoles: () => ([{...roleMocks, getMenus: async () => []}])
         }),
       }
     },

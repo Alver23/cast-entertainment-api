@@ -40,6 +40,9 @@ export class AuthService implements IAuthService {
 		const user: any = await personModel.getUser();
 		const { id, password } = user;
 		const roles = await user.getRoles();
+		const roleMapper = new RoleMapper(roles || []);
+		const userRoles = await roleMapper.getRoles();
+		const userMenus = roleMapper.getMenus();
 
 		return {
 			id,
@@ -50,7 +53,8 @@ export class AuthService implements IAuthService {
 			address,
 			password,
 			email: personEmail,
-			roles: new RoleMapper(roles || []).roles,
+			roles: userRoles,
+			menus: userMenus,
 		};
 	}
 
@@ -82,6 +86,10 @@ export class AuthService implements IAuthService {
 		const { firstName, middleName, lastName, dateOfBirth, address, email } = await user.getPerson();
 		const { id } = user.toJSON();
 		const roles = await user.getRoles();
+		const roleMapper = new RoleMapper(roles || []);
+		const userRoles = await roleMapper.getRoles();
+		const userMenus = roleMapper.getMenus();
+
 		const payload = {
 			id,
 			firstName,
@@ -90,7 +98,8 @@ export class AuthService implements IAuthService {
 			dateOfBirth,
 			address,
 			email,
-			roles: new RoleMapper(roles || []).roles,
+			roles: userRoles,
+			menus: userMenus,
 		};
 		await Token.destroy({ where: { userId: id } });
 		const newToken = this.createToken(payload);

@@ -7,5 +7,6 @@
 	"address": "fake 123",
 	"password": "123",
 	"email": "fake@fake.com",
-	"roles": []
+	"roles": [],
+	"menus": []
 }

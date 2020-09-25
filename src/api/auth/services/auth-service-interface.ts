@@ -10,6 +10,7 @@ export interface IUserAuth {
 	address: string;
 	email: string;
 	roles: IRole[];
+	menus: any;
 }
 
 export interface IGetUserResponse extends IUserAuth {
