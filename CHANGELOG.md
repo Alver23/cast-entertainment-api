@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/Alver23/cast-entertainment/compare/v1.7.0...v1.8.0) (2020-09-26)
+
+
+### Features
+
+* add Dockerfile for mysql ([26db96d](https://github.com/Alver23/cast-entertainment/commit/26db96d2d2caef1ec832a8fe02a3ee78c371e84d))
+* add module menu and configure nginx docker ([b4b5235](https://github.com/Alver23/cast-entertainment/commit/b4b523582aee8a2aa0b9aeeec2fd9f84ad821cf0))
+* add newrelic configuration ([07e27b2](https://github.com/Alver23/cast-entertainment/commit/07e27b2f7fe109678fedd8ff5876e5278245d7a5))
+
 ## [1.7.0](https://github.com/Alver23/cast-entertainment/compare/v1.6.0...v1.7.0) (2020-08-20)
 
 
