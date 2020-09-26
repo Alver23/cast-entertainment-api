@@ -2,7 +2,7 @@ FROM node:10 as base
 WORKDIR /opt/app
 
 FROM base as installer
-COPY package*.json .sequelizerc tsconfig.json gulpfile.js ./
+COPY package*.json .sequelizerc tsconfig.json gulpfile.js newrelic.js ./
 COPY src/ ./src
 RUN npm install
 

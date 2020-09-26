@@ -1,0 +1,7 @@
+{
+	"id": 1,
+	"name": "fake menu",
+	"description": "fake description",
+	"orden": 1,
+	"ipAddress": "127.0.0.1"
+}

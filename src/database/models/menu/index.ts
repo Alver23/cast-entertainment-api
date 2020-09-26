@@ -5,18 +5,16 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '@core/sequelize/sequelize';
 
 // Interfaces
-import { RoleModel, RoleCreationAttributes } from '@database/models/role/role-interface';
+import { MenuModel, MenuCreationAttributes } from '@database/models/menu/menu-interface';
 
-// Models
-import { Menu } from '@database/models/menu';
-import { MenuHasRole } from '@database/models/menu-has-roles';
-
-export class Role extends Model<RoleModel, RoleCreationAttributes> implements RoleModel {
+export class Menu extends Model<MenuModel, MenuCreationAttributes> implements MenuModel {
 	public id!: number;
 
 	public name: string;
 
 	public description: string;
+
+	public orden: number;
 
 	public ipAddress: string;
 
@@ -28,7 +26,7 @@ export class Role extends Model<RoleModel, RoleCreationAttributes> implements Ro
 	public readonly deletedAt!: Date;
 }
 
-Role.init(
+Menu.init(
 	{
 		id: {
 			type: DataTypes.INTEGER.UNSIGNED,
@@ -37,18 +35,17 @@ Role.init(
 		},
 		name: DataTypes.STRING,
 		description: DataTypes.STRING,
+		orden: DataTypes.INTEGER.UNSIGNED,
 		ipAddress: DataTypes.STRING,
 	},
 	{
 		sequelize,
-		modelName: 'Role',
-		tableName: 'roles',
+		modelName: 'Menu',
+		tableName: 'menus',
 		underscored: true,
 		paranoid: true,
 		defaultScope: {
-			order: [['createdAt', 'DESC']],
+			order: [['orden', 'ASC']],
 		},
 	},
 );
-
-Role.belongsToMany(Menu, { through: MenuHasRole, as: 'menus' });

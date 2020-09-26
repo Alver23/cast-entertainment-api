@@ -2,20 +2,68 @@
 import { RoleMapper } from "./role-mapper";
 
 // Mocks
-import mocks from '@database/models/role/mocks.json';
+import roleMocks from '@database/models/role/mocks.json';
+import menuMocks from '@database/models/menu/mocks.json';
 
 describe('RoleMapper', () => {
-  it('should get all roles only the properties id, name and description', () => {
+
+  const roles = [
+    {
+      ...roleMocks,
+      getMenus: async () => {
+        return [
+          {
+            ...menuMocks
+          },
+          {
+            ...menuMocks,
+            id: 2,
+          }
+        ]
+      },
+    },
+    {
+      ...roleMocks,
+      id: 1000,
+      getMenus: async () => {
+        return [
+          {
+            ...menuMocks,
+            id: 3,
+          },
+          {
+            ...menuMocks,
+          }
+        ]
+      },
+    }
+  ]
+
+  it('should get all roles and menus', async () => {
+    const roleMapper = new RoleMapper(roles);
+    const userRoles = await roleMapper.getRoles();
+    const userMenus = roleMapper.getMenus();
     expect(
-      new RoleMapper([mocks]).roles
+      userRoles
     ).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
           id: expect.any(Number),
           name: expect.any(String),
           description: expect.any(String),
-        })
+        }),
       ]),
-    )
+    );
+    expect(userMenus)
+      .toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            id: expect.any(Number),
+            name: expect.any(String),
+            description: expect.any(String),
+            orden: expect.any(Number),
+          })
+        ]),
+      )
   });
 });

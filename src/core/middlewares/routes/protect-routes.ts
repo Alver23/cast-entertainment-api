@@ -11,7 +11,7 @@ import { HttpMessages } from '@utils/messages/http-messages';
 // Interfaces
 import { IUserAuth } from '@api/auth/services';
 
-export const protectRoutes = (req: Request, res: Response, next: NextFunction) => {
+export const protectRoutes = (req: Request, res: Response, next: NextFunction): void => {
 	passport.authenticate('jwt', (error: any, user: IUserAuth | undefined) => {
 		if (error || !user) {
 			return next(unauthorized(HttpMessages.UNAUTHORIZED));
