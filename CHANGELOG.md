@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/Alver23/cast-entertainment/compare/v1.8.0...v1.9.0) (2020-11-05)
+
+
+### Features
+
+* add migration and model nnecesary for module artist ([#13](https://github.com/Alver23/cast-entertainment/issues/13)) ([044a988](https://github.com/Alver23/cast-entertainment/commit/044a988bf3cd422b0ab6f4cb9c0f94c62bc5c348))
+
 ## [1.8.0](https://github.com/Alver23/cast-entertainment/compare/v1.7.0...v1.8.0) (2020-09-26)
 
 
