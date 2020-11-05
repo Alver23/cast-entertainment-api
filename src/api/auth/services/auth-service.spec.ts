@@ -27,7 +27,6 @@ describe('AuthService', () => {
   const expectedProperties = () => ({
     id: expect.any(Number),
     firstName: expect.any(String),
-    middleName: expect.any(String),
     lastName: expect.any(String),
     dateOfBirth: expect.any(String),
     address: expect.any(String),

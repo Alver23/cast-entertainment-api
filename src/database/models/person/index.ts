@@ -12,8 +12,6 @@ export class Person extends Model<PersonModel, PersonCreationAttributes> impleme
 
 	public firstName: string;
 
-	public middleName: string;
-
 	public lastName: string;
 
 	public email: string;
@@ -24,11 +22,15 @@ export class Person extends Model<PersonModel, PersonCreationAttributes> impleme
 
 	public city?: string;
 
-	public ziCode?: string;
-
-	public homePhone?: string;
-
 	public cellPhone?: string;
+
+	public gender?: number;
+
+	public documentType?: number;
+
+	public documentNumber?: number;
+
+	public height?: number;
 
 	public ipAddress: string;
 
@@ -48,15 +50,16 @@ Person.init(
 			primaryKey: true,
 		},
 		firstName: DataTypes.STRING,
-		middleName: DataTypes.STRING,
 		lastName: DataTypes.STRING,
 		email: DataTypes.STRING,
 		dateOfBirth: DataTypes.DATE,
 		address: DataTypes.STRING,
 		city: DataTypes.STRING,
-		zipCode: DataTypes.STRING,
-		homePhone: DataTypes.STRING,
 		cellPhone: DataTypes.STRING,
+		gender: DataTypes.NUMBER,
+		documentType: DataTypes.NUMBER,
+		documentNumber: DataTypes.NUMBER,
+		height: DataTypes.NUMBER,
 		ipAddress: DataTypes.STRING,
 	},
 	{

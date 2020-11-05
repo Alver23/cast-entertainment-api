@@ -1,21 +1,26 @@
 'use strict';
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('people', {
+    await queryInterface.createTable('artists', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER.UNSIGNED
       },
-      first_name: Sequelize.STRING,
-      last_name: Sequelize.STRING,
-      email: Sequelize.STRING,
-      date_of_birth: Sequelize.DATE,
-      address: Sequelize.STRING,
-      city: Sequelize.STRING,
-      cell_phone: Sequelize.STRING,
-      gender: {
+      person_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER.UNSIGNED,
+        references: {
+          model: {
+            tableName: 'people',
+          },
+          key: 'id'
+        },
+        onDelete: 'CASCADE',
+      },
+      native_language: {
         type: Sequelize.INTEGER.UNSIGNED,
         references: {
           model: {
@@ -24,7 +29,7 @@ module.exports = {
           key: 'id'
         },
       },
-      document_type: {
+      other_language: {
         type: Sequelize.INTEGER.UNSIGNED,
         references: {
           model: {
@@ -33,9 +38,11 @@ module.exports = {
           key: 'id'
         },
       },
-      document_number: Sequelize.INTEGER,
-      height: Sequelize.DECIMAL(10, 2),
-      ip_address: Sequelize.STRING,
+      full_names_father: Sequelize.STRING,
+      full_names_mother: Sequelize.STRING,
+      ip_address: {
+        type: Sequelize.STRING
+      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE
@@ -49,7 +56,8 @@ module.exports = {
       },
     });
   },
+
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('people');
+    await queryInterface.dropTable('artists');
   }
 };

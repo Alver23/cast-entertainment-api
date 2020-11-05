@@ -3,15 +3,16 @@ import { Optional } from 'sequelize';
 
 export interface PersonRequest {
 	firstName: string;
-	middleName: string;
 	lastName: string;
 	email: string;
 	dateOfBirth?: string;
 	address?: string;
 	city?: string;
-	zipCode?: string;
-	homePhone?: string;
 	cellPhone?: string;
+	gender?: number;
+	documentType?: number;
+	documentNumber?: number;
+	height?: number;
 	ipAddress: string;
 }
 
