@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.10.0](https://github.com/Alver23/cast-entertainment/compare/v1.9.0...v1.10.0) (2020-11-07)
+
+
+### Features
+
+* add base crud and mofidy artist models ([#14](https://github.com/Alver23/cast-entertainment/issues/14)) ([caba3b9](https://github.com/Alver23/cast-entertainment/commit/caba3b99bc8f48ff6c72176e65644b8c852e9d59))
+
 ## [1.9.0](https://github.com/Alver23/cast-entertainment/compare/v1.8.0...v1.9.0) (2020-11-05)
 
 
