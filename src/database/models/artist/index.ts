@@ -5,6 +5,11 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '@core/sequelize/sequelize';
 
 // Models
+import { Person } from '@database/models/person';
+import { ArtistHasPassport } from '@database/models/artist-has-passport';
+import { ArtistHasEmergencyContact } from '@database/models/artist-has-emergency-contact';
+import { ArtistHasBeneficiary } from '@database/models/artist-has-beneficiary';
+import { ArtistHasSkill } from '@database/models/artist-has-skills';
 import { ArtistModel, ArtistCreationAttributes } from './artist-interface';
 
 export class Artist extends Model<ArtistModel, ArtistCreationAttributes> implements ArtistModel {
@@ -52,3 +57,10 @@ Artist.init(
 		paranoid: true,
 	},
 );
+
+Person.hasOne(Artist);
+Artist.belongsTo(Person, { as: 'person' });
+Artist.hasOne(ArtistHasPassport, { as: 'passport' });
+Artist.hasOne(ArtistHasEmergencyContact, { as: 'emrgencyContact' });
+Artist.hasMany(ArtistHasBeneficiary, { as: 'beneficiaries' });
+Artist.hasMany(ArtistHasSkill, { as: 'skills' });
