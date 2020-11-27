@@ -6,8 +6,6 @@
 	"dateOfBirth": "12/12/2020",
 	"address": "fake address",
 	"city": "fake city",
-	"zipCode": "fake zip code",
-	"homePhone": "fake home phone",
 	"cellPhone": "fake cell phone",
 	"password": "123456789",
 	"rolesId": [1, 2, 3],

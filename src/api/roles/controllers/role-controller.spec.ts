@@ -2,12 +2,12 @@
 import { roleController } from "./role-controller";
 
 // Services
-import { roleServiceInstance } from "../services";
+import { roleServiceInstance } from "../services/role-service";
 
 // Mocks
 import { mockRequest, mockResponse } from '@mocks/fake-request';
 
-jest.mock('@api/roles/services', () => require('@api/roles/services/role-service-mock').roleServiceMock);
+jest.mock('@api/roles/services/role-service', () => require('@api/roles/services/role-service-mock').roleServiceMock);
 
 describe('RoleController', () => {
 

@@ -2,13 +2,13 @@
 import { PersonController } from "./person-controller";
 
 // Services
-import { personServiceInstance } from "@api/persons/services";
+import { personServiceInstance } from "@api/persons/services/person-service";
 
 // Mocks
 import mocks from '@api/persons/mocks.json';
 import { mockRequest, mockResponse } from '@mocks/fake-request';
 
-jest.mock('@api/persons/services', () => require('@api/persons/services/person-service-mock').personServiceMock);
+jest.mock('@api/persons/services/person-service', () => require('@api/persons/services/person-service-mock').personServiceMock);
 
 describe('PersonController', () => {
   let controller: PersonController;

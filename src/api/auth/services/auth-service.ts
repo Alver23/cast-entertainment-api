@@ -4,13 +4,15 @@ import { sign } from 'jsonwebtoken';
 import { uid } from 'rand-token';
 
 // Interfaces
-import { IPersonService, personServiceInstance } from '@api/persons/services';
+import { IUserService } from '@api/users/services/user-service-interface';
+import { IPersonService } from '@api/persons/services/person-service-interface';
 
 // Config
 import { config } from '@config/index';
 
 // Services
-import { userServiceInstance, IUserService } from '@api/users/services';
+import { userServiceInstance } from '@api/users/services/user-service';
+import { personServiceInstance } from '@api/persons/services/person-service';
 
 // Database Models
 import { Token } from '@database/models/token';

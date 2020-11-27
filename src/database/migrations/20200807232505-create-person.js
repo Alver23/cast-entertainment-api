@@ -33,7 +33,7 @@ module.exports = {
           key: 'id'
         },
       },
-      document_number: Sequelize.INTEGER,
+      document_number: Sequelize.BIGINT(20),
       height: Sequelize.DECIMAL(10, 2),
       ip_address: Sequelize.STRING,
       created_at: {

@@ -6,6 +6,7 @@ import { sequelize } from '@core/sequelize/sequelize';
 
 // Models
 import { ArtistHasEmergencyContactModel } from '@database/models/artist-has-emergency-contact/artist-has-emergency-contact-interface';
+import { EmergencyContact } from '@database/models/emergency-contact';
 
 export class ArtistHasEmergencyContact extends Model implements ArtistHasEmergencyContactModel {
 	public id!: number;
@@ -41,5 +42,10 @@ ArtistHasEmergencyContact.init(
 		tableName: 'artist_has_emergency_contacts',
 		underscored: true,
 		paranoid: true,
+		defaultScope: {
+			include: 'emergencyContact',
+		},
 	},
 );
+
+ArtistHasEmergencyContact.belongsTo(EmergencyContact, { as: 'emergencyContact' });

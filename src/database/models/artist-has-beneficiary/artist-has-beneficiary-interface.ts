@@ -1,18 +1,12 @@
 // Dependencies
 import { Optional } from 'sequelize';
 
-// Models
-import { PersonCreationAttributes } from '@database/models/person/person-interface';
-
-export interface ArtistHasBeneficiaryRequest extends PersonCreationAttributes {
-	percentage: number;
-	relationshipId: number;
-}
-
-export interface ArtistHasBeneficiaryModel extends ArtistHasBeneficiaryRequest {
+export interface ArtistHasBeneficiaryModel {
 	id: number;
 	artistId: number;
 	personId: number;
+	percentage: number;
+	relationshipId: number;
 	ipAddress: string;
 }
 

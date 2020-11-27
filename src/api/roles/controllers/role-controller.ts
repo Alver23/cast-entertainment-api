@@ -1,15 +1,15 @@
 // Dependencies
+import { NOT_FOUND, OK } from 'http-status-codes';
 import { NextFunction, Request, Response } from 'express';
 
 // Services
-import { roleServiceInstance } from '@api/roles/services';
+import { roleServiceInstance } from '@api/roles/services/role-service';
 
 // Interfaces
 import { IRoleService } from '@api/roles/services/role-service-interface';
 
 // Utils
 import { HttpMessages, setResponse } from '@utils/index';
-import { NOT_FOUND, OK } from 'http-status-codes';
 
 export class RoleController {
 	constructor(private readonly roleService: IRoleService) {}

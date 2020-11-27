@@ -17,13 +17,13 @@ export class Artist extends Model<ArtistModel, ArtistCreationAttributes> impleme
 
 	public personId!: number;
 
-	public nativeLanguage?: number;
-
-	public otherLanguage?: number;
-
 	public fullNamesFather?: string;
 
 	public fullNamesMother?: string;
+
+	public nativeLanguage?: number;
+
+	public otherLanguage?: number;
 
 	public ipAddress: string;
 
@@ -55,12 +55,16 @@ Artist.init(
 		tableName: 'artists',
 		underscored: true,
 		paranoid: true,
+		defaultScope: {
+			include: 'person',
+		},
 	},
 );
 
 Person.hasOne(Artist);
 Artist.belongsTo(Person, { as: 'person' });
-Artist.hasOne(ArtistHasPassport, { as: 'passport' });
-Artist.hasOne(ArtistHasEmergencyContact, { as: 'emrgencyContact' });
-Artist.hasMany(ArtistHasBeneficiary, { as: 'beneficiaries' });
-Artist.hasMany(ArtistHasSkill, { as: 'skills' });
+Artist.hasOne(ArtistHasPassport, { as: 'passport', foreignKey: 'artistId' });
+Artist.hasOne(ArtistHasEmergencyContact, { as: 'emergencyContact', foreignKey: 'artistId' });
+Artist.hasMany(ArtistHasBeneficiary, { as: 'beneficiaries', foreignKey: 'artistId' });
+Artist.hasMany(ArtistHasSkill, { as: 'skills', foreignKey: 'artistId' });
+ArtistHasSkill.belongsTo(Artist, { foreignKey: 'artistId' });

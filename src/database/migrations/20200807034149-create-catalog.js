@@ -22,12 +22,8 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      description: {
-        type: Sequelize.STRING,
-      },
-      ip_address: {
-        type: Sequelize.STRING,
-      },
+      description: Sequelize.STRING,
+      ip_address: Sequelize.STRING,
       created_at: {
         allowNull: false,
         type: Sequelize.DATE,

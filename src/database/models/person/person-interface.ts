@@ -5,7 +5,7 @@ export interface PersonRequest {
 	firstName: string;
 	lastName: string;
 	email: string;
-	dateOfBirth?: string;
+	dateOfBirth?: Date;
 	address?: string;
 	city?: string;
 	cellPhone?: string;

@@ -8,7 +8,7 @@ import { sequelize } from '@core/sequelize/sequelize';
 import mocks from '@api/users/mocks.json';
 
 jest.mock('@core/sequelize/sequelize', () => require('@core/sequelize/sequelize-mock').sequelizeMock);
-jest.mock('@api/persons/services', () => require('@api/persons/services/person-service-mock').personServiceMock);
+jest.mock('@api/persons/services/person-service', () => require('@api/persons/services/person-service-mock').personServiceMock);
 jest.mock('@database/models/user', () => require('@database/models/user/user-mock').userMock);
 
 describe('UserService', () => {
@@ -26,10 +26,11 @@ describe('UserService', () => {
     firstName: expect.any(String),
     lastName: expect.any(String),
     email: expect.any(String),
-    dateOfBirth: expect.any(String),
+    dateOfBirth: expect.any(Date),
     address: expect.any(String),
     city: expect.any(String),
     cellPhone: expect.any(String),
+    ipAddress: expect.any(String),
     createdAt: expect.any(Date),
     updatedAt: expect.any(Date),
   });
@@ -42,7 +43,7 @@ describe('UserService', () => {
     it('should get all users', () => {
       return userServiceInstance
         .findAll()
-        .then((response) => {
+        .then((response: any) => {
           expect(response)
             .toEqual(
               expect.arrayContaining([
@@ -52,7 +53,7 @@ describe('UserService', () => {
                     ...expectedPerson()
                   }),
                 }),
-              ]),
+              ])
             );
         });
     });
@@ -81,7 +82,7 @@ describe('UserService', () => {
 
     it('should get an new user when call create', () => {
       return userServiceInstance
-        .create(mocks)
+        .create(mocks as any)
         .then((response) => {
           expect(response)
             .toEqual(
@@ -97,7 +98,7 @@ describe('UserService', () => {
 
     it('should get a user when call findOrCreate', () => {
       return userServiceInstance
-        .findOrCreate(mocks)
+        .findOrCreate(mocks as any)
         .then((response: any) => {
           expect(response.dataValues)
             .toEqual(
@@ -116,7 +117,7 @@ describe('UserService', () => {
       const fakeError = new Error(fakeMessage);
       jest.spyOn(sequelize, 'transaction').mockRejectedValue(fakeMessage);
       return userServiceInstance
-        .create(mocks)
+        .create(mocks as any)
         .catch((error) => {
           expect(error).toEqual(fakeError)
         })
@@ -127,7 +128,7 @@ describe('UserService', () => {
       const fakeError = new Error(fakeMessage);
       jest.spyOn(sequelize, 'transaction').mockRejectedValue(fakeMessage);
       return userServiceInstance
-        .findOrCreate(mocks)
+        .findOrCreate(mocks as any)
         .catch((error) => {
           expect(error).toEqual(fakeError)
         })

@@ -17,6 +17,7 @@ module.exports = {
           },
           key: 'id'
         },
+        onDelete: 'CASCADE',
       },
       emergency_contact_id: {
         type: Sequelize.INTEGER.UNSIGNED,
@@ -26,6 +27,7 @@ module.exports = {
           },
           key: 'id'
         },
+        onDelete: 'CASCADE',
       },
       ip_address: Sequelize.STRING,
       created_at: {

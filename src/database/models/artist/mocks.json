@@ -1,0 +1,13 @@
+{
+	"id": 12,
+	"personId": 49,
+	"nativeLanguage": null,
+	"otherLanguage": null,
+	"fullNamesFather": "Jose Grisales editado second",
+	"fullNamesMother": "Marina Ortega editado second",
+	"ipAddress": "::1",
+	"createdAt": "2020-11-26T02:24:10.000Z",
+	"updatedAt": "2020-11-26T02:31:44.000Z",
+	"deletedAt": null,
+	"PersonId": 49
+}

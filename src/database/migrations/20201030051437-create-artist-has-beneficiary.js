@@ -17,15 +17,18 @@ module.exports = {
            },
            key: 'id'
          },
+         onDelete: 'CASCADE',
        },
        person_id: {
+         allowNull: false,
          type: Sequelize.INTEGER.UNSIGNED,
          references: {
            model: {
-             tableName: 'persons',
+             tableName: 'people',
            },
            key: 'id'
          },
+         onDelete: 'CASCADE',
        },
        relationship_id: {
          type: Sequelize.INTEGER.UNSIGNED,

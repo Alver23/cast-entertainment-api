@@ -1,6 +1,6 @@
 // Services
 import { authServiceInstance } from "./auth-service";
-import { personServiceInstance } from "@api/persons/services";
+import { personServiceInstance } from "@api/persons/services/person-service";
 
 // Database Models
 import { Token } from "@database/models/token";
@@ -18,8 +18,8 @@ jest.mock('@config/index', () => ({
     },
   }
 }));
-jest.mock('@api/users/services', () => require('@api/users/services/user-service-mock').userServiceMock);
-jest.mock('@api/persons/services', () => require('@api/persons/services/person-service-mock').personServiceMock);
+jest.mock('@api/users/services/user-service', () => require('@api/users/services/user-service-mock').userServiceMock);
+jest.mock('@api/persons/services/person-service', () => require('@api/persons/services/person-service-mock').personServiceMock);
 jest.mock('@database/models/token', () => require('@database/models/token/token-mock').tokenMock);
 
 describe('AuthService', () => {
@@ -28,7 +28,7 @@ describe('AuthService', () => {
     id: expect.any(Number),
     firstName: expect.any(String),
     lastName: expect.any(String),
-    dateOfBirth: expect.any(String),
+    dateOfBirth: expect.any(Date),
     address: expect.any(String),
     password: expect.any(String),
     email: expect.any(String),
@@ -67,6 +67,7 @@ describe('AuthService', () => {
     it('should get an user data when the roles is empty', () => {
       const findOneMock = {
         ...personMocks,
+        dateOfBirth: new Date(),
         getUser: () => ({
           ...userMocks,
           password: '123',

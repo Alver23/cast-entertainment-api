@@ -3,8 +3,8 @@ import { Optional } from 'sequelize';
 
 export interface ArtistHasPassportRequest {
 	number: string;
-	dateOfIssue: string;
-	expirationDate: string;
+	dateOfIssue: Date;
+	expirationDate: Date;
 }
 
 export interface ArtistHasPassportModel extends ArtistHasPassportRequest {

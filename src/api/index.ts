@@ -13,6 +13,7 @@ import { personRouter } from './persons/router/person-router';
 import { userRouter } from './users/router/user-router';
 import { roleRouter } from './roles/router/role-router';
 import { authRouter } from './auth/router/auth-router';
+import { artistRouter } from './artists/infrastructure/routes/artist-routes';
 
 const api: express.Application = express();
 
@@ -39,6 +40,7 @@ api.use(protectRoutes);
 personRouter(api);
 userRouter(api);
 roleRouter(api);
+artistRouter(api);
 
 api.use(fourOFour);
 api.use(logErrors);

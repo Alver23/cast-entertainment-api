@@ -2,8 +2,11 @@
 import { Request, Response, NextFunction } from 'express';
 import { NOT_FOUND, OK, CREATED } from 'http-status-codes';
 
+// Interfaces
+import { IPersonService } from '@api/persons/services/person-service-interface';
+
 // Services
-import { personServiceInstance, IPersonService } from '@api/persons/services';
+import { personServiceInstance } from '@api/persons/services/person-service';
 
 // Utils
 import { setResponse, HttpMessages, setResponseForDelete } from '@utils/index';

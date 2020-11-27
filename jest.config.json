@@ -2,8 +2,8 @@
   "roots": ["<rootDir>/src"],
   "collectCoverage": true,
   "coverageDirectory": "./coverage",
-  "collectCoverageFrom": ["**/*.ts", "!**/index.ts", "!**/*-mock.ts"],
-  "coveragePathIgnorePatterns": ["core", "config", "bin", "api/__mocks__", "api/auth/strategies"],
+  "collectCoverageFrom": ["**/*.ts", "!**/*-mock.ts", "!src/index.ts", "!src/api/index.ts"],
+  "coveragePathIgnorePatterns": ["core", "database", "config", "bin", "api/__mocks__", "api/auth/strategies"],
   "testMatch": ["**/?(*.)+(spec).+(ts)"],
   "globals": {
     "ts-jest": {
