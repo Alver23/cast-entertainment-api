@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.11.0](https://github.com/Alver23/cast-entertainment/compare/v1.10.0...v1.11.0) (2020-11-27)
+
+
+### Features
+
+* artist module with arquitecture hexagonal ([#15](https://github.com/Alver23/cast-entertainment/issues/15)) ([f7db793](https://github.com/Alver23/cast-entertainment/commit/f7db793dfc677942f57611bf0046017200622b16))
+
 ## [1.10.0](https://github.com/Alver23/cast-entertainment/compare/v1.9.0...v1.10.0) (2020-11-07)
 
 
