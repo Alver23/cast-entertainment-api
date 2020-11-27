@@ -8,7 +8,7 @@ import { authController } from "./auth-controller";
 import mocks from '@api/auth/mocks.json';
 import { mockRequest, mockResponse } from '@mocks/fake-request';
 
-jest.mock('@api/auth/services', () => require('@api/auth/services/auth-service-mock').authServiceMock);
+jest.mock('@api/auth/services/auth-service', () => require('@api/auth/services/auth-service-mock').authServiceMock);
 jest.mock('passport', () => ({
   authenticate: (type, cb) => {
     return (req) => {

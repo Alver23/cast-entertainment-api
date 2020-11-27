@@ -4,11 +4,15 @@ import { Model, DataTypes } from 'sequelize';
 // ORM
 import { sequelize } from '@core/sequelize/sequelize';
 
-// Models
+// Interfaces
 import {
 	ArtistHasBeneficiaryCreationAttributes,
 	ArtistHasBeneficiaryModel,
 } from '@database/models/artist-has-beneficiary/artist-has-beneficiary-interface';
+
+// Models
+import { Catalog } from '@database/models/catalog';
+import { Person } from '@database/models/person';
 
 export class ArtistHasBeneficiary extends Model<ArtistHasBeneficiaryModel, ArtistHasBeneficiaryCreationAttributes>
 	implements ArtistHasBeneficiaryModel {
@@ -47,9 +51,15 @@ ArtistHasBeneficiary.init(
 	},
 	{
 		sequelize,
-		modelName: 'ArtistHasPassport',
-		tableName: 'artist_has_passport',
+		modelName: 'ArtistHasBeneficiary',
+		tableName: 'artist_has_beneficiaries',
 		underscored: true,
 		paranoid: true,
+		defaultScope: {
+			include: [{ association: 'relationship' }, { association: 'person' }],
+		},
 	},
 );
+
+ArtistHasBeneficiary.belongsTo(Person, { as: 'person' });
+ArtistHasBeneficiary.belongsTo(Catalog, { as: 'relationship', foreignKey: 'relationshipId' });

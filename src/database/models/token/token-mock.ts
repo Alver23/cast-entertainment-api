@@ -13,7 +13,7 @@ TokenMock.$queryInterface.$useHandler(function(query, queryOptions, done) {
     return TokenMock.build({
       ...userMock,
       user: ({
-        getPerson: () => ({...personMock}),
+        getPerson: () => ({...personMock, dateOfBirth: new Date()}),
         getRoles: () => null,
         toJSON: () => ({...userMock}),
       }),

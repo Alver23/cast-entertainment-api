@@ -5,7 +5,10 @@ import { CREATED } from 'http-status-codes';
 import { NextFunction, Response, Request } from 'express';
 
 // Services
-import { authServiceInstance, IAuthService, IUserAuth } from '@api/auth/services';
+import { authServiceInstance } from '@api/auth/services/auth-service';
+
+// Interfaces
+import { IAuthService, IUserAuth } from '@api/auth/services/auth-service-interface';
 
 // Utils
 import { setResponse } from '@utils/set-response/set-response';

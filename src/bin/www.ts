@@ -1,6 +1,8 @@
 // Dependencies
 import 'newrelic';
 import 'module-alias/register';
+import 'reflect-metadata';
+import 'es6-shim';
 import http from 'http';
 
 import { config } from '@config/index';
@@ -16,7 +18,7 @@ function normalizePort(portArg: string): boolean | number {
 const port = normalizePort(config.port as string);
 server.set('port', port);
 
-const httpServer = http.createServer(server);
+const httpServer: http.Server = http.createServer(server);
 
 function onError(error: any) {
 	if (error.syscall !== 'listen') {

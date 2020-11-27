@@ -1,0 +1,166 @@
+{
+	"caseOne": {
+		"documentType": 23,
+		"address": "P.O. Box 435, 3164 Feugiat St.",
+		"cellPhone": "(530) 399-1357",
+		"city": "Springfield",
+		"dateOfBirth": "2021-06-17 22:53:46",
+		"documentNumber": "163206222543",
+		"email": "Mauris.vestibulum@DonecegestasDuis.org",
+		"firstName": "Keaton Beasley",
+		"lastName": "Rodriguez",
+		"gender": 2,
+		"height": 5,
+		"beneficiaries": [
+			{
+				"documentType": 23,
+				"gender": 1,
+				"height": 5,
+				"percentage": 10,
+				"relationshipId": 15,
+				"address": "4339 Est, Ave",
+				"cellPhone": "(711) 247-6585",
+				"city": "Laja",
+				"dateOfBirth": "2020-03-02 01:30:41",
+				"documentNumber": "162205250026",
+				"email": "viverra@Class.net",
+				"firstName": "Callum Gray",
+				"lastName": "Nieves"
+			},
+			{
+				"address": "5422 Feugiat Rd.",
+				"cellPhone": "(121) 665-9487",
+				"city": "Meppel",
+				"dateOfBirth": "2020-08-13 02:50:57",
+				"documentNumber": "167302029447",
+				"email": "vehicula@sapiengravida.org",
+				"firstName": "Adrian Petersen",
+				"lastName": "Woods",
+				"documentType": 23,
+				"gender": 3,
+				"height": 5,
+				"percentage": 40,
+				"relationshipId": 15
+			}
+		],
+		"emergencyContact": {
+			"address": "925-9710 Cras Rd.",
+			"cellPhone": "(565) 211-0718",
+			"city": "Vaughan",
+			"dateOfBirth": "2020-09-02 20:31:43",
+			"documentNumber": "165806066170",
+			"email": "nunc@dapibus.com",
+			"firstName": "Isaac Stafford",
+			"lastName": "Wilcox",
+			"documentType": 23,
+			"gender": 2,
+			"height": 5,
+			"relationshipId": 14
+		},
+		"passport": {
+			"dateOfIssue": "2020-12-01",
+			"expirationDate": "2022-12-01",
+			"number": "adbc123"
+		},
+		"skills": [
+			{
+				"skillId": 11
+			}
+		]
+	},
+	"caseTwo": {
+		"documentType": 23,
+		"address": "Ap #126-5068 At St.",
+		"cellPhone": "(397) 942-4192",
+		"city": "Tongeren",
+		"dateOfBirth": "2021-01-08 17:35:22",
+		"documentNumber": "161508233267",
+		"email": "Phasellus.vitae@necenimNunc.edu",
+		"firstName": "Isaiah Schroeder",
+		"lastName": "Lang",
+		"gender": 2,
+		"height": 5
+	},
+	"caseThree": {
+		"personId": 49,
+		"nativeLanguage": null,
+		"otherLanguage": null,
+		"fullNamesFather": "Jose Grisales editado second",
+		"fullNamesMother": "Marina Ortega editado second",
+		"firstName": "Isaiah Schroeder editado second",
+		"lastName": "Lang",
+		"email": "Phasellus.vitae@necenimNunc.edu",
+		"dateOfBirth": "2021-01-08T22:35:22.000Z",
+		"address": "Ap #126-5068 At St.",
+		"city": "Tongeren",
+		"cellPhone": "(397) 942-4192",
+		"gender": 3,
+		"documentType": 23,
+		"documentNumber": "161508233267",
+		"height": "5.00",
+		"emergencyContact": {
+			"id": 11,
+			"personId": 50,
+			"address": "1965 Volutpat. Avenue",
+			"cellPhone": "(867) 494-3533",
+			"city": "Fochabers",
+			"dateOfBirth": "2020-09-09 17:22:08",
+			"documentNumber": "163209295025",
+			"email": "quis.arcu@enim.ca",
+			"firstName": "Rajah Pugh editado second",
+			"lastName": "Winters",
+			"documentType": 23,
+			"gender": 3,
+			"height": 5,
+			"relationshipId": 15
+		},
+		"passport": {
+			"id": 13,
+			"dateOfIssue": "2020-12-02",
+			"expirationDate": "2022-12-02",
+			"number": "1234abcderfrt editado second"
+		},
+		"skills": [
+			{
+				"id": 19,
+				"skillId": 12
+			}
+		],
+		"beneficiaries": [
+			{
+				"id": 13,
+				"personId": 51,
+				"documentType": 23,
+				"gender": 2,
+				"height": 5,
+				"percentage": 10,
+				"relationshipId": 14,
+				"address": "491-5920 Dictum. Ave",
+				"cellPhone": "(388) 244-6345",
+				"city": "Aprelevka",
+				"dateOfBirth": "2021-08-11 01:35:14",
+				"documentNumber": "167410054386",
+				"email": "tempor.lorem.eget@consequat.co.uk",
+				"firstName": "Kyle Whitaker editado second",
+				"lastName": "Flores"
+			},
+			{
+				"id": 14,
+				"personId": 52,
+				"address": "828-2829 Facilisi. Ave",
+				"cellPhone": "(127) 728-1708",
+				"city": "Zwevegem",
+				"dateOfBirth": "2019-12-15 11:19:28",
+				"documentNumber": "169205132732",
+				"email": "eget@etmalesuadafames.com",
+				"firstName": "Holmes Ferrell editado second",
+				"lastName": "Wallace",
+				"documentType": 23,
+				"gender": 2,
+				"height": 5,
+				"percentage": 40,
+				"relationshipId": 14
+			}
+		]
+	}
+}

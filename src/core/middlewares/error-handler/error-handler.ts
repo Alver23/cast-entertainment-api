@@ -44,6 +44,7 @@ export const errorHandler = (error: any, req: Request, res: Response, next: Next
 	const {
 		output: { statusCode, payload },
 		stack,
+		data,
 	} = error;
-	res.status(statusCode).json(withErrorStack(payload, stack));
+	res.status(statusCode).json(withErrorStack({ ...payload, data }, stack));
 };

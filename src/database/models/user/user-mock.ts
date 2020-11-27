@@ -16,6 +16,7 @@ const userMockWithPerson = {
   ...mocks,
     person: {
       ...personMocks,
+      dateOfBirth: new Date(),
       ...timestamps,
     },
 }

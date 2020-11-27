@@ -2,19 +2,23 @@
 import { UserController } from "./user-controller";
 
 // Services
-import { userServiceInstance } from "@api/users/services";
-import { personServiceInstance } from "@api/persons/services";
+import { userServiceInstance } from "@api/users/services/user-service";
+import { personServiceInstance } from "@api/persons/services/person-service";
 
 // Mocks
 import mocks from '@api/users/mocks.json';
-import personMocks from '@database/models/person/mocks.json';
+import personMock from '@database/models/person/mocks.json';
 import { mockRequest, mockResponse } from '@mocks/fake-request';
 
-jest.mock('@api/users/services', () => require('@api/users/services/user-service-mock').userServiceMock);
-jest.mock('@api/persons/services', () => require('@api/persons/services/person-service-mock').personServiceMock);
+jest.mock('@api/users/services/user-service', () => require('@api/users/services/user-service-mock').userServiceMock);
+jest.mock('@api/persons/services/person-service', () => require('@api/persons/services/person-service-mock').personServiceMock);
 
 describe('UserController', () => {
   let controller: UserController;
+  const personMocks = {
+    ...personMock,
+    dateOfBirth: new Date(),
+  }
 
   beforeEach(() => {
     controller = new UserController(userServiceInstance, personServiceInstance);

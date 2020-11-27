@@ -3,9 +3,13 @@ import { badRequest } from '@hapi/boom';
 import { CREATED, NOT_FOUND, OK } from 'http-status-codes';
 import { NextFunction, Response, Request } from 'express';
 
+// Interfaces
+import { IUserService } from '@api/users/services/user-service-interface';
+import { IPersonService } from '@api/persons/services/person-service-interface';
+
 // Services
-import { IUserService, userServiceInstance } from '@api/users/services';
-import { IPersonService, personServiceInstance } from '@api/persons/services';
+import { userServiceInstance } from '@api/users/services/user-service';
+import { personServiceInstance } from '@api/persons/services/person-service';
 
 // Utils
 import { HttpMessages, setResponse } from '@utils/index';

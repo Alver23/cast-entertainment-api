@@ -4,8 +4,11 @@ import { hash } from 'bcrypt';
 // ORM
 import { sequelize } from '@core/sequelize/sequelize';
 
+// Interfaces
+import { IPersonService } from '@api/persons/services/person-service-interface';
+
 // Services
-import { IPersonService, personServiceInstance } from '@api/persons/services';
+import { personServiceInstance } from '@api/persons/services/person-service';
 
 // Database Models
 import { User } from '@database/models/user';

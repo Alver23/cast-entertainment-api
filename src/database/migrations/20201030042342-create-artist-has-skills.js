@@ -17,6 +17,7 @@ module.exports = {
           },
           key: 'id'
         },
+        onDelete: 'CASCADE',
       },
       skill_id: {
         type: Sequelize.INTEGER.UNSIGNED,

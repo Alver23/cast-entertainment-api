@@ -11,12 +11,17 @@ jest.mock('@database/models/person', () => require('@database/models/person/pers
 
 describe('PersonService', () => {
 
+  const personMocks = {
+    ...mocks,
+    dateOfBirth: new Date(),
+  }
+
   const expectedAttributes = () => ({
     id: expect.any(Number),
     firstName: expect.any(String),
     lastName: expect.any(String),
     email: expect.any(String),
-    dateOfBirth: expect.any(String),
+    dateOfBirth: expect.any(Date),
     address: expect.any(String),
     city: expect.any(String),
     cellPhone: expect.any(String),
@@ -32,9 +37,9 @@ describe('PersonService', () => {
     it('should get an new person', () => {
       const personModel = jest.spyOn(Person, 'create');
       return personServiceInstance
-        .create(mocks)
+        .create(personMocks)
         .then(() => {
-          expect(personModel).toHaveBeenCalledWith(mocks, { transaction: undefined });
+          expect(personModel).toHaveBeenCalledWith(personMocks, { transaction: undefined });
         });
     });
   });
@@ -43,7 +48,7 @@ describe('PersonService', () => {
     it('should updated person', () => {
       const id = 1;
       return personServiceInstance
-        .update(id, mocks)
+        .update(id, personMocks)
         .then((response) => {
           expect(response).toEqual([1]);
         });
@@ -98,7 +103,7 @@ describe('PersonService', () => {
     it('should get a new user', () => {
       const id = 1;
       return personServiceInstance
-        .findOrCreate({ query: { id }, data: mocks} as any)
+        .findOrCreate({ query: { id }, data: personMocks} as any)
         .then((response) => {
           expect(response)
             .toEqual(

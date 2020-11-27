@@ -5,6 +5,7 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '@core/sequelize/sequelize';
 
 // Interfaces
+import { Catalog } from '@database/models/catalog';
 import { PersonModel, PersonCreationAttributes } from './person-interface';
 
 export class Person extends Model<PersonModel, PersonCreationAttributes> implements PersonModel {
@@ -16,7 +17,7 @@ export class Person extends Model<PersonModel, PersonCreationAttributes> impleme
 
 	public email: string;
 
-	public dateOfBirth?: string;
+	public dateOfBirth?: Date;
 
 	public address?: string;
 
@@ -70,6 +71,9 @@ Person.init(
 		paranoid: true,
 		defaultScope: {
 			order: [['createdAt', 'DESC']],
+			include: 'document',
 		},
 	},
 );
+
+Person.belongsTo(Catalog, { foreignKey: 'documentType', as: 'document' });

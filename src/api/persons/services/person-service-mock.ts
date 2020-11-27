@@ -1,7 +1,12 @@
 // Mocks
-import personMocks from '@database/models/person/mocks.json';
+import mocks from '@database/models/person/mocks.json';
 import userMocks from '@database/models/user/mocks.json';
 import roleMocks from '@database/models/role/mocks.json';
+
+const personMocks = {
+  ...mocks,
+  dateOfBirth: new Date()
+}
 
 const timestamps = {
   createdAt: new Date(),

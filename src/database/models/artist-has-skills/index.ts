@@ -6,6 +6,7 @@ import { sequelize } from '@core/sequelize/sequelize';
 
 // Models
 import { ArtistHasSkillModel } from '@database/models/artist-has-skills/artist-has-skill-interface';
+import { Catalog } from '@database/models/catalog';
 
 export class ArtistHasSkill extends Model implements ArtistHasSkillModel {
 	public id!: number;
@@ -41,5 +42,10 @@ ArtistHasSkill.init(
 		tableName: 'artist_has_skills',
 		underscored: true,
 		paranoid: true,
+		defaultScope: {
+			include: 'skill',
+		},
 	},
 );
+
+ArtistHasSkill.belongsTo(Catalog, { foreignKey: 'skillId', as: 'skill' });

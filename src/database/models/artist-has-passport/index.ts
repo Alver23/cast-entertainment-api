@@ -18,9 +18,9 @@ export class ArtistHasPassport extends Model<ArtistHasPassportModel, ArtistHasPa
 
 	public number: string;
 
-	public dateOfIssue: string;
+	public dateOfIssue: Date;
 
-	public expirationDate: string;
+	public expirationDate: Date;
 
 	public ipAddress: string;
 
@@ -41,8 +41,8 @@ ArtistHasPassport.init(
 		},
 		artistId: DataTypes.INTEGER.UNSIGNED,
 		number: DataTypes.STRING,
-		dateOfIssue: DataTypes.STRING,
-		expirationDate: DataTypes.STRING,
+		dateOfIssue: DataTypes.DATE,
+		expirationDate: DataTypes.DATE,
 		ipAddress: DataTypes.STRING,
 	},
 	{

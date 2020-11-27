@@ -17,6 +17,7 @@ module.exports = {
           },
           key: 'id'
         },
+        onDelete: 'CASCADE',
       },
       number: Sequelize.STRING,
       date_of_issue: Sequelize.DATE,

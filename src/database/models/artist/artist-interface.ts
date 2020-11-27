@@ -1,16 +1,12 @@
 // Dependencies
 import { Optional } from 'sequelize';
 
-// Models
-import { PersonCreationAttributes } from '../person/person-interface';
-
 interface Artist {
-	nativeLanguage?: number;
-	otherLanguage?: number;
 	fullNamesFather?: string;
 	fullNamesMother?: string;
+	nativeLanguage?: number;
+	otherLanguage?: number;
 }
-export interface ArtistRequest extends Artist, PersonCreationAttributes {}
 
 export interface ArtistModel extends Artist {
 	id: number;
@@ -18,4 +14,4 @@ export interface ArtistModel extends Artist {
 	ipAddress: string;
 }
 
-export type ArtistCreationAttributes = Optional<ArtistModel, 'id' & 'personId'>;
+export type ArtistCreationAttributes = Optional<ArtistModel, 'id'>;
