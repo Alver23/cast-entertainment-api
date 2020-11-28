@@ -2,19 +2,14 @@ export const errorServiceMessage: Error = new Error('Network Error');
 
 export const baseCrudServiceMock = {
   create: jest.fn()
-    .mockResolvedValueOnce([])
-    .mockRejectedValueOnce(errorServiceMessage),
+    .mockResolvedValueOnce([]),
   delete: jest.fn()
-    .mockResolvedValueOnce(1)
-    .mockRejectedValueOnce(errorServiceMessage),
+    .mockResolvedValueOnce(1),
   getAll: jest.fn()
-    .mockResolvedValueOnce([])
-    .mockRejectedValueOnce(errorServiceMessage),
+    .mockResolvedValueOnce([]),
   getById: jest.fn()
     .mockResolvedValueOnce([])
-    .mockResolvedValueOnce(null)
-    .mockRejectedValueOnce(errorServiceMessage),
+    .mockResolvedValueOnce(null),
   update: jest.fn()
-    .mockResolvedValueOnce([])
-    .mockRejectedValueOnce(errorServiceMessage)
+    .mockResolvedValueOnce([]),
 }
