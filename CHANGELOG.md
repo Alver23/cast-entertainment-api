@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.13.0](https://github.com/Alver23/cast-entertainment/compare/v1.12.0...v1.13.0) (2020-11-28)
+
+
+### Features
+
+* added emergency contact module ([#18](https://github.com/Alver23/cast-entertainment/issues/18)) ([b29ae26](https://github.com/Alver23/cast-entertainment/commit/b29ae268dcdb9e87a667fb1901c59049f95b689b))
+
 ## [1.12.0](https://github.com/Alver23/cast-entertainment/compare/v1.11.0...v1.12.0) (2020-11-28)
 
 
