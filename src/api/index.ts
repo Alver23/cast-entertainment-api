@@ -9,6 +9,7 @@ import helmet from 'helmet';
 import { errorHandler, fourOFour, logErrors, wrapError, appendIpAddressToBody, protectRoutes } from '@core/middlewares';
 
 // Routers
+import { emergencyContactRouter } from '@api/emergency-contact/infrastructure/routes/emergency-contact-routes';
 import { personRouter } from './persons/router/person-router';
 import { userRouter } from './users/router/user-router';
 import { roleRouter } from './roles/router/role-router';
@@ -41,6 +42,7 @@ personRouter(api);
 userRouter(api);
 roleRouter(api);
 artistRouter(api);
+emergencyContactRouter(api);
 
 api.use(fourOFour);
 api.use(logErrors);

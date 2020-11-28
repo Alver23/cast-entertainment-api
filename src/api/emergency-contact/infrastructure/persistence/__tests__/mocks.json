@@ -1,0 +1,32 @@
+{
+	"caseOne": {
+		"address": "925-9710 Cras Rd.",
+		"cellPhone": "(565) 211-0718",
+		"city": "Vaughan",
+		"dateOfBirth": "2020-09-02 20:31:43",
+		"documentNumber": "165806066170",
+		"email": "nunc@dapibus.com",
+		"firstName": "Isaac Stafford",
+		"lastName": "Wilcox",
+		"documentType": 23,
+		"gender": 2,
+		"height": 5,
+		"relationshipId": 14
+	},
+	"caseTwo": {
+		"id": 11,
+		"personId": 50,
+		"address": "1965 Volutpat. Avenue",
+		"cellPhone": "(867) 494-3533",
+		"city": "Fochabers",
+		"dateOfBirth": "2020-09-09 17:22:08",
+		"documentNumber": "163209295025",
+		"email": "quis.arcu@enim.ca",
+		"firstName": "Rajah Pugh editado second",
+		"lastName": "Winters",
+		"documentType": 23,
+		"gender": 3,
+		"height": 5,
+		"relationshipId": 15
+	}
+}
