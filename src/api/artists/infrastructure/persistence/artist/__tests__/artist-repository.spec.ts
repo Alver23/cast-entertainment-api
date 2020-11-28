@@ -15,8 +15,12 @@ jest.mock('@core/sequelize/sequelize', () => require('@core/sequelize/sequelize-
 jest.mock('@api/persons/infrastructure/persistence/person-repository', () => ({
   PersonRepository: require('@mocks/fake-repository').default,
 }));
-jest.mock('@api/artists/infrastructure/persistence/artist-emergency-contact/artist-emergency-contact-repository', () => ({
-  ArtistEmergencyContactRepository: require('@mocks/fake-repository').default,
+jest.mock('@api/emergency-contact/infrastructure/persistence/emergency-contact-repository', () => ({
+  EmergencyContactRepository: class FakeClass {
+    async updateOrCreateCustom() {
+      return 1
+    }
+  },
 }));
 jest.mock('@api/artists/infrastructure/persistence/artist-skill/artist-skill-repository', () => ({
   ArtistSkillRepository: require('@mocks/fake-repository').default,
@@ -84,7 +88,7 @@ describe('ArtistRepository', () => {
     });
   });
 
-  describe('updaye method', () => {
+  describe('update method', () => {
     it('should call method successfully when it send all the parameters', async () => {
       const response = await repository.updateOne(1, mocks.caseThree as any);
       expect(response)
@@ -96,7 +100,7 @@ describe('ArtistRepository', () => {
         )
     });
 
-    it('should call method successfully when the register not exits', async () => {
+    it('should call the method successfully when the register not exist', async () => {
       jest.spyOn(Artist, 'findOne')
         .mockResolvedValue(null);
       const response = await repository.updateOne(1, {} as any);

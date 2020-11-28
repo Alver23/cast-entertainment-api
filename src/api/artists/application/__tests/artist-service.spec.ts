@@ -1,6 +1,6 @@
 // Services
 import { ArtistService } from "../artist-service";
-import { BaseCrudService } from "../../../shared/base-crud/application/base-crud-service";
+import { BaseCrudService } from "@api/shared/base-crud/application/base-crud-service";
 
 describe('ArtistService', () => {
 

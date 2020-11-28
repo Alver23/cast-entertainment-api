@@ -2,17 +2,17 @@
 import { Transaction } from 'sequelize';
 
 // Entities
-import { IArtistEmergencyContact } from '@api/artists/domain/entities/artist-emergency-contact/artist-emergency-contact-entity';
 import { IArtistPassport } from '@api/artists/domain/entities/artist-passport/artist-passport-entity';
 import { IArtistSkill } from '@api/artists/domain/entities/artist-skills';
 import { IArtistBeneficiary } from '@api/artists/domain/entities/artist-beneficiary/artist-beneficiary-entity';
+import { IArtistEmergencyContact } from '@api/artists/domain/entities/artist-emergency-contact/artist-emergency-contact-entity';
 
 // Models
 import { Artist } from '@database/models/artist';
 
 // Repositories
 import { PersonRepository } from '@api/persons/infrastructure/persistence/person-repository';
-import { ArtistEmergencyContactRepository } from '@api/artists/infrastructure/persistence/artist-emergency-contact/artist-emergency-contact-repository';
+import { EmergencyContactRepository } from '@api/emergency-contact/infrastructure/persistence/emergency-contact-repository';
 import { ArtistSkillRepository } from '@api/artists/infrastructure/persistence/artist-skill/artist-skill-repository';
 import { ArtistBeneficiaryRepository } from '@api/artists/infrastructure/persistence/artist-beneficiary/artist-beneficiary-repository';
 import { ArtistPassportRespository } from '@api/artists/infrastructure/persistence/artist-passport/artist-passport-respository';
@@ -35,7 +35,7 @@ interface IArtistModel extends Artist {
 export class ArtistRepository extends BaseCrudRepository<typeof Artist, IArtist, any> {
 	private readonly personRepository: PersonRepository;
 
-	private readonly emergencyContactRepository: ArtistEmergencyContactRepository;
+	private readonly emergencyContactRepository: EmergencyContactRepository;
 
 	private readonly skillRepositoty: ArtistSkillRepository;
 
@@ -47,7 +47,7 @@ export class ArtistRepository extends BaseCrudRepository<typeof Artist, IArtist,
 		super(Artist);
 		this.beneficiaryRepository = new ArtistBeneficiaryRepository();
 		this.personRepository = new PersonRepository();
-		this.emergencyContactRepository = new ArtistEmergencyContactRepository();
+		this.emergencyContactRepository = new EmergencyContactRepository();
 		this.skillRepositoty = new ArtistSkillRepository();
 		this.passportRepository = new ArtistPassportRespository();
 	}
@@ -75,19 +75,8 @@ export class ArtistRepository extends BaseCrudRepository<typeof Artist, IArtist,
 		artistInstance: IArtistModel,
 		transaction: Transaction,
 	): Promise<void> {
-		const { id, personId, relationshipId, ipAddress, ...emergencyContactValues } = data;
-		const { id: newPersonId } = await this.personRepository.updateOrCreate(
-			{ ...emergencyContactValues, ipAddress },
-			personId && { id: personId },
-			transaction,
-		);
-
-		const { id: emergencyContactId } = await this.emergencyContactRepository.updateOrCreate(
-			{ relationshipId, personId: newPersonId, ipAddress },
-			id && { id },
-			transaction,
-		);
-
+		const { id, ipAddress } = data;
+		const { id: emergencyContactId } = await this.emergencyContactRepository.updateOrCreateCustom(data, id, transaction);
 		if (!id) {
 			await artistInstance.createEmergencyContact({ emergencyContactId, ipAddress }, { transaction });
 		}
