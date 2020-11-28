@@ -32,11 +32,6 @@ describe('BaseController', () => {
       expect(next).not.toHaveBeenCalled();
     });
 
-    it('should return an error', async () => {
-      await controller.getAll(req, res, next);
-      expect(next).toHaveBeenCalledWith(errorServiceMessage);
-      expect(res.json).not.toHaveBeenCalled();
-    });
   });
 
   describe('getById method', () => {
@@ -52,16 +47,9 @@ describe('BaseController', () => {
 
     it('should return 404 when data not found', async () => {
       const response: any = {status: 404};
-      await controller.getById(req, response, next);
+      await controller.getById(req, res, next);
       expect(response.status).toEqual(404);
     });
-
-    it('should return an error', async () => {
-      await controller.getById(req, res, next);
-      expect(next).toHaveBeenCalledWith(errorServiceMessage);
-      expect(res.json).not.toHaveBeenCalled();
-    });
-
 
   });
 
@@ -75,12 +63,6 @@ describe('BaseController', () => {
       await controller.create(req, res, next);
       expect(res.json).toHaveBeenCalled();
       expect(next).not.toHaveBeenCalled();
-    });
-
-    it('should return an error', async () => {
-      await controller.create(req, res, next);
-      expect(next).toHaveBeenCalledWith(errorServiceMessage);
-      expect(res.json).not.toHaveBeenCalled();
     });
 
   });
@@ -98,12 +80,6 @@ describe('BaseController', () => {
       expect(next).not.toHaveBeenCalled();
     });
 
-    it('should return an error', async () => {
-      await controller.update(req, res, next);
-      expect(next).toHaveBeenCalledWith(errorServiceMessage);
-      expect(res.json).not.toHaveBeenCalled();
-    });
-
   });
 
   describe('delete method', () => {
@@ -118,11 +94,6 @@ describe('BaseController', () => {
       expect(next).not.toHaveBeenCalled();
     });
 
-    it('should return an error', async () => {
-      await controller.delete(req, res, next);
-      expect(next).toHaveBeenCalledWith(errorServiceMessage);
-      expect(res.json).not.toHaveBeenCalled();
-    });
   });
 
 
