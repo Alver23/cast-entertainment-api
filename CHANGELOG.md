@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.12.0](https://github.com/Alver23/cast-entertainment/compare/v1.11.0...v1.12.0) (2020-11-28)
+
+
+### Features
+
+* was added middleware for scheme validation ([#17](https://github.com/Alver23/cast-entertainment/issues/17)) ([90140a3](https://github.com/Alver23/cast-entertainment/commit/90140a3cb82cfaeb2799a078e5e2a26bc431c1a0))
+
 ## [1.11.0](https://github.com/Alver23/cast-entertainment/compare/v1.10.0...v1.11.0) (2020-11-27)
 
 
