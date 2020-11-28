@@ -2,8 +2,21 @@
   "roots": ["<rootDir>/src"],
   "collectCoverage": true,
   "coverageDirectory": "./coverage",
-  "collectCoverageFrom": ["**/*.ts", "!**/*-mock.ts", "!src/index.ts", "!src/api/index.ts"],
-  "coveragePathIgnorePatterns": ["core", "database", "config", "bin", "api/__mocks__", "api/auth/strategies"],
+  "collectCoverageFrom": ["**/*.ts", "!**/*-mock.ts", "!src/index.ts", "!src/api/index.ts", "!src/core/middlewares/index.ts"],
+  "coveragePathIgnorePatterns": [
+    "core/sequelize",
+    "core/strategies",
+    "core/middlewares/ip-address",
+    "core/middlewares/request-logger",
+    "core/middlewares/routes",
+    "core/middlewares/404",
+    "core/middlewares/error-handler",
+    "database",
+    "config",
+    "bin",
+    "api/__mocks__",
+    "api/auth/strategies"
+  ],
   "testMatch": ["**/?(*.)+(spec).+(ts)"],
   "globals": {
     "ts-jest": {
