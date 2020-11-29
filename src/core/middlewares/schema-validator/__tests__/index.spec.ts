@@ -10,11 +10,10 @@ import { fakeServer } from "@mocks/fake-server";
 import { ClassBodyMock } from "./class-body-mock";
 
 // Middlewares
-import { SchemaValidator } from "@core/middlewares/schema-validator";
+import { schemaValidator } from "@core/middlewares/schema-validator";
 import { errorHandler, wrapError } from "@core/middlewares/error-handler";
 
 describe('SchemaValidator', () => {
-  const schemaValidator = new SchemaValidator();
   const schema = {
     body: ClassBodyMock,
   }
