@@ -17,9 +17,9 @@ const artistService = new ArtistService(new ArtistRepository());
 const artistController = new ArtistController(artistService);
 
 const basePath = '/artists';
-const schemaValidation = {
+const schema = {
 	post: {
 		body: Artist,
 	},
 };
-export const artistRouter = baseRouter(basePath, artistController, schemaValidation);
+export const artistRouter = baseRouter(basePath, artistController, schema);
