@@ -27,6 +27,7 @@
   "transform": {
     "^.+\\.(ts|tsx)$": "ts-jest"
   },
+  "setupFiles": ["<rootDir>/jest/setup.js"],
   "moduleNameMapper": {
     "^@api/(.*)$": "<rootDir>/src/api/$1",
     "^@config/(.*)$": "<rootDir>/src/config/$1",

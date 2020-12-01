@@ -3,10 +3,12 @@ import path from 'path';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 
+import { fourOFour } from '@core/middlewares/404';
 import api from './api';
 import { config } from './config';
 
-import { requestLogger, fourOFour } from './core/middlewares';
+// Middlewares
+import { requestLogger } from './core/middlewares';
 
 const {
 	staticFiles: { directory },
@@ -31,6 +33,6 @@ server.use(`/${directory}`, express.static(path.join(__dirname, directory)));
 server.get(`${basePath}/health(check)?`, healthCheck);
 server.use(`${basePath}/api`, api);
 
-server.use(fourOFour);
+server.use(fourOFour.handler());
 
 export { server };

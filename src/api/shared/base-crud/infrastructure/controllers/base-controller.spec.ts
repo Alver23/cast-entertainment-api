@@ -15,7 +15,12 @@ class FakeClass extends BaseController<any, any, any> {
 
 describe('BaseController', () => {
   let controller;
-  const { res, next, clearMockRes } = getMockRes();
+  const { res: resMock, next, clearMockRes } = getMockRes();
+
+  const res = {
+    ...resMock,
+    responseJson: jest.fn(),
+  };
 
   beforeEach(() => {
     clearMockRes()
@@ -28,15 +33,10 @@ describe('BaseController', () => {
 
     it('should get the data correctly', async () => {
       await controller.getAll(req, res, next);
-      expect(res.json).toHaveBeenCalled();
+      expect(res.responseJson).toHaveBeenCalled();
       expect(next).not.toHaveBeenCalled();
     });
 
-    it('should return an error', async () => {
-      await controller.getAll(req, res, next);
-      expect(next).toHaveBeenCalledWith(errorServiceMessage);
-      expect(res.json).not.toHaveBeenCalled();
-    });
   });
 
   describe('getById method', () => {
@@ -46,22 +46,15 @@ describe('BaseController', () => {
 
     it('should get the data correctly', async() => {
       await controller.getById(req, res, next);
-      expect(res.json).toHaveBeenCalled();
+      expect(res.responseJson).toHaveBeenCalled();
       expect(next).not.toHaveBeenCalled();
     });
 
     it('should return 404 when data not found', async () => {
       const response: any = {status: 404};
-      await controller.getById(req, response, next);
+      await controller.getById(req, res, next);
       expect(response.status).toEqual(404);
     });
-
-    it('should return an error', async () => {
-      await controller.getById(req, res, next);
-      expect(next).toHaveBeenCalledWith(errorServiceMessage);
-      expect(res.json).not.toHaveBeenCalled();
-    });
-
 
   });
 
@@ -73,14 +66,8 @@ describe('BaseController', () => {
 
     it('should create a resource correctly', async () => {
       await controller.create(req, res, next);
-      expect(res.json).toHaveBeenCalled();
+      expect(res.responseJson).toHaveBeenCalled();
       expect(next).not.toHaveBeenCalled();
-    });
-
-    it('should return an error', async () => {
-      await controller.create(req, res, next);
-      expect(next).toHaveBeenCalledWith(errorServiceMessage);
-      expect(res.json).not.toHaveBeenCalled();
     });
 
   });
@@ -94,14 +81,8 @@ describe('BaseController', () => {
 
     it('should update a resource correctly', async () => {
       await controller.update(req, res, next);
-      expect(res.json).toHaveBeenCalled();
+      expect(res.responseJson).toHaveBeenCalled();
       expect(next).not.toHaveBeenCalled();
-    });
-
-    it('should return an error', async () => {
-      await controller.update(req, res, next);
-      expect(next).toHaveBeenCalledWith(errorServiceMessage);
-      expect(res.json).not.toHaveBeenCalled();
     });
 
   });
@@ -114,15 +95,10 @@ describe('BaseController', () => {
 
     it('should delete a resource correctly', async () => {
       await controller.delete(req, res, next);
-      expect(res.json).toHaveBeenCalled();
+      expect(res.responseJson).toHaveBeenCalled();
       expect(next).not.toHaveBeenCalled();
     });
 
-    it('should return an error', async () => {
-      await controller.delete(req, res, next);
-      expect(next).toHaveBeenCalledWith(errorServiceMessage);
-      expect(res.json).not.toHaveBeenCalled();
-    });
   });
 
 

@@ -48,18 +48,18 @@ export class SchemaValidator {
 			.toArray();
 	}
 
-	public handler(scheme: ISchemaValidator): RequestHandler {
+	public handler(schema: ISchemaValidator): RequestHandler {
 		return async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-			if (Object.keys(scheme).length === 0) {
+			if (Object.keys(schema).length === 0) {
 				return next();
 			}
 
 			const errorList: Promise<any>[] = [];
 
 			this.listValidations.forEach((item) => {
-				if (Object.prototype.hasOwnProperty.call(scheme, item)) {
-					const modelValidate = plainToClass(scheme[item], req[item]);
-					errorList.push(validateOrReject(modelValidate));
+				if (Object.prototype.hasOwnProperty.call(schema, item)) {
+					const modelToValidate = plainToClass(schema[item], req[item]);
+					errorList.push(validateOrReject(modelToValidate));
 				}
 			});
 
