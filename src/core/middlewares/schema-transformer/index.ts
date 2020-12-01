@@ -5,8 +5,8 @@ import { NextFunction, Request, RequestHandler, Response } from 'express';
 export class SchemaTransformer {
 	private readonly listCheckTransformer: string[] = ['body', 'params', 'query'];
 
-	handler(schema: any): RequestHandler {
-		return (req: Request, res: Response, next: NextFunction) => {
+	handler<T>(schema: T): RequestHandler {
+		return (req: Request, res: Response, next: NextFunction): void => {
 			if (Object.keys(schema).length === 0) {
 				return next();
 			}
@@ -22,4 +22,4 @@ export class SchemaTransformer {
 	}
 }
 
-export const schemaTransformer = new SchemaTransformer();
+export const schemaTransformer: SchemaTransformer = new SchemaTransformer();

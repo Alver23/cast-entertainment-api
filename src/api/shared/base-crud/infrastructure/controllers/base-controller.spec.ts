@@ -15,7 +15,12 @@ class FakeClass extends BaseController<any, any, any> {
 
 describe('BaseController', () => {
   let controller;
-  const { res, next, clearMockRes } = getMockRes();
+  const { res: resMock, next, clearMockRes } = getMockRes();
+
+  const res = {
+    ...resMock,
+    responseJson: jest.fn(),
+  };
 
   beforeEach(() => {
     clearMockRes()
@@ -28,7 +33,7 @@ describe('BaseController', () => {
 
     it('should get the data correctly', async () => {
       await controller.getAll(req, res, next);
-      expect(res.json).toHaveBeenCalled();
+      expect(res.responseJson).toHaveBeenCalled();
       expect(next).not.toHaveBeenCalled();
     });
 
@@ -41,7 +46,7 @@ describe('BaseController', () => {
 
     it('should get the data correctly', async() => {
       await controller.getById(req, res, next);
-      expect(res.json).toHaveBeenCalled();
+      expect(res.responseJson).toHaveBeenCalled();
       expect(next).not.toHaveBeenCalled();
     });
 
@@ -61,7 +66,7 @@ describe('BaseController', () => {
 
     it('should create a resource correctly', async () => {
       await controller.create(req, res, next);
-      expect(res.json).toHaveBeenCalled();
+      expect(res.responseJson).toHaveBeenCalled();
       expect(next).not.toHaveBeenCalled();
     });
 
@@ -76,7 +81,7 @@ describe('BaseController', () => {
 
     it('should update a resource correctly', async () => {
       await controller.update(req, res, next);
-      expect(res.json).toHaveBeenCalled();
+      expect(res.responseJson).toHaveBeenCalled();
       expect(next).not.toHaveBeenCalled();
     });
 
@@ -90,7 +95,7 @@ describe('BaseController', () => {
 
     it('should delete a resource correctly', async () => {
       await controller.delete(req, res, next);
-      expect(res.json).toHaveBeenCalled();
+      expect(res.responseJson).toHaveBeenCalled();
       expect(next).not.toHaveBeenCalled();
     });
 

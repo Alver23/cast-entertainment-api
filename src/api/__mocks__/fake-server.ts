@@ -1,4 +1,7 @@
 const express = require('express');
 
-export const fakeServer = express();
-export const basePath = '/api';
+const basePath = '/api';
+const fakeServer = express();
+fakeServer.use(express.json());
+
+export { fakeServer, basePath };

@@ -1,22 +1,22 @@
 // Dependencies
 import cors from 'cors';
-import express from 'express';
+import express, { Application } from 'express';
 import methodOverride from 'method-override';
 import bodyParser from 'body-parser';
 import helmet from 'helmet';
 
 // Middlewares
-import { errorHandler, fourOFour, logErrors, wrapError, appendIpAddressToBody, protectRoutes } from '@core/middlewares';
+import { addResponseJsonToResponse } from '@core/middlewares/response';
+import { fourOFour } from '@core/middlewares/404';
+import { errorHandler } from '@core/middlewares/error-handler';
+import { appendIpAddressToBody } from '@core/middlewares';
 
-// Routers
-import { emergencyContactRouter } from '@api/emergency-contact/infrastructure/routes/emergency-contact-routes';
-import { personRouter } from './persons/router/person-router';
-import { userRouter } from './users/router/user-router';
-import { roleRouter } from './roles/router/role-router';
-import { authRouter } from './auth/router/auth-router';
-import { artistRouter } from './artists/infrastructure/routes/artist-routes';
+// Routes config
+import { RouteConfig } from '@api/routes';
 
-const api: express.Application = express();
+const api: Application = express();
+
+const routeConfig = new RouteConfig(api);
 
 // Enable CORS
 api.use(cors());
@@ -35,18 +35,14 @@ api.use(bodyParser.urlencoded({ extended: false }));
 
 // Add ip address to body
 api.use(appendIpAddressToBody);
+api.use(addResponseJsonToResponse.handler());
 
-authRouter(api);
-api.use(protectRoutes);
-personRouter(api);
-userRouter(api);
-roleRouter(api);
-artistRouter(api);
-emergencyContactRouter(api);
+routeConfig.publicRoutes();
+routeConfig.privateRoutes();
 
-api.use(fourOFour);
-api.use(logErrors);
-api.use(wrapError);
-api.use(errorHandler);
+api.use(fourOFour.handler());
+api.use(errorHandler.logErrors());
+api.use(errorHandler.wrapperError());
+api.use(errorHandler.handler());
 
 export default api;
