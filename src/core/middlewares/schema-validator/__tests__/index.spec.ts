@@ -11,7 +11,7 @@ import { ClassBodyMock } from "./class-body-mock";
 
 // Middlewares
 import { schemaValidator } from "@core/middlewares/schema-validator";
-import { errorHandler, wrapError } from "@core/middlewares/error-handler";
+import { errorHandler } from "@core/middlewares/error-handler";
 
 describe('SchemaValidator', () => {
   const schema = {
@@ -25,8 +25,8 @@ describe('SchemaValidator', () => {
   fakeServer.post('/user', schemaValidator.handler(schema), function(req, res) {
     res.status(200).json({ name: 'response' });
   });
-  fakeServer.use(wrapError);
-  fakeServer.use(errorHandler);
+  fakeServer.use(errorHandler.wrapperError());
+  fakeServer.use(errorHandler.handler());
 
   it('should return status code 200 when the schema is empty', (done) => {
     supertest(fakeServer)

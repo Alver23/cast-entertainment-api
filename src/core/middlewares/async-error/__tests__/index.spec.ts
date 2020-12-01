@@ -7,7 +7,7 @@ import { fakeServer } from "@mocks/fake-server";
 
 // Middlewares
 import { catchErrors } from "../index";
-import { errorHandler, wrapError } from "../../error-handler";
+import { errorHandler } from "@core/middlewares/error-handler";
 
 describe('catchErrors', () => {
   fakeServer.use(express.json());
@@ -20,8 +20,8 @@ describe('catchErrors', () => {
       throw new Error('fake error');
     }));
 
-  fakeServer.use(wrapError);
-  fakeServer.use(errorHandler);
+  fakeServer.use(errorHandler.wrapperError());
+  fakeServer.use(errorHandler.handler());
 
   it('should execute the callback correctly', (done) => {
     supertest(fakeServer)
