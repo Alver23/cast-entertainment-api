@@ -28,13 +28,8 @@ export class EmergencyContactRepository extends BaseCrudRepository<typeof Emerge
 	}
 
 	async updateOne(id: number, data: IEmergencyContact): Promise<any> {
-		const emergencyContact = await this.findOne({ query: { id } });
-		if (emergencyContact) {
-			const response = await this.upsert(data, id);
-			return response;
-		}
-
-		return emergencyContact;
+		await super.findOne({ query: { id } });
+		return this.upsert(data, id);
 	}
 
 	async updateOrCreateCustom(data: IEmergencyContact, id?: number, transaction?: Transaction): Promise<any> {

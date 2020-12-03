@@ -1,0 +1,42 @@
+{
+	"id": 1,
+	"person": {
+		"dataValues": {
+			"fisrtName": "fake name"
+		}
+	},
+	"passport": {
+		"dataValues": {
+			"id": 1
+		}
+	},
+	"emergencyContact": {
+		"dataValues": {
+			"id": 1,
+			"emergencyContact": {
+				"dataValues": {
+					"id": 1
+				}
+			}
+		},
+		"emergencyContact": {
+			"person": {
+				"dataValues": {
+					"fisrtName": "fake name"
+				}
+			}
+		}
+	},
+	"beneficiaries": [
+		{
+			"dataValues": {
+				"id": 1
+			},
+			"person": {
+				"dataValues": {
+					"id": 1
+				}
+			}
+		}
+	]
+}

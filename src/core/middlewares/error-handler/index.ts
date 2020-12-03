@@ -1,13 +1,14 @@
 // Dependencies
 import * as Sentry from '@sentry/node';
 import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
-import { badImplementation } from '@hapi/boom';
+import { badImplementation, boomify } from '@hapi/boom';
 
 // Config
 import { config } from '@config/index';
 
 // Utils
 import { setResponse } from '@utils/index';
+import { CustomError } from '@utils/custom-error';
 
 const debug = require('debug')(`${config.appName}:error-handler`);
 
@@ -44,9 +45,14 @@ export class ErrorHandler {
 
 	public wrapperError(): ErrorRequestHandler {
 		return (error: any, req: Request, res: Response, next: NextFunction): void => {
+			if (error instanceof CustomError) {
+				next(boomify(error, { statusCode: error.statusCode }));
+			}
+
 			if (!error.isBoom) {
 				next(badImplementation(error));
 			}
+
 			next(error);
 		};
 	}

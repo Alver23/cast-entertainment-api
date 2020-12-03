@@ -9,9 +9,13 @@ import { artistRouter } from "../artist-routes";
 
 // Mocks
 jest.mock('@api/artists/infrastructure/dto/artist', () => jest.fn());
+jest.mock('@api/artists/infrastructure/dto/artist/retrieve', () => jest.fn());
 jest.mock('@api/artists/infrastructure/persistence/artist/artist-repository', () => ({
   ArtistRepository: require('@mocks/fake-service').default,
 }));
+jest.mock('@api/artists/application/artist-service', () => ({
+  ArtistService: require('@mocks/fake-service').default,
+}))
 jest.mock('@api/artists/infrastructure/controllers/artist-controller', () => ({
   ArtistController: require('@mocks/fake-controller').default,
 }));
