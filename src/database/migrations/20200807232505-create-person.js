@@ -19,7 +19,7 @@ module.exports = {
         type: Sequelize.INTEGER.UNSIGNED,
         references: {
           model: {
-            tableName: 'catalogs',
+            tableName: 'catalog',
           },
           key: 'id'
         },
@@ -28,13 +28,22 @@ module.exports = {
         type: Sequelize.INTEGER.UNSIGNED,
         references: {
           model: {
-            tableName: 'catalogs',
+            tableName: 'catalog',
           },
           key: 'id'
         },
       },
       document_number: Sequelize.BIGINT(20),
       height: Sequelize.DECIMAL(10, 2),
+      country_id: {
+        type: Sequelize.INTEGER.UNSIGNED,
+        references: {
+          model: {
+            tableName: 'country',
+          },
+          key: 'id'
+        },
+      },
       ip_address: Sequelize.STRING,
       created_at: {
         allowNull: false,

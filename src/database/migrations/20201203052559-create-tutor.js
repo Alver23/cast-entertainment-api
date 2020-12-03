@@ -2,26 +2,46 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('artist_has_passport', {
+    await queryInterface.createTable('tutor', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER.UNSIGNED
       },
-      artist_id: {
+      names: Sequelize.STRING,
+      email: Sequelize.STRING,
+      cell_phone: Sequelize.STRING,
+      address: Sequelize.STRING,
+      city: Sequelize.STRING,
+      student_id: {
         type: Sequelize.INTEGER.UNSIGNED,
         references: {
           model: {
-            tableName: 'artist',
+            tableName: 'student',
           },
           key: 'id'
         },
         onDelete: 'CASCADE',
       },
-      number: Sequelize.STRING,
-      date_of_issue: Sequelize.DATE,
-      expiration_date: Sequelize.DATE,
+      relationship_id: {
+        type: Sequelize.INTEGER.UNSIGNED,
+        references: {
+          model: {
+            tableName: 'catalog',
+          },
+          key: 'id'
+        },
+      },
+      country_id: {
+        type: Sequelize.INTEGER.UNSIGNED,
+        references: {
+          model: {
+            tableName: 'country',
+          },
+          key: 'id'
+        },
+      },
       ip_address: Sequelize.STRING,
       created_at: {
         allowNull: false,
@@ -36,6 +56,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('artist_has_passport');
+    await queryInterface.dropTable('tutor');
   }
 };

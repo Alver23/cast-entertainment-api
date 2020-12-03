@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('artist_has_emergency_contacts', {
+    await queryInterface.createTable('artist_has_emergency_contact', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.INTEGER.UNSIGNED,
         references: {
           model: {
-            tableName: 'artists',
+            tableName: 'artist',
           },
           key: 'id'
         },
@@ -23,7 +23,7 @@ module.exports = {
         type: Sequelize.INTEGER.UNSIGNED,
         references: {
           model: {
-            tableName: 'emergency_contacts',
+            tableName: 'emergency_contact',
           },
           key: 'id'
         },
@@ -43,6 +43,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('artist_has_emergency_contacts');
+    await queryInterface.dropTable('artist_has_emergency_contact');
   }
 };

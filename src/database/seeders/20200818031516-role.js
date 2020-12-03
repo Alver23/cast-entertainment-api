@@ -3,7 +3,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('roles', [
+    await queryInterface.bulkInsert('role', [
       {
         name: 'Super Admin',
         description: 'Super System administrator',
@@ -20,6 +20,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('roles', null);
+    await queryInterface.bulkDelete('role', null);
   }
 };

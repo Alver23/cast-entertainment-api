@@ -39,7 +39,7 @@ ArtistHasEmergencyContact.init(
 	{
 		sequelize,
 		modelName: 'ArtistHasEmergencyContact',
-		tableName: 'artist_has_emergency_contacts',
+		tableName: 'artist_has_emergency_contact',
 		underscored: true,
 		paranoid: true,
 		defaultScope: {

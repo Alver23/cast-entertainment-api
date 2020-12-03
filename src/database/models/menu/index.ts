@@ -41,7 +41,7 @@ Menu.init(
 	{
 		sequelize,
 		modelName: 'Menu',
-		tableName: 'menus',
+		tableName: 'menu',
 		underscored: true,
 		paranoid: true,
 		defaultScope: {

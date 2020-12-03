@@ -1,5 +1,5 @@
 // Dependencies
-import { Transaction, EmptyResultError } from 'sequelize';
+import { Transaction } from 'sequelize';
 
 // Shared
 import {

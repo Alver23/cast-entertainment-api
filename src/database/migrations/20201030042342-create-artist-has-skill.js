@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('artist_has_passport', {
+    await queryInterface.createTable('artist_has_skill', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -19,9 +19,15 @@ module.exports = {
         },
         onDelete: 'CASCADE',
       },
-      number: Sequelize.STRING,
-      date_of_issue: Sequelize.DATE,
-      expiration_date: Sequelize.DATE,
+      skill_id: {
+        type: Sequelize.INTEGER.UNSIGNED,
+        references: {
+          model: {
+            tableName: 'catalog',
+          },
+          key: 'id'
+        },
+      },
       ip_address: Sequelize.STRING,
       created_at: {
         allowNull: false,
@@ -36,6 +42,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('artist_has_passport');
+    await queryInterface.dropTable('artist_has_skill');
   }
 };

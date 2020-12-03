@@ -219,7 +219,7 @@ const documentTypes = [
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('catalogs', [
+    await queryInterface.bulkInsert('catalog', [
       ...genders,
       ...motherTongue,
       ...skills,
@@ -229,6 +229,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('catalogs', null, {});
+    await queryInterface.bulkDelete('catalog', null, {});
   }
 };

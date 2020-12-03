@@ -33,6 +33,8 @@ export class Person extends Model<PersonModel, PersonCreationAttributes> impleme
 
 	public height?: number;
 
+	public countryId: number;
+
 	public ipAddress: string;
 
 	// timestamps!
@@ -61,6 +63,7 @@ Person.init(
 		documentType: DataTypes.NUMBER,
 		documentNumber: DataTypes.NUMBER,
 		height: DataTypes.NUMBER,
+		countryId: DataTypes.INTEGER.UNSIGNED,
 		ipAddress: DataTypes.STRING,
 	},
 	{

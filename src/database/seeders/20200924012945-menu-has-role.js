@@ -10,7 +10,7 @@ const register = (roleId, menuId) => ({
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('menu_has_roles', [
+    await queryInterface.bulkInsert('menu_has_role', [
       {
         ...register(1, 1),
       },
@@ -51,6 +51,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('menu_has_roles', null);
+    await queryInterface.bulkDelete('menu_has_role', null);
   }
 };

@@ -7,5 +7,6 @@
 	"address": "fake address",
 	"city": "fake city",
 	"cellPhone": "fake cell phone",
+	"countryId": 1,
 	"ipAddress": "::1"
 }

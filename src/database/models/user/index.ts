@@ -41,7 +41,7 @@ User.init(
 	{
 		sequelize,
 		modelName: 'User',
-		tableName: 'users',
+		tableName: 'user',
 		underscored: true,
 		paranoid: true,
 	},

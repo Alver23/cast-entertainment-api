@@ -39,7 +39,7 @@ ArtistHasSkill.init(
 	{
 		sequelize,
 		modelName: 'ArtistHasSkill',
-		tableName: 'artist_has_skills',
+		tableName: 'artist_has_skill',
 		underscored: true,
 		paranoid: true,
 		defaultScope: {
