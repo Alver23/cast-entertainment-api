@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.15.0](https://github.com/Alver23/cast-entertainment/compare/v1.14.0...v1.15.0) (2020-12-03)
+
+
+### Features
+
+* add dto response artist by id ([#24](https://github.com/Alver23/cast-entertainment/issues/24)) ([cac5531](https://github.com/Alver23/cast-entertainment/commit/cac55316e575728e44e32019694e29bd7e4c4cec))
+
 ## [1.14.0](https://github.com/Alver23/cast-entertainment/compare/v1.13.2...v1.14.0) (2020-12-01)
 
 ### [1.13.2](https://github.com/Alver23/cast-entertainment/compare/v1.13.1...v1.13.2) (2020-12-01)
