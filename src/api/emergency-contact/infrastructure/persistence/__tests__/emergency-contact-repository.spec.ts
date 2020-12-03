@@ -9,6 +9,7 @@ import { BaseCrudRepository } from "@api/shared/base-crud/infrastructure/persist
 
 // Mocks
 import mocks from './mocks.json';
+
 jest.mock('@core/sequelize/sequelize', () => require('@core/sequelize/sequelize-mock').sequelizeMock);
 jest.mock('@database/models/emergency-contact', () => require('@database/models/emergency-contact/emergency-contact-mock').emergencyContactMock);
 jest.mock('@api/persons/infrastructure/persistence/person-repository', () => ({
@@ -73,13 +74,11 @@ describe('EmergencyContactRepository', () => {
         );
     });
 
-    it('should call the method successfully when the register not exist', async () => {
-      jest
-        .spyOn(EmergencyContact, 'findOne')
+    it('should get a error when the register not exist', async () => {
+      jest.spyOn(EmergencyContact, 'findOne')
         .mockResolvedValue(null);
 
-      const response = await repository.updateOne(1, {} as any);
-      expect(response).toBeFalsy();
+      await expect(repository.updateOne(1, {} as any)).rejects.toThrow();
     });
 
   });

@@ -1,0 +1,17 @@
+{
+	"emergencyContact": {
+		"dataValues": {
+			"id": 1
+		},
+		"emergencyContact": {
+			"dataValues": {
+				"id": 1
+			}
+		},
+		"person": {
+			"dataValues": {
+				"id": 1
+			}
+		}
+	}
+}

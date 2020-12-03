@@ -58,8 +58,7 @@ export class ArtistRepository extends BaseCrudRepository<typeof Artist, IArtist,
 	}
 
 	async findOne({ query }: IQueryParams): Promise<any> {
-		return Artist.findOne<Artist>({
-			where: query,
+		const options = {
 			include: [
 				{ association: 'person' },
 				{ association: 'emergencyContact' },
@@ -67,7 +66,8 @@ export class ArtistRepository extends BaseCrudRepository<typeof Artist, IArtist,
 				{ association: 'beneficiaries' },
 				{ association: 'skills' },
 			],
-		});
+		};
+		return super.findOne({ query, options });
 	}
 
 	async updateOrCreateEmergencyContact(
@@ -140,12 +140,8 @@ export class ArtistRepository extends BaseCrudRepository<typeof Artist, IArtist,
 	}
 
 	async updateOne(id: number, data: IArtist): Promise<any> {
-		const artist = await this.findOne({ query: { id } });
-		if (artist) {
-			const response = await this.upsert(data, id);
-			return response;
-		}
-		return artist;
+		await super.findOne({ query: { id } });
+		return this.upsert(data, id);
 	}
 
 	async upsert(data: IArtist, id?: number): Promise<any> {

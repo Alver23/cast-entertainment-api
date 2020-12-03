@@ -9,8 +9,9 @@ class FakeRepository extends BaseCrudRepository<any, any, any> {
 
 describe('BaseCrudRepository', () => {
   let service: FakeRepository;
-  const spy = jest.fn().mockResolvedValue(null);
+  const spy = jest.fn().mockResolvedValue([]);
   const modelMock = {
+    name: 'fake mock',
     create: spy,
     destroy: spy,
     findAll: spy,
@@ -78,6 +79,10 @@ describe('BaseCrudRepository', () => {
     const data = { id: 1 };
     const condition = { id: 2};
     const transaction = null;
+    afterEach(() => {
+      jest.clearAllMocks();
+    });
+
     it('should call the method create when the parameter where is empty', async () => {
       await service.updateOrCreate(data, null, transaction);
       expect(
@@ -87,16 +92,6 @@ describe('BaseCrudRepository', () => {
 
     it('should call the method create when the record no found', async () => {
       await service.updateOrCreate(data, condition, transaction);
-      expect(
-        modelMock.create,
-      ).toHaveBeenCalledWith(data, { transaction });
-    });
-
-    it('should call the method update when the record exists', async () => {
-      jest.spyOn(modelMock, 'findOne')
-        .mockResolvedValue(1);
-      await service.updateOrCreate(data, condition, transaction);
-
       expect(
         modelMock.update,
       ).toHaveBeenCalledWith(data, { where: condition, transaction });

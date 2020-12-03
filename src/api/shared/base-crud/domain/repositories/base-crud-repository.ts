@@ -5,6 +5,7 @@ export interface IQueryParams {
 	query: {
 		[key: string]: any;
 	};
+	options?: any;
 }
 
 export interface IFindOrCreateParams<T> {

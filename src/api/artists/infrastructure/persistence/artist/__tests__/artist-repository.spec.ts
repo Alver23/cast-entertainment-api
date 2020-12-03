@@ -100,11 +100,11 @@ describe('ArtistRepository', () => {
         )
     });
 
-    it('should call the method successfully when the register not exist', async () => {
+    it('should get a error when the register not exist', async () => {
       jest.spyOn(Artist, 'findOne')
         .mockResolvedValue(null);
-      const response = await repository.updateOne(1, {} as any);
-      expect(response).toBeFalsy();
+
+      await expect(repository.updateOne(1, {} as any)).rejects.toThrow();
     });
   });
 
