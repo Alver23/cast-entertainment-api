@@ -31,7 +31,7 @@ Token.init(
 	{
 		sequelize,
 		modelName: 'Token',
-		tableName: 'tokens',
+		tableName: 'token',
 		underscored: true,
 		paranoid: true,
 		timestamps: false,

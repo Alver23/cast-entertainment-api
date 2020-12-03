@@ -52,7 +52,7 @@ ArtistHasBeneficiary.init(
 	{
 		sequelize,
 		modelName: 'ArtistHasBeneficiary',
-		tableName: 'artist_has_beneficiaries',
+		tableName: 'artist_has_beneficiary',
 		underscored: true,
 		paranoid: true,
 		defaultScope: {

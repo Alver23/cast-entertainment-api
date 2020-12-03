@@ -34,4 +34,7 @@ export class ArtistPersonResponse {
 
 	@Expose()
 	height: string;
+
+	@Expose()
+	countryId: number;
 }

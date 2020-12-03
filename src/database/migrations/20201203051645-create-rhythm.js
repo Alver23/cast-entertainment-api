@@ -2,28 +2,27 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('token', {
+    await queryInterface.createTable('rhythm', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER.UNSIGNED
       },
-      token: Sequelize.STRING(256),
-      user_id: {
+      rhythmable_id: Sequelize.INTEGER.UNSIGNED,
+      rhythmable_type: Sequelize.STRING,
+      created_at: {
         allowNull: false,
-        type: Sequelize.INTEGER.UNSIGNED,
-        references: {
-          model: {
-            tableName: 'user',
-          },
-          key: 'id'
-        },
+        type: Sequelize.DATE,
+      },
+      updated_at: {
+        allowNull: false,
+        type: Sequelize.DATE,
       },
     });
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('token');
+    await queryInterface.dropTable('rhythm');
   }
 };

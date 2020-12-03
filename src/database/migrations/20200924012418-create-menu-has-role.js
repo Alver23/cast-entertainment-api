@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('menu_has_roles', {
+    await queryInterface.createTable('menu_has_role', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -14,7 +14,7 @@ module.exports = {
         type: Sequelize.INTEGER.UNSIGNED,
         references: {
           model: {
-            tableName: 'users',
+            tableName: 'user',
           },
           key: 'id'
         },
@@ -24,7 +24,7 @@ module.exports = {
         type: Sequelize.INTEGER.UNSIGNED,
         references: {
           model: {
-            tableName: 'menus',
+            tableName: 'menu',
           },
           key: 'id'
         },
@@ -44,6 +44,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('menu_has_roles');
+    await queryInterface.dropTable('menu_has_role');
   }
 };

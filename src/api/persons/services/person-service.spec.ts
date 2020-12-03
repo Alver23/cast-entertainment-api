@@ -24,6 +24,7 @@ describe('PersonService', () => {
     dateOfBirth: expect.any(Date),
     address: expect.any(String),
     city: expect.any(String),
+    countryId: expect.any(Number),
     cellPhone: expect.any(String),
     createdAt: expect.any(Date),
     updatedAt: expect.any(Date),

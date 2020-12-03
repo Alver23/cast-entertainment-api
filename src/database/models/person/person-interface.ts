@@ -13,6 +13,7 @@ export interface PersonRequest {
 	documentType?: number;
 	documentNumber?: number;
 	height?: number;
+	countryId: number;
 	ipAddress: string;
 }
 

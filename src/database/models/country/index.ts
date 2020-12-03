@@ -5,18 +5,14 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '@core/sequelize/sequelize';
 
 // Interfaces
-import { RoleModel, RoleCreationAttributes } from '@database/models/role/role-interface';
+import { CountryModel, CountryCreationAttributes } from '@database/models/country/country-interface';
 
-// Models
-import { Menu } from '@database/models/menu';
-import { MenuHasRole } from '@database/models/menu-has-roles';
-
-export class Role extends Model<RoleModel, RoleCreationAttributes> implements RoleModel {
+export class Country extends Model<CountryModel, CountryCreationAttributes> implements CountryModel {
 	public id!: number;
 
 	public name: string;
 
-	public description: string;
+	public description?: string;
 
 	public ipAddress: string;
 
@@ -28,7 +24,7 @@ export class Role extends Model<RoleModel, RoleCreationAttributes> implements Ro
 	public readonly deletedAt!: Date;
 }
 
-Role.init(
+Country.init(
 	{
 		id: {
 			type: DataTypes.INTEGER.UNSIGNED,
@@ -41,14 +37,8 @@ Role.init(
 	},
 	{
 		sequelize,
-		modelName: 'Role',
-		tableName: 'role',
-		underscored: true,
+		modelName: 'Country',
+		tableName: 'country',
 		paranoid: true,
-		defaultScope: {
-			order: [['createdAt', 'DESC']],
-		},
 	},
 );
-
-Role.belongsToMany(Menu, { through: MenuHasRole, as: 'menus' });

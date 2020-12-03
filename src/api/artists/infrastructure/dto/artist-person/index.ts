@@ -50,4 +50,9 @@ export class ArtistPerson {
 	@IsDefined()
 	@Expose()
 	lastName: string;
+
+	@IsNotEmpty()
+	@IsDefined()
+	@Expose()
+	countryId: number;
 }

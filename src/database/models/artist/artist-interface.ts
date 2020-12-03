@@ -1,15 +1,12 @@
 // Dependencies
 import { Optional } from 'sequelize';
 
-interface Artist {
+export interface ArtistModel {
+	id: number;
 	fullNamesFather?: string;
 	fullNamesMother?: string;
 	nativeLanguage?: number;
 	otherLanguage?: number;
-}
-
-export interface ArtistModel extends Artist {
-	id: number;
 	personId: number;
 	ipAddress: string;
 }

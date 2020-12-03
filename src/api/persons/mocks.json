@@ -6,8 +6,7 @@
 	"dateOfBirth": "12/12/2020",
 	"address": "fake address",
 	"city": "fake city",
-	"zipCode": "fake zip code",
-	"homePhone": "fake home phone",
+	"countryId": 1,
 	"cellPhone": "fake cell phone",
 	"ipAddress": "127.0.0.1"
 }
