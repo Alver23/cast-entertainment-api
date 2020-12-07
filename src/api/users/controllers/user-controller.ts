@@ -1,21 +1,18 @@
 // Dependencies
-import { badRequest } from '@hapi/boom';
 import { CREATED, NOT_FOUND, OK } from 'http-status-codes';
 import { NextFunction, Response, Request } from 'express';
 
 // Interfaces
 import { IUserService } from '@api/users/services/user-service-interface';
-import { IPersonService } from '@api/persons/services/person-service-interface';
 
 // Services
 import { userServiceInstance } from '@api/users/services/user-service';
-import { personServiceInstance } from '@api/persons/services/person-service';
 
 // Utils
 import { HttpMessages, setResponse } from '@utils/index';
 
 export class UserController {
-	constructor(private readonly userService: IUserService, private readonly personService: IPersonService) {}
+	constructor(private readonly userService: IUserService) {}
 
 	public async getUsers(req: Request, res: Response, next: NextFunction): Promise<any> {
 		try {
@@ -42,10 +39,6 @@ export class UserController {
 	public async createUser(req: Request, res: Response, next: NextFunction): Promise<any> {
 		try {
 			const { body } = req;
-			const { email } = body;
-			if (await this.personService.findOne({ query: { email } })) {
-				return next(badRequest('email already in use'));
-			}
 			const data = await this.userService.create(body);
 			res.status(CREATED).json(setResponse({ message: HttpMessages.CREATED, data }));
 		} catch (error) {
@@ -54,4 +47,4 @@ export class UserController {
 	}
 }
 
-export const userController = new UserController(userServiceInstance, personServiceInstance);
+export const userController = new UserController(userServiceInstance);

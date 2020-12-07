@@ -13,31 +13,46 @@ const timestamps = {
   updatedAt: new Date(),
 };
 
-export const personServiceMock = {
-  personServiceInstance: {
-    findAll: () => jest.fn(),
-    findOne: () => {
-      return {
-        ...personMocks,
-        getUser: () => ({
-          ...userMocks,
-          password: '123',
-          getRoles: () => ([{...roleMocks, getMenus: async () => []}])
-        }),
-      }
-    },
-    create: () => ({
+
+export default class PersonServiceMock {
+  findAll() {
+    return jest.fn();
+  }
+
+  findOne() {
+    return {
+      ...personMocks,
+      getUser: () => ({
+        ...userMocks,
+        password: '123',
+        getRoles: () => ([{...roleMocks, getMenus: async () => []}])
+      })
+    }
+  }
+
+  create() {
+    return {
       createUser: () => ({
         toJSON: () => ({...userMocks,...timestamps}),
         addRoles: () => (roleMocks),
       }),
       toJSON: () => ({...personMocks, ...timestamps}),
-    }),
-    findOrCreate: () => ({
+    }
+  }
+
+  findOrCreate() {
+    return {
       id: 1,
       toJSON: () => personMocks,
-    }),
-    update: () => jest.fn(),
-    deleteOne: () => jest.fn(),
+    }
   }
+
+  update() {
+    return jest.fn()
+  }
+
+  deleteOne() {
+    return jest.fn()
+  }
+
 }
