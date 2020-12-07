@@ -8,7 +8,7 @@ import { protectRoutes } from '@core/middlewares';
 import { authRouter } from '@api/auth/router/auth-router';
 import { artistRouter } from '@api/artists/infrastructure/routes/artist-routes';
 import { emergencyContactRouter } from '@api/emergency-contact/infrastructure/routes/emergency-contact-routes';
-import { personRouter } from '@api/persons/router/person-router';
+import { personRouter } from '@api/persons/infrastructure/routes/person';
 import { userRouter } from '@api/users/router/user-router';
 import { roleRouter } from '@api/roles/router/role-router';
 

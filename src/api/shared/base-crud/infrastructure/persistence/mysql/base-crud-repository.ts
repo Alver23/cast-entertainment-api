@@ -14,8 +14,8 @@ import { entityUtils } from '@api/shared/base-crud/infrastructure/persistence/my
 export abstract class BaseCrudRepository<K extends IBaseModel, T, U> implements IBaseCrudRepository<T, U> {
 	constructor(private readonly model: K) {}
 
-	create(data: T): Promise<U> {
-		return this.model.create(data);
+	create(data: T, options = {}): Promise<U> {
+		return this.model.create(data, options);
 	}
 
 	deleteOne(id: number | string): Promise<U> {

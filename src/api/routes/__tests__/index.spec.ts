@@ -20,7 +20,7 @@ jest.mock('@api/emergency-contact/infrastructure/routes/emergency-contact-routes
   emergencyContactRouter: jest.fn()
 }));
 
-jest.mock('@api/persons/router/person-router', () => ({
+jest.mock('@api/persons/infrastructure/routes/person', () => ({
   personRouter: jest.fn()
 }));
 

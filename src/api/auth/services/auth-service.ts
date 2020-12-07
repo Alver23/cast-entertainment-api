@@ -5,14 +5,13 @@ import { uid } from 'rand-token';
 
 // Interfaces
 import { IUserService } from '@api/users/services/user-service-interface';
-import { IPersonService } from '@api/persons/services/person-service-interface';
 
 // Config
 import { config } from '@config/index';
 
 // Services
 import { userServiceInstance } from '@api/users/services/user-service';
-import { personServiceInstance } from '@api/persons/services/person-service';
+import { PersonRepository } from '@api/persons/infrastructure/persistence/person-repository';
 
 // Database Models
 import { Token } from '@database/models/token';
@@ -25,7 +24,7 @@ import { IAuthService, IGetUserResponse, IRefreshTokenResponse, IUserAuth } from
 import { RoleMapper } from './models/role/role-mapper';
 
 export class AuthService implements IAuthService {
-	constructor(private readonly userService: IUserService, private readonly personService: IPersonService) {}
+	constructor(private readonly userService: IUserService, private readonly personService: PersonRepository) {}
 
 	private ramdonToken(): string {
 		return uid(256);
@@ -110,4 +109,4 @@ export class AuthService implements IAuthService {
 	}
 }
 
-export const authServiceInstance = new AuthService(userServiceInstance, personServiceInstance);
+export const authServiceInstance = new AuthService(userServiceInstance, new PersonRepository());

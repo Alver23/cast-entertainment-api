@@ -4,11 +4,16 @@ import { userServiceInstance } from './user-service';
 // ORM
 import { sequelize } from '@core/sequelize/sequelize';
 
+// Services
+import { PersonRepository } from "../../persons/infrastructure/persistence/person-repository";
+
 // Mocks
 import mocks from '@api/users/mocks.json';
 
 jest.mock('@core/sequelize/sequelize', () => require('@core/sequelize/sequelize-mock').sequelizeMock);
-jest.mock('@api/persons/services/person-service', () => require('@api/persons/services/person-service-mock').personServiceMock);
+jest.mock('@api/persons/infrastructure/persistence/person-repository', () => ({
+  PersonRepository: require('@api/persons/infrastructure/persistence/person-repository-mock').default
+}));
 jest.mock('@database/models/user', () => require('@database/models/user/user-mock').userMock);
 
 describe('UserService', () => {
@@ -81,6 +86,9 @@ describe('UserService', () => {
   describe('create and findOrCreate method', () => {
 
     it('should get an new user when call create', () => {
+      jest
+        .spyOn(new PersonRepository(), 'create')
+        .mockResolvedValue({createUser: jest.fn(), toJSON: () => ({id: 1})} as any)
       return userServiceInstance
         .create(mocks as any)
         .then((response) => {
