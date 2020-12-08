@@ -3,9 +3,9 @@ import { IsNotEmpty, IsDefined } from 'class-validator';
 import { Expose } from 'class-transformer';
 
 // DTO's
-import { ArtistPerson } from '@api/artists/infrastructure/dto/artist-person';
+import { PersonDto } from '@api/persons/infrastructure/dto/person';
 
-export class EmergencyContact extends ArtistPerson {
+export class EmergencyContact extends PersonDto {
 	@IsNotEmpty()
 	@IsDefined()
 	@Expose()

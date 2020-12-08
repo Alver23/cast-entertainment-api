@@ -3,13 +3,13 @@ import { ValidateNested } from 'class-validator';
 import { Expose, Type } from 'class-transformer';
 
 // DTO's
-import { ArtistPerson } from '@api/artists/infrastructure/dto/artist-person';
 import { ArtistBeneficiary } from '@api/artists/infrastructure/dto/artist-beneficiary';
-import { ArtistEmergencyContact } from '@api/artists/infrastructure/dto/artist-emergency-contact';
 import { ArtistSkill } from '@api/artists/infrastructure/dto/artist-skills';
 import { ArtistPassport } from '@api/artists/infrastructure/dto/artist-passport';
+import { EmergencyContact } from '@api/emergency-contact/infrastructure/dto/emergency-contact';
+import { PersonDto } from '@api/persons/infrastructure/dto/person';
 
-export class Artist extends ArtistPerson {
+export class Artist extends PersonDto {
 	@Expose()
 	personId?: number;
 
@@ -35,8 +35,8 @@ export class Artist extends ArtistPerson {
 
 	@ValidateNested()
 	@Expose()
-	@Type(() => ArtistEmergencyContact)
-	emergencyContact: ArtistEmergencyContact;
+	@Type(() => EmergencyContact)
+	emergencyContact: EmergencyContact;
 
 	@ValidateNested()
 	@Expose()
