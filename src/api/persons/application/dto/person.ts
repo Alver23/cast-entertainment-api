@@ -1,7 +1,7 @@
 // Dependencies
 import { Expose } from 'class-transformer';
 
-export class ArtistPersonResponse {
+export class PersonResponseDto {
 	@Expose()
 	firstName: string;
 

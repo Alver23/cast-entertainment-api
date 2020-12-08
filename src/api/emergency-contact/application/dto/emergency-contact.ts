@@ -4,16 +4,13 @@ import { Expose } from 'class-transformer';
 // Dto`s
 import { PersonResponseDto } from '@api/persons/application/dto/person';
 
-export class ArtistBeneficiaryResponse extends PersonResponseDto {
+export class EmergencyContactResponse extends PersonResponseDto {
 	@Expose()
-	id?: number;
-
-	@Expose()
-	personId?: number;
-
-	@Expose()
-	percentage: number;
+	id: number;
 
 	@Expose()
 	relationshipId: number;
+
+	@Expose()
+	personId?: number;
 }
