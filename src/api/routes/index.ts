@@ -12,6 +12,7 @@ import { personRouter } from '@api/persons/infrastructure/routes/person';
 import { userRouter } from '@api/users/router/user-router';
 import { roleRouter } from '@api/roles/router/role-router';
 import { studentRouter } from '@api/students/infrastructure/routes/student';
+import { teacherRouter } from '@api/teachers/infrastructure/routes/teacher';
 
 export class RouteConfig {
 	constructor(private readonly app: Application) {}
@@ -28,5 +29,6 @@ export class RouteConfig {
 		artistRouter(this.app);
 		emergencyContactRouter(this.app);
 		studentRouter(this.app);
+		teacherRouter(this.app);
 	}
 }
