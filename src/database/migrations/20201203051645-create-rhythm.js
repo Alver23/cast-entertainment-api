@@ -9,8 +9,18 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER.UNSIGNED
       },
-      rhythmable_id: Sequelize.INTEGER.UNSIGNED,
-      rhythmable_type: Sequelize.STRING,
+      title: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      rhythmable_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER.UNSIGNED,
+      },
+      rhythmable_type: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE,

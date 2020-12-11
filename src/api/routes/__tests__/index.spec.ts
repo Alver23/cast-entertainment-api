@@ -32,6 +32,12 @@ jest.mock('@api/roles/router/role-router', () => ({
   roleRouter: jest.fn()
 }));
 
+jest.mock('@api/students/infrastructure/routes/student', () => ({
+  studentRouter: jest.fn()
+}));
+
+
+
 describe('RouteConfig', () => {
   const app = {
     use: jest.fn(),

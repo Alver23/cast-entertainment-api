@@ -17,6 +17,10 @@ import { ArtistRepository } from '@api/artists/domain/repositories/artist-reposi
 import { BaseCrudService } from '@api/shared/base-crud/application/base-crud-service';
 
 export class ArtistService extends BaseCrudService<IArtist, any> {
+	protected schemaItem: undefined;
+
+	protected schemaItems: undefined;
+
 	constructor(repository: ArtistRepository) {
 		super(repository);
 	}

@@ -60,7 +60,7 @@ Tutor.init(
 	},
 	{
 		sequelize,
-		modelName: 'Tutor',
+		modelName: 'tutor',
 		tableName: 'tutor',
 		underscored: true,
 		paranoid: true,
@@ -68,6 +68,6 @@ Tutor.init(
 );
 
 Student.hasOne(Tutor);
-Tutor.belongsTo(Student, { as: 'student' });
+Tutor.belongsTo(Student);
 Tutor.belongsTo(Catalog, { as: 'relationship', foreignKey: 'relationshipId' });
 Tutor.belongsTo(Country, { as: 'country' });

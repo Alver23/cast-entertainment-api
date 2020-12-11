@@ -1,11 +1,19 @@
 
 // Services
-import { BaseCrudService } from "./base-crud-service";
+import { BaseCrudService } from "../base-crud-service";
 
 // Mocks
-import { baseCrudRepositoryMock } from "../infrastructure/persistence/mysql/base-crud-repository-mock";
+import { baseCrudRepositoryMock } from "../../infrastructure/persistence/mysql/base-crud-repository-mock";
+
+class SchemaItem {
+
+}
 
 class FakeService extends BaseCrudService<any, any> {
+
+  protected schemaItem = SchemaItem;
+  protected schemaItems: undefined;
+
   constructor(service) {
     super(service);
   }

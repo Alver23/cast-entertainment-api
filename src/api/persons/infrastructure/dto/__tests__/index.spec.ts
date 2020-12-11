@@ -10,7 +10,7 @@ import { PersonDto } from "../person";
 // Mocks
 import mocks from './mocks.json';
 
-describe('ArtistPerson', () => {
+describe('PersonDto', () => {
 
   const personMocks = {
     ...mocks,

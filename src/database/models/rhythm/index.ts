@@ -10,6 +10,8 @@ import { RhythmModel, RhythmCreationAttributes } from '@database/models/rhythm/r
 export class Rhythm extends Model<RhythmModel, RhythmCreationAttributes> implements RhythmModel {
 	public id!: number;
 
+	public title: string;
+
 	public rhythmableId: number;
 
 	public rhythmableType: string;
@@ -27,12 +29,13 @@ Rhythm.init(
 			autoIncrement: true,
 			primaryKey: true,
 		},
+		title: DataTypes.STRING,
 		rhythmableId: DataTypes.INTEGER.UNSIGNED,
 		rhythmableType: DataTypes.STRING,
 	},
 	{
 		sequelize,
-		modelName: 'Rhythm',
+		modelName: 'rhythm',
 		tableName: 'rhythm',
 		underscored: true,
 	},
