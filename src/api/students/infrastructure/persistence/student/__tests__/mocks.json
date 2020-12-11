@@ -1,0 +1,38 @@
+{
+	"caseOne": {
+		"documentType": 24,
+		"gender": 2,
+		"height": 5,
+		"countryId": 1,
+		"address": "656-3381 Tempus, Road",
+		"cellPhone": "(587) 385-0231",
+		"city": "Montelíbano",
+		"dateOfBirth": "2020-04-15 12:10:57",
+		"documentNumber": "168009027031",
+		"email": "Praesent.eu@sitametornare.edu",
+		"firstName": "Darius Sloan",
+		"lastName": "Ball",
+		"tutor": {
+			"names": "Alan Floyd Dale",
+			"address": "9602 Luctus Av.",
+			"cellPhone": "(196) 237-7409",
+			"city": "Binjai",
+			"email": "dignissim@ametornare.edu",
+			"countryId": 1,
+			"relationshipId": 14
+		},
+		"rhythms": ["Salsa", "Bachata"]
+	},
+	"caseTwo": {
+		"personId": 5,
+		"firstName": "Darius Sloan Ball edit"
+	},
+	"caseThree": {
+		"personId": 5,
+		"firstName": "Darius Sloan Ball edit",
+		"rhythms": ["Merengue"],
+		"tutor": {
+			"id": 1
+		}
+	}
+}

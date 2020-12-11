@@ -8,6 +8,10 @@ import { ArtistResponse } from "../index";
 import mocks from './mocks.json';
 import { transformerPlainToClass } from "./../../../../../../__mocks__/plain-class";
 
+jest.mock('@utils/calculate-age', () => ({
+  calculateAge: jest.fn()
+}))
+
 describe('ArtistResponse', () => {
 
   it('should get the model of artistResponse', () => {

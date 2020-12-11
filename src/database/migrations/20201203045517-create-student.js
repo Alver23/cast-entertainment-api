@@ -20,6 +20,10 @@ module.exports = {
         },
         onDelete: 'CASCADE',
       },
+      active: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: true,
+      },
       ip_address: Sequelize.STRING,
       created_at: {
         allowNull: false,

@@ -1,0 +1,63 @@
+{
+	"id": 3,
+	"active": true,
+	"personId": 5,
+	"ipAddress": null,
+	"createdAt": "2020-12-10T05:58:05.000Z",
+	"updatedAt": "2020-12-10T17:49:07.000Z",
+	"deletedAt": null,
+	"PersonId": 5,
+	"person": {
+		"id": 5,
+		"firstName": "Darius Sloan Ball edit",
+		"lastName": "Ball",
+		"email": "Praesent.eu@sitametornare.edu",
+		"dateOfBirth": "2020-04-15T17:10:57.000Z",
+		"address": "656-3381 Tempus, Road",
+		"city": "Montelíbano",
+		"cellPhone": "(587) 385-0231",
+		"gender": 2,
+		"documentType": 24,
+		"documentNumber": "168009027031",
+		"height": "5.00",
+		"countryId": 1,
+		"ipAddress": null,
+		"createdAt": "2020-12-10T05:58:05.000Z",
+		"updatedAt": "2020-12-10T17:49:07.000Z",
+		"deletedAt": null,
+		"document": {
+			"id": 24,
+			"name": "cedula",
+			"parentId": 23,
+			"description": "Cedula",
+			"createdAt": "2020-12-10T05:44:05.000Z",
+			"updatedAt": "2020-12-10T05:44:05.000Z",
+			"deletedAt": null
+		}
+	},
+	"tutor": {
+		"id": 2,
+		"studentId": 3,
+		"relationshipId": 14,
+		"countryId": 1,
+		"address": "9602 Luctus Av.",
+		"cellPhone": "(196) 237-7409",
+		"city": "Binjai",
+		"email": "dignissim@ametornare.edu",
+		"names": "Alan Floyd Dale",
+		"ipAddress": null,
+		"createdAt": "2020-12-10T05:58:05.000Z",
+		"updatedAt": "2020-12-10T05:58:05.000Z",
+		"deletedAt": null
+	},
+	"rhythm": [
+		{
+			"id": 16,
+			"title": "Merengue",
+			"rhythmableId": 3,
+			"rhythmableType": "student",
+			"createdAt": "2020-12-10T17:49:07.000Z",
+			"updatedAt": "2020-12-10T17:49:07.000Z"
+		}
+	]
+}

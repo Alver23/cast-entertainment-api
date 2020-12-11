@@ -18,6 +18,8 @@ export class Student extends Model<StudentModel, StudentCreationAttributes> impl
 
 	public personId!: number;
 
+	public active?: boolean;
+
 	// timestamps!
 	public readonly createdAt!: Date;
 
@@ -33,12 +35,13 @@ Student.init(
 			autoIncrement: true,
 			primaryKey: true,
 		},
+		active: DataTypes.BOOLEAN,
 		personId: DataTypes.INTEGER.UNSIGNED,
 		ipAddress: DataTypes.STRING,
 	},
 	{
 		sequelize,
-		modelName: 'Student',
+		modelName: 'student',
 		tableName: 'student',
 		underscored: true,
 		paranoid: true,
@@ -53,6 +56,7 @@ Student.belongsTo(Person, { as: 'person' });
 Student.hasMany(Rhythm, {
 	foreignKey: 'rhythmableId',
 	constraints: false,
+	as: 'rhythm',
 	scope: {
 		rhythmableType: 'student',
 	},

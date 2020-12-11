@@ -11,6 +11,7 @@ import { emergencyContactRouter } from '@api/emergency-contact/infrastructure/ro
 import { personRouter } from '@api/persons/infrastructure/routes/person';
 import { userRouter } from '@api/users/router/user-router';
 import { roleRouter } from '@api/roles/router/role-router';
+import { studentRouter } from '@api/students/infrastructure/routes/student';
 
 export class RouteConfig {
 	constructor(private readonly app: Application) {}
@@ -26,5 +27,6 @@ export class RouteConfig {
 		roleRouter(this.app);
 		artistRouter(this.app);
 		emergencyContactRouter(this.app);
+		studentRouter(this.app);
 	}
 }

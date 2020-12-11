@@ -1,5 +1,8 @@
 // Dependencies
-import { Expose } from 'class-transformer';
+import { Expose, Transform, Type } from 'class-transformer';
+
+// Utils
+import { calculateAge } from '@utils/calculate-age';
 
 export class PersonResponseDto {
 	@Expose()
@@ -12,6 +15,7 @@ export class PersonResponseDto {
 	email: string;
 
 	@Expose()
+	@Type(() => Date)
 	dateOfBirth: Date;
 
 	@Expose()
@@ -37,4 +41,8 @@ export class PersonResponseDto {
 
 	@Expose()
 	countryId: number;
+
+	@Expose()
+	@Transform((value, obj) => calculateAge(obj.dateOfBirth))
+	age: number;
 }
