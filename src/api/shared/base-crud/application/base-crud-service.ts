@@ -6,9 +6,9 @@ import { IBaseCrudRepository } from '@api/shared/base-crud/domain/repositories/b
 import { objectToClass } from '@utils/plain-tranformer';
 
 export abstract class BaseCrudService<T, U> implements IBaseCrudService<T, U> {
-	protected abstract schemaItem;
+	protected schemaItem;
 
-	protected abstract schemaItems;
+	protected schemaItems;
 
 	constructor(protected readonly repository: IBaseCrudRepository<T, U>) {}
 
