@@ -7,13 +7,18 @@ import { fakeServer } from "@mocks/fake-server";
 // Router
 import { teacherRouter } from "../index";
 
-// Mocks
+jest.mock('@api/teachers/infrastructure/dto/teacher', () => jest.fn());
+jest.mock('@api/teachers/infrastructure/dto/teacher/updater', () => jest.fn());
+jest.mock('@api/shared/base-crud/infrastructure/dto/retrieve', () => jest.fn());
 jest.mock('@api/teachers/infrastructure/persistence/teacher', () => ({
   TeacherRepository: require('@mocks/fake-repository').default,
 }));
 jest.mock('@api/teachers/infrastructure/controllers/teacher', () => ({
   TeacherController: require('@mocks/fake-controller').default,
 }));
+jest.mock('@api/teachers/application/teacher-service', () => ({
+  TeacherService: require('@mocks/fake-service').default,
+}))
 
 
 describe('Teacher routes', () => {

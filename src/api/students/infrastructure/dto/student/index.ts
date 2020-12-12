@@ -16,6 +16,9 @@ export class StudentCreatorDto extends PersonDto {
 	@Type(() => TutorDto)
 	tutor: TutorDto;
 
+	@Expose()
+	ipAddress: string;
+
 	@IsArray()
 	@IsString({ each: true })
 	@Expose()
