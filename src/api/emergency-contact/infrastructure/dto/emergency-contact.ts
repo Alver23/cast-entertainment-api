@@ -16,4 +16,7 @@ export class EmergencyContact extends PersonDto {
 
 	@Expose()
 	personId?: number;
+
+	@Expose()
+	ipAddress: string;
 }
