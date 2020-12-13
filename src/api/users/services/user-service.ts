@@ -4,11 +4,7 @@ import { hash } from 'bcrypt';
 // ORM
 import { sequelize } from '@core/sequelize/sequelize';
 
-// Interfaces
-import { IPersonService } from '@api/persons/services/person-service-interface';
-
-// Services
-import { personServiceInstance } from '@api/persons/services/person-service';
+import { PersonRepository } from '@api/persons/infrastructure/persistence/person-repository';
 
 // Database Models
 import { User } from '@database/models/user';
@@ -24,7 +20,7 @@ export class UserService implements IUserService {
 
 	private readonly excludeAttributes = ['PersonId', 'password'];
 
-	constructor(private readonly personService: IPersonService) {}
+	constructor(private readonly personService: PersonRepository) {}
 
 	private async hashedPassword(password): Promise<string> {
 		return hash(password, this.saltRound);
@@ -50,7 +46,7 @@ export class UserService implements IUserService {
 		try {
 			const { password, ipAddress, rolesId } = data;
 			return await sequelize.transaction(async (transaction) => {
-				const personInstance: any = await this.personService.create(data, transaction);
+				const personInstance: any = await this.personService.create(data, { transaction });
 				const hashedPassword = await this.hashedPassword(password);
 				const userModel = await personInstance.createUser({ ipAddress, password: hashedPassword }, { transaction });
 				await userModel.addRoles(rolesId, { transaction });
@@ -90,4 +86,4 @@ export class UserService implements IUserService {
 	}
 }
 
-export const userServiceInstance = new UserService(personServiceInstance);
+export const userServiceInstance = new UserService(new PersonRepository());

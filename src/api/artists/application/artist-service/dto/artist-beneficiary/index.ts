@@ -2,9 +2,9 @@
 import { Expose } from 'class-transformer';
 
 // Dto`s
-import { ArtistPersonResponse } from '@api/artists/application/artist-service/dto/artist-person';
+import { PersonResponseDto } from '@api/persons/application/dto/person';
 
-export class ArtistBeneficiaryResponse extends ArtistPersonResponse {
+export class ArtistBeneficiaryResponse extends PersonResponseDto {
 	@Expose()
 	id?: number;
 

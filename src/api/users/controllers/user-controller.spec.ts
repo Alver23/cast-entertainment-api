@@ -3,25 +3,18 @@ import { UserController } from "./user-controller";
 
 // Services
 import { userServiceInstance } from "@api/users/services/user-service";
-import { personServiceInstance } from "@api/persons/services/person-service";
 
 // Mocks
 import mocks from '@api/users/mocks.json';
-import personMock from '@database/models/person/mocks.json';
 import { mockRequest, mockResponse } from '@mocks/fake-request';
 
 jest.mock('@api/users/services/user-service', () => require('@api/users/services/user-service-mock').userServiceMock);
-jest.mock('@api/persons/services/person-service', () => require('@api/persons/services/person-service-mock').personServiceMock);
 
 describe('UserController', () => {
   let controller: UserController;
-  const personMocks = {
-    ...personMock,
-    dateOfBirth: new Date(),
-  }
 
   beforeEach(() => {
-    controller = new UserController(userServiceInstance, personServiceInstance);
+    controller = new UserController(userServiceInstance);
   });
 
   describe('getUsers method', () => {
@@ -83,7 +76,6 @@ describe('UserController', () => {
   describe('createUser method', () => {
 
     it('should create an new user when user not exists', async () => {
-      jest.spyOn(personServiceInstance, 'findOne').mockResolvedValue(null);
       const request = mockRequest({ body: mocks });
       const response = mockResponse();
       const next = jest.fn();
@@ -92,19 +84,9 @@ describe('UserController', () => {
       expect(next).not.toHaveBeenCalled();
     });
 
-    it('should get an error when create a new user', async () => {
-      jest.spyOn(personServiceInstance, 'findOne').mockResolvedValue(personMocks);
-      const request = mockRequest({ body: mocks });
-      const response = mockResponse();
-      const next = jest.fn();
-      await controller.createUser(request, response, next);
-      expect(next).toHaveBeenCalled();
-      expect(response.json).not.toHaveBeenCalled();
-    });
 
     it('should return an error', async () => {
       const errorMessage: Error = new Error('Network Error');
-      jest.spyOn(personServiceInstance, 'findOne').mockResolvedValue(null);
       jest.spyOn(userServiceInstance, 'create').mockRejectedValue(errorMessage);
       const request: any = mockRequest({ body: {} });
       const response: any = mockResponse();

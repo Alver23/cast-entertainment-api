@@ -1,6 +1,7 @@
 // Services
-import { authServiceInstance } from "./auth-service";
-import { personServiceInstance } from "@api/persons/services/person-service";
+import { AuthService } from "./auth-service";
+import { userServiceInstance } from "@api/users/services/user-service";
+import { PersonRepository } from "@api/persons/infrastructure/persistence/person-repository";
 
 // Database Models
 import { Token } from "@database/models/token";
@@ -19,10 +20,20 @@ jest.mock('@config/index', () => ({
   }
 }));
 jest.mock('@api/users/services/user-service', () => require('@api/users/services/user-service-mock').userServiceMock);
-jest.mock('@api/persons/services/person-service', () => require('@api/persons/services/person-service-mock').personServiceMock);
+jest.mock('@api/persons/infrastructure/persistence/person-repository', () => ({
+  PersonRepository: require('@api/persons/infrastructure/persistence/person-repository-mock').default
+}));
 jest.mock('@database/models/token', () => require('@database/models/token/token-mock').tokenMock);
 
 describe('AuthService', () => {
+
+  let personRepository: PersonRepository;
+  let authServiceInstance: AuthService;
+
+  beforeAll(() => {
+    personRepository = new PersonRepository();
+    authServiceInstance = new AuthService(userServiceInstance, personRepository);
+  });
 
   const expectedProperties = () => ({
     id: expect.any(Number),
@@ -56,7 +67,7 @@ describe('AuthService', () => {
     });
 
     it('should get null', () => {
-      jest.spyOn(personServiceInstance, 'findOne').mockResolvedValue({} as any);
+      jest.spyOn(personRepository, 'findOne').mockResolvedValue({} as any);
       return authServiceInstance
         .getUser('fake')
         .then((response) => {
@@ -74,7 +85,7 @@ describe('AuthService', () => {
           getRoles: () => null,
         }),
       }
-      jest.spyOn(personServiceInstance, 'findOne').mockResolvedValue(findOneMock);
+      jest.spyOn(personRepository, 'findOne').mockResolvedValue(findOneMock);
       return authServiceInstance
         .getUser('fake')
         .then((response) => {

@@ -20,7 +20,7 @@ jest.mock('@api/emergency-contact/infrastructure/routes/emergency-contact-routes
   emergencyContactRouter: jest.fn()
 }));
 
-jest.mock('@api/persons/router/person-router', () => ({
+jest.mock('@api/persons/infrastructure/routes/person', () => ({
   personRouter: jest.fn()
 }));
 
@@ -31,6 +31,16 @@ jest.mock('@api/users/router/user-router', () => ({
 jest.mock('@api/roles/router/role-router', () => ({
   roleRouter: jest.fn()
 }));
+
+jest.mock('@api/students/infrastructure/routes/student', () => ({
+  studentRouter: jest.fn()
+}));
+
+jest.mock('@api/teachers/infrastructure/routes/teacher', () => ({
+  teacherRouter: jest.fn()
+}));
+
+
 
 describe('RouteConfig', () => {
   const app = {

@@ -1,7 +1,7 @@
 // Entities
-import { IArtistPerson } from '@api/artists/domain/entities/artist-person/artist-person-entity';
+import { IPersonEntity } from '@api/persons/domain/entities/person';
 
-export interface IEmergencyContact extends IArtistPerson {
+export interface IEmergencyContact extends IPersonEntity {
 	personId?: number;
 	relationshipId: number;
 }

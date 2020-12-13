@@ -40,7 +40,7 @@ EmergencyContact.init(
 	{
 		sequelize,
 		modelName: 'EmergencyContact',
-		tableName: 'emergency_contacts',
+		tableName: 'emergency_contact',
 		underscored: true,
 		paranoid: true,
 		defaultScope: {

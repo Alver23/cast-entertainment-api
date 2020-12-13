@@ -52,7 +52,7 @@ Artist.init(
 	{
 		sequelize,
 		modelName: 'Artist',
-		tableName: 'artists',
+		tableName: 'artist',
 		underscored: true,
 		paranoid: true,
 		defaultScope: {

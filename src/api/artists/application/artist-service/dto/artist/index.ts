@@ -2,13 +2,13 @@
 import { Expose, Type } from 'class-transformer';
 
 // Dto's
-import { ArtistPersonResponse } from '@api/artists/application/artist-service/dto/artist-person';
 import { ArtistPassportResponse } from '@api/artists/application/artist-service/dto/artist-passport';
-import { ArtistEmergencyContactResponse } from '@api/artists/application/artist-service/dto/artist-emergency-contact';
 import { ArtistSkillResponse } from '@api/artists/application/artist-service/dto/artist-skills';
 import { ArtistBeneficiaryResponse } from '@api/artists/application/artist-service/dto/artist-beneficiary';
+import { PersonResponseDto } from '@api/persons/application/dto/person';
+import { EmergencyContactResponse } from '@api/emergency-contact/application/dto/emergency-contact';
 
-export class ArtistResponse extends ArtistPersonResponse {
+export class ArtistResponse extends PersonResponseDto {
 	@Expose()
 	id: number;
 
@@ -28,8 +28,8 @@ export class ArtistResponse extends ArtistPersonResponse {
 	fullNamesMother: string;
 
 	@Expose()
-	@Type(() => ArtistEmergencyContactResponse)
-	emergencyContact: ArtistEmergencyContactResponse;
+	@Type(() => EmergencyContactResponse)
+	emergencyContact: EmergencyContactResponse;
 
 	@Expose()
 	@Type(() => ArtistPassportResponse)

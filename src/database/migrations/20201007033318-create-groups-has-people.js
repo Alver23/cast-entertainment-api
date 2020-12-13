@@ -25,7 +25,7 @@ module.exports = {
         type: Sequelize.INTEGER.UNSIGNED,
         references: {
           model: {
-            tableName: 'groups',
+            tableName: 'group',
           },
           key: 'id'
         },

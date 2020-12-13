@@ -28,7 +28,7 @@ MenuHasRole.init(
 	{
 		sequelize,
 		modelName: 'MenuHasRole',
-		tableName: 'menu_has_roles',
+		tableName: 'menu_has_role',
 		underscored: true,
 	},
 );

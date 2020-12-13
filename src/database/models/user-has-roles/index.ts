@@ -28,7 +28,7 @@ UserHasRole.init(
 	{
 		sequelize,
 		modelName: 'UserHasRole',
-		tableName: 'user_has_roles',
+		tableName: 'user_has_role',
 		underscored: true,
 		paranoid: true,
 	},

@@ -35,7 +35,7 @@ Catalog.init(
 	{
 		sequelize,
 		modelName: 'Catalog',
-		tableName: 'catalogs',
+		tableName: 'catalog',
 		underscored: true,
 		paranoid: true,
 	},

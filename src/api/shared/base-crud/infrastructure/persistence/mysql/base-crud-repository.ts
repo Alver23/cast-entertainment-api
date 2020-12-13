@@ -1,5 +1,5 @@
 // Dependencies
-import { Transaction, EmptyResultError } from 'sequelize';
+import { Transaction } from 'sequelize';
 
 // Shared
 import {
@@ -12,18 +12,18 @@ import {
 import { entityUtils } from '@api/shared/base-crud/infrastructure/persistence/mysql/utils/entity';
 
 export abstract class BaseCrudRepository<K extends IBaseModel, T, U> implements IBaseCrudRepository<T, U> {
-	constructor(private readonly model: K) {}
+	constructor(protected readonly model: K) {}
 
-	create(data: T): Promise<U> {
-		return this.model.create(data);
+	create(data: T, options = {}): Promise<U> {
+		return this.model.create(data, options);
 	}
 
 	deleteOne(id: number | string): Promise<U> {
 		return this.model.destroy({ where: { id } });
 	}
 
-	findAll(): Promise<U[]> {
-		return this.model.findAll();
+	findAll(options = {}): Promise<U[]> {
+		return this.model.findAll(options);
 	}
 
 	async findOne({ query, options = {} }: IQueryParams): Promise<U> {
