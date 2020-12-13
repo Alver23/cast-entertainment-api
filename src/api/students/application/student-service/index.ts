@@ -11,7 +11,7 @@ import { BaseCrudService } from '@api/shared/base-crud/application/base-crud-ser
 import { StudentItemDto } from './dto/student/item';
 import { StudentItemsDto } from './dto/student/items';
 
-export class StudentService extends BaseCrudService<IStudentEntity, IStudentEntity> {
+export class StudentService extends BaseCrudService<IStudentEntity, IStudentEntity, IStudentRepository> {
 	protected schemaItem = StudentItemDto;
 
 	protected schemaItems = StudentItemsDto;

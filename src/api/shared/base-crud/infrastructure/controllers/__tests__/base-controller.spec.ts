@@ -1,11 +1,11 @@
 // Dependencies
-import { getMockReq, getMockRes } from '@jest-mock/express'
+import { getMockReq, getMockRes } from '@jest-mock/express';
 
 // Controller
-import { BaseController } from "./base-controller";
+import { BaseController } from "../base-controller";
 
 // Mocks
-import { baseCrudServiceMock, errorServiceMessage } from "../../application/base-crud-service-mock";
+import { baseCrudServiceMock } from "../../../application/base-crud-service-mock";
 
 class FakeClass extends BaseController<any, any, any> {
   constructor(service) {

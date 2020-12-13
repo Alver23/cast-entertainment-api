@@ -12,7 +12,7 @@ import {
 import { entityUtils } from '@api/shared/base-crud/infrastructure/persistence/mysql/utils/entity';
 
 export abstract class BaseCrudRepository<K extends IBaseModel, T, U> implements IBaseCrudRepository<T, U> {
-	constructor(private readonly model: K) {}
+	constructor(protected readonly model: K) {}
 
 	create(data: T, options = {}): Promise<U> {
 		return this.model.create(data, options);
@@ -22,8 +22,8 @@ export abstract class BaseCrudRepository<K extends IBaseModel, T, U> implements 
 		return this.model.destroy({ where: { id } });
 	}
 
-	findAll(): Promise<U[]> {
-		return this.model.findAll();
+	findAll(options = {}): Promise<U[]> {
+		return this.model.findAll(options);
 	}
 
 	async findOne({ query, options = {} }: IQueryParams): Promise<U> {

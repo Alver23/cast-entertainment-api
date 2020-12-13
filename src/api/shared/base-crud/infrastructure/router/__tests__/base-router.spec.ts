@@ -2,13 +2,13 @@
 import supertest from 'supertest';
 
 // Server
-import { fakeServer } from "../../../../__mocks__/fake-server";
+import { fakeServer } from "@mocks/fake-server";
 
 // Router
-import { baseRouter } from "./base-router";
+import { baseRouter } from "../base-router";
 
 // Mocks
-import { baseControllerMock } from "../controllers/base-controller-mock";
+import { baseControllerMock } from "../../controllers/base-controller-mock";
 
 describe('baseRouter', () => {
   const path = '/fake-path';

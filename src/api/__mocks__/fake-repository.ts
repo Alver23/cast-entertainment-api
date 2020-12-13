@@ -12,4 +12,8 @@ export default class FakeRepository {
   async findOrCreate() {
     return 1;
   }
+
+  async findAll() {
+    return [1, 2];
+  }
 }

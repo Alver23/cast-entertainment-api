@@ -9,7 +9,7 @@ class SchemaItem {
 
 }
 
-class FakeService extends BaseCrudService<any, any> {
+class FakeService extends BaseCrudService<any, any, any> {
 
   protected schemaItem = SchemaItem;
   protected schemaItems: undefined;
