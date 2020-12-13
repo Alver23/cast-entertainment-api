@@ -8,3 +8,8 @@ export interface ITeacherEntity extends IPersonEntity {
 	personId?: number;
 	rhythms: IRhythmEntity[];
 }
+
+export interface ITeacherArtist {
+	artistIds: number[];
+	ipAddress: string;
+}

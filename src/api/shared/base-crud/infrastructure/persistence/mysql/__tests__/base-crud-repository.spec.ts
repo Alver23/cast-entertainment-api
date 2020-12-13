@@ -1,5 +1,5 @@
 // Repository
-import { BaseCrudRepository } from "./base-crud-repository";
+import { BaseCrudRepository } from "../base-crud-repository";
 
 class FakeRepository extends BaseCrudRepository<any, any, any> {
   constructor(model) {

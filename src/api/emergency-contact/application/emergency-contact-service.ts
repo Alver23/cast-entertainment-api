@@ -7,7 +7,7 @@ import { IEmergencyContactRepository } from '@api/emergency-contact/domain/repos
 // Shared
 import { BaseCrudService } from '@api/shared/base-crud/application/base-crud-service';
 
-export class EmergencyContactService extends BaseCrudService<IEmergencyContact, IEmergencyContact> {
+export class EmergencyContactService extends BaseCrudService<IEmergencyContact, IEmergencyContact, IEmergencyContactRepository> {
 	protected schemaItem: undefined;
 
 	protected schemaItems: undefined;

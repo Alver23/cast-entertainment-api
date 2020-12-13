@@ -16,7 +16,7 @@ import { artistPassportService } from '@api/artists/application/passport-service
 import { ArtistRepository } from '@api/artists/domain/repositories/artist-repository';
 import { BaseCrudService } from '@api/shared/base-crud/application/base-crud-service';
 
-export class ArtistService extends BaseCrudService<IArtist, any> {
+export class ArtistService extends BaseCrudService<IArtist, any, ArtistRepository> {
 	protected schemaItem: undefined;
 
 	protected schemaItems: undefined;

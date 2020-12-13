@@ -10,7 +10,7 @@ import { ICustomResponse } from '@core/middlewares/response/response-interface';
 import { HttpMessages, setResponseForDelete } from '@utils/index';
 
 export abstract class BaseController<T, U, S extends IBaseCrudService<T, U>> {
-	constructor(private readonly baseService: S) {}
+	constructor(protected readonly baseService: S) {}
 
 	public async getAll(req: Request, res: ICustomResponse): Promise<any> {
 		const response = await this.baseService.getAll();
