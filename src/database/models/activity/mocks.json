@@ -1,0 +1,10 @@
+{
+	"id": 12,
+	"name": "fake name",
+	"description": "fake description",
+	"date": "2020-12-12T05:00:00.000Z",
+	"startTime": "12:12",
+	"endTime": "12:12",
+	"createdAt": "2020-11-26T02:24:10.000Z",
+	"updatedAt": "2020-11-26T02:31:44.000Z"
+}
