@@ -1,20 +1,20 @@
 // Dependencies
 import { Expose } from 'class-transformer';
-import { IsNotEmpty, ValidateIf } from 'class-validator';
+import { IsNumber, ValidateIf } from 'class-validator';
 
 // Utils
 import { isNotNull } from '@utils/custom-validation/is-not-null';
 
-export class ItineraryUpdaterDto {
+export class ItineraryActivityUpdaterDto {
 	@ValidateIf((object, value) => isNotNull(value))
-	@IsNotEmpty()
+	@IsNumber()
 	@Expose()
-	name: string;
+	itineraryId: number;
 
 	@ValidateIf((object, value) => isNotNull(value))
-	@IsNotEmpty()
+	@IsNumber()
 	@Expose()
-	description: string;
+	activityId: number;
 
 	@Expose()
 	ipAddress: string;

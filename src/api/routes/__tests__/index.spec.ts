@@ -48,6 +48,10 @@ jest.mock('@api/itineraries/infrastructure/routes/itinerary', () => ({
   itineraryRouter: jest.fn()
 }));
 
+jest.mock('@api/itineraries/infrastructure/routes/itinerary-activity', () => ({
+  itineraryActivityRouter: jest.fn()
+}));
+
 
 describe('RouteConfig', () => {
   const app = {

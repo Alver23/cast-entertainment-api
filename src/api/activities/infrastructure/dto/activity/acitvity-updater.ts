@@ -6,9 +6,6 @@ import { IsNotEmpty, ValidateIf } from 'class-validator';
 import { isNotNull } from '@utils/custom-validation/is-not-null';
 
 export class ActivityUpdaterDto {
-	@Expose()
-	id?: number;
-
 	@ValidateIf((object, value) => isNotNull(value))
 	@IsNotEmpty()
 	@Expose()

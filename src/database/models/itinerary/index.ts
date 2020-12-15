@@ -5,7 +5,7 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '@core/sequelize/sequelize';
 
 // Models
-import { ItineraryHasActivity } from '@database/models/Itinerary-has-activity';
+import { ItineraryHasActivity } from '@database/models/itinerary-has-activity';
 
 // Interfaces
 import { ItineraryCreationAttributes, ItineraryModel } from './itinerary-interface';
