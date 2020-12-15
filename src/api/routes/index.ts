@@ -13,6 +13,7 @@ import { userRouter } from '@api/users/router/user-router';
 import { roleRouter } from '@api/roles/router/role-router';
 import { studentRouter } from '@api/students/infrastructure/routes/student';
 import { teacherRouter } from '@api/teachers/infrastructure/routes/teacher';
+import { activityRouter } from '@api/activities/infrastructure/routes/activity';
 
 export class RouteConfig {
 	constructor(private readonly app: Application) {}
@@ -30,5 +31,6 @@ export class RouteConfig {
 		emergencyContactRouter(this.app);
 		studentRouter(this.app);
 		teacherRouter(this.app);
+		activityRouter(this.app);
 	}
 }
