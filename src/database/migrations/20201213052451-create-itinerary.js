@@ -11,9 +11,7 @@ module.exports = {
       },
       name: Sequelize.STRING,
       description: Sequelize.TEXT,
-      ip_address: {
-        type: Sequelize.STRING
-      },
+      ip_address: Sequelize.STRING,
       created_at: {
         allowNull: false,
         type: Sequelize.DATE
@@ -21,10 +19,7 @@ module.exports = {
       updated_at: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      deleted_at: {
-        type: Sequelize.DATE
-      },
+      }
     });
   },
 
