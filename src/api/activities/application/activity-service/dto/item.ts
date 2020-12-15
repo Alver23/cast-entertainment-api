@@ -1,5 +1,5 @@
 // Dependencies
-import { Expose } from 'class-transformer';
+import { Expose, Type } from 'class-transformer';
 
 export class ActivityDto {
 	@Expose()
@@ -12,6 +12,7 @@ export class ActivityDto {
 	description: string;
 
 	@Expose()
+	@Type(() => Date)
 	date: Date;
 
 	@Expose()

@@ -10,6 +10,7 @@ import { ActivityRepository } from '@api/activities/infrastructure/persistence/a
 // Dto's
 import { ActivityCreatorDto } from '@api/activities/infrastructure/dto/activity';
 import { ActivityUpdaterDto } from '@api/activities/infrastructure/dto/activity/acitvity-updater';
+import { RetrieveDto } from '@api/shared/base-crud/infrastructure/dto/retrieve';
 
 // Shared
 import { baseRouter } from '@api/shared/base-crud/infrastructure/router/base-router';
@@ -23,6 +24,7 @@ const schema = {
 	},
 	put: {
 		body: ActivityUpdaterDto,
+		params: RetrieveDto,
 	},
 };
 
