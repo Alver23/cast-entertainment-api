@@ -40,6 +40,9 @@ export class PersonDto {
 	@Expose()
 	height: number;
 
+	@Expose()
+	ipAddress: string;
+
 	@IsNotEmpty()
 	@Expose()
 	lastName: string;

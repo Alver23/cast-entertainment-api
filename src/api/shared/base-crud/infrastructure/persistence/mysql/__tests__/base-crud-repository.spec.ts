@@ -22,41 +22,34 @@ describe('BaseCrudRepository', () => {
 
   const cases: any = [
     [
-      {
-        method: 'create',
-        params: { id: 1},
-      }
+      'create',
+      { data: { id: 1 } },
+      undefined,
     ],
     [
-      {
-        method: 'deleteOne',
-        params: 1,
-        expected: 'destroy'
-      }
+      'deleteOne',
+      { id: 1 },
+      'destroy',
     ],
     [
-      {
-        method: 'findAll',
-      }
+      'findAll',
+      undefined,
+      undefined,
     ],
     [
-      {
-        method: 'findOne',
-        params: { query: { id: 1}},
-      }
+      'findOne',
+      { query: { id: 1}},
+      undefined,
     ],
     [
-      {
-        method: 'findOrCreate',
-        params: { query: { id: 1}, data: { id: 1}},
-      }
+      'findOrCreate',
+      { query: { id: 1}, data: { id: 1}},
+      undefined,
     ],
     [
-      {
-        method: 'updateOne',
-        params: { id: 1, data: { id: 1}},
-        expected: 'update'
-      }
+      'updateOne',
+      { id: 1, data: { id: 1}},
+      'update',
     ]
   ];
 
@@ -68,11 +61,16 @@ describe('BaseCrudRepository', () => {
     jest.clearAllMocks();
   });
 
-  it.each(cases)('should call the %s method', async ({ method, params, expected}) => {
-    await service[method](params);
+  it.each(cases)('should call the %s method', async (method, params, expected) => {
+    await service[method]({...params});
     expect(
-      modelMock[expected || method]
+      modelMock[expected || method],
     ).toHaveBeenCalled();
+  });
+
+  it('should call the finAll method when options is empty', async () => {
+    await service.findAll();
+    expect(modelMock.findOne).toHaveBeenCalledWith({});
   });
 
   describe('updateOrCreate method', () => {

@@ -40,6 +40,9 @@ jest.mock('@api/teachers/infrastructure/routes/teacher', () => ({
   teacherRouter: jest.fn()
 }));
 
+jest.mock('@api/activities/infrastructure/routes/activity', () => ({
+  activityRouter: jest.fn()
+}));
 
 
 describe('RouteConfig', () => {

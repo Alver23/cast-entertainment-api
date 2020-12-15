@@ -15,7 +15,7 @@ export abstract class BaseCrudRepository<K extends IBaseModel, T, U> implements 
 	constructor(protected readonly model: K) {}
 
 	create(data: T, options = {}): Promise<U> {
-		return this.model.create(data, options);
+		return this.upsert(data, null, options);
 	}
 
 	deleteOne(id: number | string): Promise<U> {
@@ -34,8 +34,8 @@ export abstract class BaseCrudRepository<K extends IBaseModel, T, U> implements 
 		return this.model.findOrCreate({ where: query, defaults: data, transaction });
 	}
 
-	updateOne(id: number | string, data: T): Promise<U> {
-		return this.model.update(data, { where: { id } });
+	async updateOne(id: number, data: T): Promise<U> {
+		return this.upsert(data, id);
 	}
 
 	async updateOrCreate<T, W>(data: T, where?: W, transaction?: Transaction): Promise<U> {
@@ -46,5 +46,18 @@ export abstract class BaseCrudRepository<K extends IBaseModel, T, U> implements 
 		}
 
 		return this.model.create(data, { transaction });
+	}
+
+	async upsert(data: T, id?: number, options = {}): Promise<U> {
+		if (id) {
+			const query = { id };
+			const buildOptions = {
+				...options,
+			};
+			await entityUtils.findEntityOrThrow(this.model, query, buildOptions);
+			await this.model.update(data, { where: query });
+			return this.model.findOne(buildOptions);
+		}
+		return this.model.create(data, options);
 	}
 }
