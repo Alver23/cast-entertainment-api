@@ -4,11 +4,10 @@ import { Model, DataTypes } from 'sequelize';
 // ORM
 import { sequelize } from '@core/sequelize/sequelize';
 
-// Interfaces
-
 // Models
-import { Activity } from '@database/models/activity';
 import { ItineraryHasActivity } from '@database/models/Itinerary-has-activity';
+
+// Interfaces
 import { ItineraryCreationAttributes, ItineraryModel } from './itinerary-interface';
 
 export class Itinerary extends Model<ItineraryModel, ItineraryCreationAttributes> implements ItineraryModel {

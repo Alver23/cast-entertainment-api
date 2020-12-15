@@ -14,9 +14,7 @@ module.exports = {
       date: Sequelize.DATEONLY,
       start_time: Sequelize.TIME,
       end_time: Sequelize.TIME,
-      ip_address: {
-        type: Sequelize.STRING
-      },
+      ip_address: Sequelize.STRING,
       created_at: {
         allowNull: false,
         type: Sequelize.DATE

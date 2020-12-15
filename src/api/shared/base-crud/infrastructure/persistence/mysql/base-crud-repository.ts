@@ -51,12 +51,9 @@ export abstract class BaseCrudRepository<K extends IBaseModel, T, U> implements 
 	async upsert(data: T, id?: number, options = {}): Promise<U> {
 		if (id) {
 			const query = { id };
-			const buildOptions = {
-				...options,
-			};
-			await entityUtils.findEntityOrThrow(this.model, query, buildOptions);
+			await entityUtils.findEntityOrThrow(this.model, query, options);
 			await this.model.update(data, { where: query });
-			return this.model.findOne(buildOptions);
+			return this.model.findOne({ where: query, ...options });
 		}
 		return this.model.create(data, options);
 	}

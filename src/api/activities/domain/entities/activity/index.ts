@@ -5,4 +5,5 @@ export interface IActivityEntity {
 	date: Date;
 	startTime: string;
 	endTime: string;
+	ipAddress: string;
 }
