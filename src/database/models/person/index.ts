@@ -55,7 +55,7 @@ Person.init(
 		firstName: DataTypes.STRING,
 		lastName: DataTypes.STRING,
 		email: DataTypes.STRING,
-		dateOfBirth: DataTypes.DATE,
+		dateOfBirth: DataTypes.DATEONLY,
 		address: DataTypes.STRING,
 		city: DataTypes.STRING,
 		cellPhone: DataTypes.STRING,

@@ -11,7 +11,7 @@ module.exports = {
       first_name: Sequelize.STRING,
       last_name: Sequelize.STRING,
       email: Sequelize.STRING,
-      date_of_birth: Sequelize.DATE,
+      date_of_birth: Sequelize.DATEONLY,
       address: Sequelize.STRING,
       city: Sequelize.STRING,
       cell_phone: Sequelize.STRING,

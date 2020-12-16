@@ -1,6 +1,9 @@
 // Middlewares
 import { ISchemaValidator } from '@core/middlewares/schema-validator/schema-validator-interface';
 
+// Dto's
+import { RetrieveDto } from '@api/shared/base-crud/infrastructure/dto/retrieve';
+
 export interface ISchemaStructure {
 	get?: ISchemaValidator;
 	getById?: ISchemaValidator;
@@ -11,8 +14,14 @@ export interface ISchemaStructure {
 
 export const defaultSchema: ISchemaStructure = {
 	get: {},
-	getById: {},
+	getById: {
+		params: RetrieveDto,
+	},
 	post: {},
-	put: {},
-	delete: {},
+	put: {
+		params: RetrieveDto,
+	},
+	delete: {
+		params: RetrieveDto,
+	},
 };
