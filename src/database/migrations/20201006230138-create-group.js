@@ -9,10 +9,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER.UNSIGNED
       },
-      name: Sequelize.STRING,
+      name: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
       description: {
         allowNull: true,
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       state: {
         type: Sequelize.DataTypes.BOOLEAN,
