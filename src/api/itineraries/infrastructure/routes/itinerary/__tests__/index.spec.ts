@@ -20,7 +20,7 @@ jest.mock('@api/itineraries/infrastructure/persistence/itinerary', () => ({
   ItineraryRepository: require('@mocks/fake-repository').default,
 }));
 
-jest.mock('@api/itineraries/applications/itinerary-service', () => ({
+jest.mock('@api/itineraries/application/itinerary-service', () => ({
   ItineraryService: require('@mocks/fake-service').default,
 }));
 

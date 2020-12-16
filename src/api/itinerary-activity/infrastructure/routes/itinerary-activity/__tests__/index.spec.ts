@@ -2,25 +2,25 @@
 import supertest from 'supertest';
 
 // Mocks
-import { fakeServer } from "@mocks/fake-server";
+import { fakeServer } from "../../../../../__mocks__/fake-server";
 
 // Router
 import { itineraryActivityRouter } from "../index";
 
 // Mocks
-jest.mock('@api/itineraries/infrastructure/dto/itinerary-activity', () => jest.fn());
-jest.mock('@api/itineraries/infrastructure/dto/itinerary-activity/itinerary-activity-updater', () => jest.fn());
+jest.mock('@api/itinerary-activity/infrastructure/dto/itinerary-activity', () => jest.fn());
+jest.mock('@api/itinerary-activity/infrastructure/dto/itinerary-activity/itinerary-activity-updater', () => jest.fn());
 jest.mock('@api/shared/base-crud/infrastructure/dto/retrieve', () => jest.fn());
 
-jest.mock('@api/itineraries/infrastructure/controllers/itinerary-activity', () => ({
+jest.mock('@api/itinerary-activity/infrastructure/controllers/itinerary-activity', () => ({
   ItineraryActivityController: require('@mocks/fake-controller').default,
 }));
 
-jest.mock('@api/itineraries/applications/itinerary-activity-service', () => ({
+jest.mock('@api/itinerary-activity/application/itinerary-activity-service', () => ({
   ItineraryActivityService: require('@mocks/fake-service').default,
 }));
 
-jest.mock('@api/itineraries/infrastructure/persistence/itinerary-activity', () => ({
+jest.mock('@api/itinerary-activity/infrastructure/persistence/itinerary-activity', () => ({
   ItineraryActivityRepository: require('@mocks/fake-repository').default,
 }));
 

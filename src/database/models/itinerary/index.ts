@@ -47,5 +47,5 @@ Itinerary.init(
 	},
 );
 
-Itinerary.hasMany(ItineraryHasActivity);
+Itinerary.hasMany(ItineraryHasActivity, { as: 'itineraryHasActivity' });
 ItineraryHasActivity.belongsTo(Itinerary);

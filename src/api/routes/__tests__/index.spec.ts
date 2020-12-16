@@ -48,7 +48,7 @@ jest.mock('@api/itineraries/infrastructure/routes/itinerary', () => ({
   itineraryRouter: jest.fn()
 }));
 
-jest.mock('@api/itineraries/infrastructure/routes/itinerary-activity', () => ({
+jest.mock('@api/itinerary-activity/infrastructure/routes/itinerary-activity', () => ({
   itineraryActivityRouter: jest.fn()
 }));
 

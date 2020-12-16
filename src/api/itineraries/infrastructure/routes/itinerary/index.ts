@@ -2,7 +2,7 @@
 import { ItineraryController } from '@api/itineraries/infrastructure/controllers/itinerary';
 
 // Services
-import { ItineraryService } from '@api/itineraries/applications/itinerary-service';
+import { ItineraryService } from '@api/itineraries/application/itinerary-service';
 
 // Repositories
 import { ItineraryRepository } from '@api/itineraries/infrastructure/persistence/itinerary';
