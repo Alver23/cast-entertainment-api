@@ -28,8 +28,6 @@ export class ArtistHasPassport extends Model<ArtistHasPassportModel, ArtistHasPa
 	public readonly createdAt!: Date;
 
 	public readonly updatedAt!: Date;
-
-	public readonly deletedAt!: Date;
 }
 
 ArtistHasPassport.init(
@@ -50,6 +48,5 @@ ArtistHasPassport.init(
 		modelName: 'ArtistHasPassport',
 		tableName: 'artist_has_passport',
 		underscored: true,
-		paranoid: true,
 	},
 );

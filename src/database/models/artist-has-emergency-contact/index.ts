@@ -21,8 +21,6 @@ export class ArtistHasEmergencyContact extends Model implements ArtistHasEmergen
 	public readonly createdAt!: Date;
 
 	public readonly updatedAt!: Date;
-
-	public readonly deletedAt!: Date;
 }
 
 ArtistHasEmergencyContact.init(
@@ -41,7 +39,6 @@ ArtistHasEmergencyContact.init(
 		modelName: 'ArtistHasEmergencyContact',
 		tableName: 'artist_has_emergency_contact',
 		underscored: true,
-		paranoid: true,
 		defaultScope: {
 			include: 'emergencyContact',
 		},

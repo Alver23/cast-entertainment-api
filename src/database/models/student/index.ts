@@ -24,8 +24,6 @@ export class Student extends Model<StudentModel, StudentCreationAttributes> impl
 	public readonly createdAt!: Date;
 
 	public readonly updatedAt!: Date;
-
-	public readonly deletedAt!: Date;
 }
 
 Student.init(
@@ -44,7 +42,6 @@ Student.init(
 		modelName: 'student',
 		tableName: 'student',
 		underscored: true,
-		paranoid: true,
 		defaultScope: {
 			include: 'person',
 		},

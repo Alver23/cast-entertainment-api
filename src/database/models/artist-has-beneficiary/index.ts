@@ -32,8 +32,6 @@ export class ArtistHasBeneficiary extends Model<ArtistHasBeneficiaryModel, Artis
 	public readonly createdAt!: Date;
 
 	public readonly updatedAt!: Date;
-
-	public readonly deletedAt!: Date;
 }
 
 ArtistHasBeneficiary.init(
@@ -54,7 +52,6 @@ ArtistHasBeneficiary.init(
 		modelName: 'ArtistHasBeneficiary',
 		tableName: 'artist_has_beneficiary',
 		underscored: true,
-		paranoid: true,
 		defaultScope: {
 			include: [{ association: 'relationship' }, { association: 'person' }],
 		},
