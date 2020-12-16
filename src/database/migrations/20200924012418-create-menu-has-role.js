@@ -18,6 +18,7 @@ module.exports = {
           },
           key: 'id'
         },
+        onDelete: 'CASCADE',
       },
       menu_id: {
         allowNull: false,
@@ -28,10 +29,9 @@ module.exports = {
           },
           key: 'id'
         },
+        onDelete: 'CASCADE',
       },
-      ip_address: {
-        type: Sequelize.STRING
-      },
+      ip_address: Sequelize.STRING,
       created_at: {
         allowNull: false,
         type: Sequelize.DATE

@@ -27,6 +27,7 @@ module.exports = {
           },
           key: 'id'
         },
+        onDelete: 'CASCADE',
       },
       ip_address: Sequelize.STRING,
       created_at: {
@@ -37,7 +38,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      deleted_at: Sequelize.DATE,
     });
   },
 

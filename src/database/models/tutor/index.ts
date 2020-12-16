@@ -37,8 +37,6 @@ export class Tutor extends Model<TutorModel, TutorCreationAttributes> implements
 	public readonly createdAt!: Date;
 
 	public readonly updatedAt!: Date;
-
-	public readonly deletedAt!: Date;
 }
 
 Tutor.init(
@@ -63,7 +61,6 @@ Tutor.init(
 		modelName: 'tutor',
 		tableName: 'tutor',
 		underscored: true,
-		paranoid: true,
 	},
 );
 

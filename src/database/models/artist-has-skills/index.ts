@@ -21,8 +21,6 @@ export class ArtistHasSkill extends Model implements ArtistHasSkillModel {
 	public readonly createdAt!: Date;
 
 	public readonly updatedAt!: Date;
-
-	public readonly deletedAt!: Date;
 }
 
 ArtistHasSkill.init(
@@ -41,7 +39,6 @@ ArtistHasSkill.init(
 		modelName: 'ArtistHasSkill',
 		tableName: 'artist_has_skill',
 		underscored: true,
-		paranoid: true,
 		defaultScope: {
 			include: 'skill',
 		},

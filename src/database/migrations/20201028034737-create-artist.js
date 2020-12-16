@@ -40,9 +40,7 @@ module.exports = {
       },
       full_names_father: Sequelize.STRING,
       full_names_mother: Sequelize.STRING,
-      ip_address: {
-        type: Sequelize.STRING
-      },
+      ip_address: Sequelize.STRING,
       created_at: {
         allowNull: false,
         type: Sequelize.DATE
@@ -50,10 +48,7 @@ module.exports = {
       updated_at: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      deleted_at: {
-        type: Sequelize.DATE
-      },
+      }
     });
   },
 

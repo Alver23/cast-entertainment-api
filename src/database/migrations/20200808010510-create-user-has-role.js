@@ -17,6 +17,7 @@ module.exports = {
           },
           key: 'id'
         },
+        onDelete: 'CASCADE',
       },
       role_id: {
         allowNull: false,
@@ -27,19 +28,15 @@ module.exports = {
           },
           key: 'id'
         },
+        onDelete: 'CASCADE',
       },
-      ip_address: {
-        type: Sequelize.STRING
-      },
+      ip_address: Sequelize.STRING,
       created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
       updated_at: {
         allowNull: false,
-        type: Sequelize.DATE
-      },
-      deleted_at: {
         type: Sequelize.DATE
       },
     });
