@@ -4,3 +4,4 @@ node_modules
 *.spec.ts
 src/api/__mocks__
 *-mock.ts
+*mock.ts
