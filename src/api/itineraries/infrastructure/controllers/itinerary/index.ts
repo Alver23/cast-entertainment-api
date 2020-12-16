@@ -2,7 +2,7 @@
 import { IItineraryEntity } from '@api/itineraries/domain/entities/itinerary';
 
 // Interfaces
-import { IItineraryService } from '@api/itineraries/applications/itinerary-service/itinerary-interfaces';
+import { IItineraryService } from '@api/itineraries/application/itinerary-service/itinerary-interfaces';
 
 // Shared
 import { BaseController } from '@api/shared/base-crud/infrastructure/controllers/base-controller';

@@ -1,15 +1,15 @@
 // Controllers
-import { ItineraryActivityController } from '@api/itineraries/infrastructure/controllers/itinerary-activity';
+import { ItineraryActivityController } from '@api/itinerary-activity/infrastructure/controllers/itinerary-activity';
 
 // Services
-import { ItineraryActivityService } from '@api/itineraries/applications/itinerary-activity-service';
+import { ItineraryActivityService } from '@api/itinerary-activity/application/itinerary-activity-service';
 
 // Repositories
-import { ItineraryActivityRepository } from '@api/itineraries/infrastructure/persistence/itinerary-activity';
+import { ItineraryActivityRepository } from '@api/itinerary-activity/infrastructure/persistence/itinerary-activity';
 
 // Dto's
-import { ItineraryActivityCreatorDto } from '@api/itineraries/infrastructure/dto/itinerary-activity';
-import { ItineraryActivityUpdaterDto } from '@api/itineraries/infrastructure/dto/itinerary-activity/itinerary-activity-updater';
+import { ItineraryActivityCreatorDto } from '@api/itinerary-activity/infrastructure/dto/itinerary-activity';
+import { ItineraryActivityUpdaterDto } from '@api/itinerary-activity/infrastructure/dto/itinerary-activity/itinerary-activity-updater';
 import { RetrieveDto } from '@api/shared/base-crud/infrastructure/dto/retrieve';
 
 // Shared

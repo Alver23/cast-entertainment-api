@@ -1,8 +1,8 @@
 // Entities
-import { IItineraryActivityEntity } from '@api/itineraries/domain/entities/itinerary-activity';
+import { IItineraryActivityEntity } from '@api/itinerary-activity/domain/entities/itinerary-activity';
 
 // Interfaces
-import { IItineraryActivityService } from '@api/itineraries/applications/itinerary-activity-service/itinerary-activity-interfaces';
+import { IItineraryActivityService } from '@api/itinerary-activity/application/itinerary-activity-service/itinerary-activity-interfaces';
 
 // Shared
 import { BaseController } from '@api/shared/base-crud/infrastructure/controllers/base-controller';
