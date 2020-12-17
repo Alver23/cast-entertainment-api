@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.18.0](https://github.com/Alver23/cast-entertainment/compare/v1.17.0...v1.18.0) (2020-12-17)
+
+
+### Features
+
+* added activities in the itenerary ([b964ae9](https://github.com/Alver23/cast-entertainment/commit/b964ae9b52edd5c08313c5885e67ab0e2f4e6e5a))
+* added group crud ([35cb281](https://github.com/Alver23/cast-entertainment/commit/35cb281d143f2cf82642f429583a7bfcf94ab4fa))
+* added itinerary activity api ([#37](https://github.com/Alver23/cast-entertainment/issues/37)) ([77bebf0](https://github.com/Alver23/cast-entertainment/commit/77bebf0385b767c0e0dcc4cc182e6e6ab51cb508))
+* added itinerary module ([#36](https://github.com/Alver23/cast-entertainment/issues/36)) ([2aa299a](https://github.com/Alver23/cast-entertainment/commit/2aa299a7d639d43553ea04d11fd4690e6f839c83))
+* added tables and models ([#34](https://github.com/Alver23/cast-entertainment/issues/34)) ([fb1f317](https://github.com/Alver23/cast-entertainment/commit/fb1f317d53250a7322b028fb4818d1ff4edca49e))
+* added tables and models for group module ([#41](https://github.com/Alver23/cast-entertainment/issues/41)) ([af17950](https://github.com/Alver23/cast-entertainment/commit/af17950cddbd9c0df5cc4fa813c6768a41d0cafa))
+* remove field deleted_at ([c5b380f](https://github.com/Alver23/cast-entertainment/commit/c5b380f8b210cdbbf818a4c6ebc7d80f5f6d10f5))
+
 ## [1.17.0](https://github.com/Alver23/cast-entertainment/compare/v1.16.2...v1.17.0) (2020-12-16)
 
 ## [1.16.0](https://github.com/Alver23/cast-entertainment/compare/v1.15.2...v1.16.0) (2020-12-13)
