@@ -10,19 +10,18 @@ module.exports = {
         type: Sequelize.INTEGER.UNSIGNED
       },
       name: {
-        type: Sequelize.STRING
+        allowNull: true,
+        type: Sequelize.STRING,
       },
       description: {
         allowNull: true,
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       state: {
         type: Sequelize.DataTypes.BOOLEAN,
         defaultValue: false,
       },
-      ip_address: {
-        type: Sequelize.STRING
-      },
+      ip_address: Sequelize.STRING,
       created_at: {
         allowNull: false,
         type: Sequelize.DATE
@@ -30,10 +29,7 @@ module.exports = {
       updated_at: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      deleted_at: {
-        type: Sequelize.DATE
-      },
+      }
     });
   },
 

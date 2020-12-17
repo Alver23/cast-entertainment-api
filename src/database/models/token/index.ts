@@ -33,7 +33,6 @@ Token.init(
 		modelName: 'Token',
 		tableName: 'token',
 		underscored: true,
-		paranoid: true,
 		timestamps: false,
 	},
 );

@@ -52,6 +52,10 @@ jest.mock('@api/itinerary-activity/infrastructure/routes/itinerary-activity', ()
   itineraryActivityRouter: jest.fn()
 }));
 
+jest.mock('@api/groups/infrastructure/routes/group', () => ({
+  groupRouter: jest.fn()
+}));
+
 
 describe('RouteConfig', () => {
   const app = {

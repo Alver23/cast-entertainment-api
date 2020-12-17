@@ -43,7 +43,6 @@ User.init(
 		modelName: 'User',
 		tableName: 'user',
 		underscored: true,
-		paranoid: true,
 	},
 );
 

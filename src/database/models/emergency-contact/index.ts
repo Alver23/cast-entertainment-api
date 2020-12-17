@@ -22,8 +22,6 @@ export class EmergencyContact extends Model<EmergencyContactModel, EmergencyCont
 	public readonly createdAt!: Date;
 
 	public readonly updatedAt!: Date;
-
-	public readonly deletedAt!: Date;
 }
 
 EmergencyContact.init(
@@ -42,7 +40,6 @@ EmergencyContact.init(
 		modelName: 'EmergencyContact',
 		tableName: 'emergency_contact',
 		underscored: true,
-		paranoid: true,
 		defaultScope: {
 			include: [{ association: 'person' }, { association: 'relationship' }],
 		},

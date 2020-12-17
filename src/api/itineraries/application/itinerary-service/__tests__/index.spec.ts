@@ -5,7 +5,8 @@ import { ItineraryService } from "../index";
 import { BaseCrudService } from "@api/shared/base-crud/application/base-crud-service";
 
 // Mocks
-jest.mock('../dto/item', () => jest.fn());
+jest.mock('./../dto/itinerary', () => jest.fn());
+jest.mock('./../dto/itinerary/itinerary-list', () => jest.fn());
 
 describe('ItineraryService', () => {
   let service: ItineraryService;

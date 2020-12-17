@@ -41,8 +41,6 @@ export class Person extends Model<PersonModel, PersonCreationAttributes> impleme
 	public readonly createdAt!: Date;
 
 	public readonly updatedAt!: Date;
-
-	public readonly deletedAt!: Date;
 }
 
 Person.init(
@@ -71,7 +69,6 @@ Person.init(
 		modelName: 'Person',
 		tableName: 'people',
 		underscored: true,
-		paranoid: true,
 		defaultScope: {
 			order: [['createdAt', 'DESC']],
 			include: 'document',

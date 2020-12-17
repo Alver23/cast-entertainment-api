@@ -2,7 +2,7 @@
 import 'reflect-metadata';
 
 // Dto's
-import { ItineraryDto } from "../item";
+import { ItineraryDto } from "../index";
 
 // Mocks
 import mocks from './mocks.json';

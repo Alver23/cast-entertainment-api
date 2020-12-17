@@ -31,8 +31,6 @@ export class Artist extends Model<ArtistModel, ArtistCreationAttributes> impleme
 	public readonly createdAt!: Date;
 
 	public readonly updatedAt!: Date;
-
-	public readonly deletedAt!: Date;
 }
 
 Artist.init(
@@ -54,7 +52,6 @@ Artist.init(
 		modelName: 'Artist',
 		tableName: 'artist',
 		underscored: true,
-		paranoid: true,
 		defaultScope: {
 			include: 'person',
 		},

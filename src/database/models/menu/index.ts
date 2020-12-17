@@ -43,7 +43,6 @@ Menu.init(
 		modelName: 'Menu',
 		tableName: 'menu',
 		underscored: true,
-		paranoid: true,
 		defaultScope: {
 			order: [['orden', 'ASC']],
 		},

@@ -26,8 +26,6 @@ export class Teacher extends Model<TeacherModel, TeacherCreationAttributes> impl
 	public readonly createdAt!: Date;
 
 	public readonly updatedAt!: Date;
-
-	public readonly deletedAt!: Date;
 }
 
 Teacher.init(
@@ -47,7 +45,6 @@ Teacher.init(
 		modelName: 'teacher',
 		tableName: 'teacher',
 		underscored: true,
-		paranoid: true,
 		defaultScope: {
 			include: 'person',
 		},

@@ -31,4 +31,18 @@ describe('ItineraryRepository', () => {
     });
   });
 
+  describe('findAll method', () => {
+    it('should call method successfully', async () => {
+      const response = await repository.findAll();
+      expect(response)
+        .toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              id: expect.any(Number),
+            })
+          ])
+        )
+    });
+  });
+
 });
