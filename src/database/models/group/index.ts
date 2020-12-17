@@ -49,5 +49,5 @@ Group.init(
 	},
 );
 
-Group.hasMany(GroupItinerary);
-Group.hasMany(GroupPerson);
+Group.hasMany(GroupItinerary, { as: 'itineraries' });
+Group.hasMany(GroupPerson, { as: 'members' });

@@ -45,4 +45,4 @@ GroupPerson.init(
 	},
 );
 
-GroupPerson.belongsTo(Person);
+GroupPerson.belongsTo(Person, { as: 'person' });

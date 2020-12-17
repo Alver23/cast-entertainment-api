@@ -16,6 +16,7 @@ import { teacherRouter } from '@api/teachers/infrastructure/routes/teacher';
 import { activityRouter } from '@api/activities/infrastructure/routes/activity';
 import { itineraryRouter } from '@api/itineraries/infrastructure/routes/itinerary';
 import { itineraryActivityRouter } from '@api/itinerary-activity/infrastructure/routes/itinerary-activity';
+import { groupRouter } from '@api/groups/infrastructure/routes/group';
 
 export class RouteConfig {
 	constructor(private readonly app: Application) {}
@@ -36,5 +37,6 @@ export class RouteConfig {
 		activityRouter(this.app);
 		itineraryActivityRouter(this.app);
 		itineraryRouter(this.app);
+		groupRouter(this.app);
 	}
 }

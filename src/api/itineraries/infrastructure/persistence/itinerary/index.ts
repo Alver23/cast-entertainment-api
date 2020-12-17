@@ -10,9 +10,25 @@ import { BaseCrudRepository } from '@api/shared/base-crud/infrastructure/persist
 // Interfaces
 import { IQueryParams } from '@api/shared/base-crud/domain/repositories/base-crud-repository';
 
-export class ItineraryRepository extends BaseCrudRepository<typeof Itinerary, IItineraryEntity, IItineraryEntity> {
+// Repositories
+import { IItineraryRepository } from '@api/itineraries/domain/repositories/itinerary';
+import { Sequelize } from 'sequelize';
+
+export class ItineraryRepository extends BaseCrudRepository<typeof Itinerary, IItineraryEntity, IItineraryEntity>
+	implements IItineraryRepository {
 	constructor() {
 		super(Itinerary);
+	}
+
+	findAll(): Promise<IItineraryEntity[]> {
+		const options = {
+			attributes: {
+				include: [[Sequelize.fn('COUNT', Sequelize.col('itineraryHasActivity.id')), 'activitiesNumber']],
+			},
+			include: [{ association: 'itineraryHasActivity', attributes: [] }],
+			group: ['itinerary.id'],
+		};
+		return super.findAll(options);
 	}
 
 	async findOne({ query }: IQueryParams): Promise<IItineraryEntity> {

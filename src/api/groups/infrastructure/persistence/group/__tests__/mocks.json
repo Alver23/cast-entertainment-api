@@ -1,0 +1,14 @@
+{
+	"caseOne": {
+		"name": "fake group name 2",
+		"description": "fake group 2",
+		"members": [3],
+		"itineraries": [3],
+		"state": 0
+	},
+	"caseTwo": {
+		"name": "fake group name edit",
+		"removeMembers": [1],
+		"removeItineraries": [2]
+	}
+}

@@ -44,7 +44,6 @@ Role.init(
 		modelName: 'Role',
 		tableName: 'role',
 		underscored: true,
-		paranoid: true,
 		defaultScope: {
 			order: [['createdAt', 'DESC']],
 		},
