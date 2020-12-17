@@ -30,6 +30,5 @@ UserHasRole.init(
 		modelName: 'UserHasRole',
 		tableName: 'user_has_role',
 		underscored: true,
-		paranoid: true,
 	},
 );

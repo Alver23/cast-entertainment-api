@@ -2,7 +2,10 @@
 	"caseOne": {
 		"id": 1,
 		"name": "fake name",
-		"description": "fake description"
+		"description": "fake description",
+		"dataValues": {
+			"activitiesNumber": "3"
+		}
 	},
 	"caseTwo": {
 		"id": 1,
