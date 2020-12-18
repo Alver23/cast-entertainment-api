@@ -3,14 +3,10 @@ import { unauthorized } from '@hapi/boom';
 import { sign } from 'jsonwebtoken';
 import { uid } from 'rand-token';
 
-// Interfaces
-import { IUserService } from '@api/users/services/user-service-interface';
-
 // Config
 import { config } from '@config/index';
 
 // Services
-import { userServiceInstance } from '@api/users/services/user-service';
 import { PersonRepository } from '@api/persons/infrastructure/persistence/person-repository';
 
 // Database Models
@@ -24,7 +20,7 @@ import { IAuthService, IGetUserResponse, IRefreshTokenResponse, IUserAuth } from
 import { RoleMapper } from './models/role/role-mapper';
 
 export class AuthService implements IAuthService {
-	constructor(private readonly userService: IUserService, private readonly personService: PersonRepository) {}
+	constructor(private readonly personService: PersonRepository) {}
 
 	private ramdonToken(): string {
 		return uid(256);
@@ -32,7 +28,7 @@ export class AuthService implements IAuthService {
 
 	public async getUser(email: string): Promise<IGetUserResponse> {
 		const personModel: any = await this.personService.findOne({ query: { email } });
-		const { firstName, middleName, lastName, dateOfBirth, address, email: personEmail } = personModel;
+		const { firstName, lastName, dateOfBirth, address, email: personEmail } = personModel;
 
 		if (!personEmail) {
 			return null;
@@ -48,7 +44,6 @@ export class AuthService implements IAuthService {
 		return {
 			id,
 			firstName,
-			middleName,
 			lastName,
 			dateOfBirth,
 			address,
@@ -109,4 +104,4 @@ export class AuthService implements IAuthService {
 	}
 }
 
-export const authServiceInstance = new AuthService(userServiceInstance, new PersonRepository());
+export const authServiceInstance = new AuthService(new PersonRepository());

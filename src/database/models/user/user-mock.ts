@@ -4,29 +4,13 @@ const dbMock = new SequelizeMock();
 
 // Mocks
 import mocks from './mocks.json';
-import personMocks from '@database/models/person/mocks.json';
 
-const timestamps = {
-  createdAt: new Date(),
-  updatedAt: new Date(),
-};
-
-
-const userMockWithPerson = {
-  ...mocks,
-    person: {
-      ...personMocks,
-      dateOfBirth: new Date(),
-      ...timestamps,
-    },
-}
-
-const UserMock = dbMock.define('users');
-
-UserMock.$queryInterface.$useHandler(function(query, queryOptions, done) {
-  if (['findAll', 'findOrCreate'].includes(query)) return [UserMock.build(userMockWithPerson)];
-  if (query === 'findOne') return UserMock.build(userMockWithPerson);
-  if (query === 'findOrCreate') return [UserMock.build(userMockWithPerson)];
+const UserMock = dbMock.define('users', {...mocks}, {
+  instanceMethods: {
+    addRoles: async () => [],
+    getRoles: async () => [{id: 1}],
+    removeRoles: async () => 1,
+  }
 });
 
 export const userMock = {

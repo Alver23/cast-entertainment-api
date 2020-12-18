@@ -1,0 +1,12 @@
+{
+	"caseOne": {
+		"firstName": "first name",
+		"rolesId": [3]
+	},
+	"caseTwo": {
+		"personId": 1,
+		"name": "fake group name edit",
+		"removeMembers": [1],
+		"removeItineraries": [2]
+	}
+}

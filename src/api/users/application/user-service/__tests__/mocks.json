@@ -1,0 +1,8 @@
+{
+	"firstName": "fake name",
+	"lastName": "fake name",
+	"email": "fake@fake.com",
+	"cellPhone": "1234",
+	"password": "123456789",
+	"roles": [1]
+}
