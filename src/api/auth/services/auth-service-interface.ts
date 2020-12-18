@@ -4,7 +4,6 @@ import { IRole } from './models/role/role-interface';
 export interface IUserAuth {
 	id: number;
 	firstName: string;
-	middleName: string;
 	lastName: string;
 	dateOfBirth: string;
 	address: string;

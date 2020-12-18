@@ -24,7 +24,7 @@ jest.mock('@api/persons/infrastructure/routes/person', () => ({
   personRouter: jest.fn()
 }));
 
-jest.mock('@api/users/router/user-router', () => ({
+jest.mock('@api/users/infrastructure/routes', () => ({
   userRouter: jest.fn()
 }));
 
