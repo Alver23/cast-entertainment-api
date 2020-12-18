@@ -1,6 +1,5 @@
 // Services
 import { AuthService } from "./auth-service";
-import { userServiceInstance } from "@api/users/services/user-service";
 import { PersonRepository } from "@api/persons/infrastructure/persistence/person-repository";
 
 // Database Models
@@ -19,7 +18,6 @@ jest.mock('@config/index', () => ({
     },
   }
 }));
-jest.mock('@api/users/services/user-service', () => require('@api/users/services/user-service-mock').userServiceMock);
 jest.mock('@api/persons/infrastructure/persistence/person-repository', () => ({
   PersonRepository: require('@api/persons/infrastructure/persistence/person-repository-mock').default
 }));
@@ -32,7 +30,7 @@ describe('AuthService', () => {
 
   beforeAll(() => {
     personRepository = new PersonRepository();
-    authServiceInstance = new AuthService(userServiceInstance, personRepository);
+    authServiceInstance = new AuthService(personRepository);
   });
 
   const expectedProperties = () => ({

@@ -43,6 +43,6 @@ export class PersonResponseDto {
 	countryId: number;
 
 	@Expose()
-	@Transform((value, obj) => calculateAge(obj.dateOfBirth))
+	@Transform((value, obj) => calculateAge(new Date(obj.dateOfBirth)))
 	age: number;
 }

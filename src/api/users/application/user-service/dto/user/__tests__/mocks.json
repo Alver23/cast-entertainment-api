@@ -1,0 +1,17 @@
+{
+	"id": 1,
+	"person": {
+		"id": 1,
+		"firstName": "fake name",
+		"lastName": "fake name",
+		"email": "fake@fake.com",
+		"cellPhone": "1234"
+	},
+	"roles": [
+		{
+			"id": 1,
+			"name": "fake role",
+			"ipAddress": "127.0.0.1"
+		}
+	]
+}

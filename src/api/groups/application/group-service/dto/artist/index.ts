@@ -15,4 +15,8 @@ export class ArtistDto {
 	@Expose()
 	@Transform((value, obj) => obj.person.lastName)
 	lastName: string;
+
+	@Expose()
+	@Transform((value, obj) => `${obj.person.firstName} ${obj.person.lastName}`)
+	fullName: string;
 }
