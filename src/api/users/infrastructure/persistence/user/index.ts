@@ -38,11 +38,12 @@ export class UserRepository extends BaseCrudRepository<typeof User, IUserEntity,
 		return super.findAll(options);
 	}
 
-	async findOne({ query }: IQueryParams): Promise<IUserEntity> {
-		const options = {
+	async findOne({ query, options }: IQueryParams): Promise<IUserEntity> {
+		const buildOptions = {
 			include: ['person', 'roles'],
+			...options,
 		};
-		return super.findOne({ query, options });
+		return super.findOne({ query, options: buildOptions });
 	}
 
 	async upsert(data: IUserEntity, id?: number): Promise<IUserEntity> {

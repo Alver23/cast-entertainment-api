@@ -1,16 +1,17 @@
 // Dependencies
 import passport from 'passport';
-import { unauthorized } from '@hapi/boom';
 import { Strategy, ExtractJwt } from 'passport-jwt';
-
-// Services
-import { authServiceInstance } from '@api/auth/services/auth-service';
 
 // Config
 import { config } from '@config/index';
 
-// Utils
-import { HttpMessages } from '@utils/messages/http-messages';
+// Repositories
+import { AuthRepository } from '@api/auth/infrastructure/persistence/auth';
+import { TokenRepository } from '@api/auth/infrastructure/persistence/token';
+
+// Services
+import { AuthService } from '@api/auth/application/auth-service';
+import { TokenService } from '@api/auth/application/token-service';
 
 passport.use(
 	new Strategy(
@@ -21,10 +22,9 @@ passport.use(
 		async (payload, cb) => {
 			try {
 				const { email } = payload;
-				const user = await authServiceInstance.getUser(email);
-				if (!user) {
-					return cb(unauthorized(HttpMessages.UNAUTHORIZED));
-				}
+				const tokenService = new TokenService(new TokenRepository());
+				const authService = new AuthService(new AuthRepository(), tokenService);
+				const user = authService.getUser(email);
 				return cb(null, user);
 			} catch (error) {
 				cb(error);

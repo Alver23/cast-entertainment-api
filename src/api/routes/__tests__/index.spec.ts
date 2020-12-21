@@ -1,14 +1,14 @@
 // RouteConfig
 import { RouteConfig } from "../index";
 
-import { authRouter } from '@api/auth/router/auth-router';
+import { authRouter } from '@api/auth/infrastructure/routes/auth';
 
 // Mocks
 jest.mock('@core/middlewares', () => ({
   protectRoutes: jest.fn()
 }));
 
-jest.mock('@api/auth/router/auth-router', () => ({
+jest.mock('@api/auth/infrastructure/routes/auth', () => ({
   authRouter: jest.fn()
 }));
 

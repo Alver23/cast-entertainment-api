@@ -1,26 +1,26 @@
 // Dependencies
 import passport from 'passport';
-import { unauthorized } from '@hapi/boom';
 import { Request, Response, NextFunction } from 'express';
+
+// Entities
+import { IAuthUserEntity } from '@api/auth/domain/entities/auth';
+
+// Exceptions
+import { UnauthorizedException } from '@api/auth/domain/exceptions/auth';
 
 import '@core/strategies/jwt';
 
-// Utils
-import { HttpMessages } from '@utils/messages/http-messages';
-
-// Interfaces
-import { IUserAuth } from '@api/auth/services/auth-service-interface';
-
 export const protectRoutes = (req: Request, res: Response, next: NextFunction): void => {
-	passport.authenticate('jwt', (error: any, user: IUserAuth | undefined) => {
+	passport.authenticate('jwt', (error: any, user: IAuthUserEntity) => {
 		if (error || !user) {
-			return next(unauthorized(HttpMessages.UNAUTHORIZED));
+			return next(new UnauthorizedException());
 		}
 
 		req.login(user, { session: false }, (errorLogin) => {
 			if (errorLogin) {
 				return next(errorLogin);
 			}
+			req.user = user;
 			next();
 		});
 	})(req, res, next);

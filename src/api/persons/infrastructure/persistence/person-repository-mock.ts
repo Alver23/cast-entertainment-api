@@ -19,7 +19,7 @@ export default class PersonServiceMock {
     return jest.fn();
   }
 
-  findOne() {
+  findUserByEmail() {
     return {
       ...personMocks,
       getUser: () => ({

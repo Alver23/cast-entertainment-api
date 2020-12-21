@@ -5,7 +5,7 @@ import { Application } from 'express';
 import { protectRoutes } from '@core/middlewares';
 
 // Routes
-import { authRouter } from '@api/auth/router/auth-router';
+import { authRouter } from '@api/auth/infrastructure/routes/auth';
 import { artistRouter } from '@api/artists/infrastructure/routes/artist-routes';
 import { emergencyContactRouter } from '@api/emergency-contact/infrastructure/routes/emergency-contact-routes';
 import { personRouter } from '@api/persons/infrastructure/routes/person';
