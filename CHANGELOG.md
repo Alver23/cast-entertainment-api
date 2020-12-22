@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.19.0](https://github.com/Alver23/cast-entertainment/compare/v1.18.2...v1.19.0) (2020-12-22)
+
+
+### Features
+
+* add authorization middleware ([99644c1](https://github.com/Alver23/cast-entertainment/commit/99644c12e636db0afddfa2af4ef3bccfde3db188))
+
 ### [1.18.2](https://github.com/Alver23/cast-entertainment/compare/v1.18.1...v1.18.2) (2020-12-22)
 
 ### [1.18.1](https://github.com/Alver23/cast-entertainment/compare/v1.18.0...v1.18.1) (2020-12-18)
