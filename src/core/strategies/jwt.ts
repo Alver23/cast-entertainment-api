@@ -24,7 +24,7 @@ passport.use(
 				const { email } = payload;
 				const tokenService = new TokenService(new TokenRepository());
 				const authService = new AuthService(new AuthRepository(), tokenService);
-				const user = authService.getUser(email);
+				const user = await authService.getUser(email);
 				return cb(null, user);
 			} catch (error) {
 				cb(error);

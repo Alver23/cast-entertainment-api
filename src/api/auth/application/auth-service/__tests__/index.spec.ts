@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 import { AuthService } from "../index";
 
 // Exceptions
-import { UnauthorizedException } from "@api/auth/domain/exceptions/auth";
+import { UnauthenticatedException } from "@api/auth/domain/exceptions/unauthenticated";
 
 describe('AuthService', () => {
 
@@ -83,7 +83,7 @@ describe('AuthService', () => {
 
       await expect(async () => {
         await service.login('123', '123')
-      }).rejects.toBeInstanceOf(UnauthorizedException);
+      }).rejects.toBeInstanceOf(UnauthenticatedException);
     })
   });
 
@@ -121,7 +121,7 @@ describe('AuthService', () => {
 
       await expect(async () => {
         await service.createTokenByRefreshToken('123')
-      }).rejects.toBeInstanceOf(UnauthorizedException);
+      }).rejects.toBeInstanceOf(UnauthenticatedException);
     })
   });
 

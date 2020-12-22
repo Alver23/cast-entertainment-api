@@ -3,6 +3,7 @@ export namespace HttpMessages {
 	export const UPDATED = 'The Record was updated successfully';
 	export const DELETED = 'The Record was deleted successfully';
 	export const LISTS = 'The Records list';
+	export const UNAUTHENTICATED = 'The user not unauthenticated';
 	export const UNAUTHORIZED = 'The user not unauthorized';
 	export const INTERNAL_ERROR = 'INTERNAL_ERROR';
 }
