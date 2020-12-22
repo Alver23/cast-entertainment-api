@@ -1,0 +1,7 @@
+{
+	"id": 123,
+	"firstName": "fake name",
+	"lastName": "fake name",
+	"email": "fake email",
+	"roles": [{ "name": "fake role" }]
+}

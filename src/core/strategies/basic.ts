@@ -1,30 +1,22 @@
 // Dependencies
 import passport from 'passport';
 import { BasicStrategy } from 'passport-http';
-import { unauthorized } from '@hapi/boom';
-import { compare } from 'bcrypt';
+
+// Repositories
+import { AuthRepository } from '@api/auth/infrastructure/persistence/auth';
+import { TokenRepository } from '@api/auth/infrastructure/persistence/token';
 
 // Services
-import { authServiceInstance } from '@api/auth/services/auth-service';
-
-// Utils
-import { HttpMessages } from '@utils/messages/http-messages';
+import { AuthService } from '@api/auth/application/auth-service';
+import { TokenService } from '@api/auth/application/token-service';
 
 passport.use(
 	new BasicStrategy(async (email: string, password: string, cb: any) => {
 		try {
-			const user = await authServiceInstance.getUser(email);
-
-			if (!user) {
-				return cb(unauthorized(HttpMessages.UNAUTHORIZED));
-			}
-
-			const { password: userPassword, ...otherValues } = user;
-			if (!(await compare(password, userPassword))) {
-				return cb(unauthorized(HttpMessages.UNAUTHORIZED));
-			}
-
-			return cb(null, otherValues);
+			const tokenService = new TokenService(new TokenRepository());
+			const authService = new AuthService(new AuthRepository(), tokenService);
+			const user = await authService.login(email, password);
+			return cb(null, user);
 		} catch (error) {
 			return cb(error);
 		}
