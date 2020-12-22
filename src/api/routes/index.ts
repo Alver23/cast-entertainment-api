@@ -1,8 +1,8 @@
 // Dependencies
 import { Application } from 'express';
 
-// Middleware
-import { protectRoutes } from '@core/middlewares';
+// Middlewares
+import { authentication } from '@core/middlewares/guards/authentication';
 
 // Routes
 import { authRouter } from '@api/auth/infrastructure/routes/auth';
@@ -26,7 +26,7 @@ export class RouteConfig {
 	}
 
 	public privateRoutes(): void {
-		this.app.use('/', protectRoutes);
+		this.app.use('/', authentication.handler());
 		personRouter(this.app);
 		userRouter(this.app);
 		roleRouter(this.app);

@@ -26,4 +26,11 @@ export const config = {
 		license: process.env.NEWRELIC_LICENSE_KEY,
 		logLevel: process.env.NEWRELIC_LOG_LEVEL,
 	},
+	roles: {
+		admin: 'Admin',
+		superAdmin: 'Super Admin',
+		artist: 'Artist',
+		teacher: 'Teacher',
+		student: 'Student',
+	},
 };

@@ -5,20 +5,16 @@ import { compare } from 'bcrypt';
 import { IAuthRepository } from '@api/auth/domain/repositories/auth';
 
 // Exceptions
-import { UnauthorizedException } from '@api/auth/domain/exceptions/auth';
+import { UnauthenticatedException } from '@api/auth/domain/exceptions/unauthenticated';
 
 // Dto's
 import { objectToClass } from '@utils/plain-tranformer';
 import { IAuthUserEntity } from '@api/auth/domain/entities/auth';
 import { UserDto } from './dto/user';
 
-// Utils
-
 // Interfaces
 import { ITokenService } from '../token-service/interface';
 import { IAuthService, ITokenResponse } from './interface';
-
-// Entities
 
 export class AuthService implements IAuthService {
 	constructor(private readonly repository: IAuthRepository, private readonly tokenService: ITokenService) {}
@@ -41,7 +37,7 @@ export class AuthService implements IAuthService {
 		const user = await this.getUser(email, ['authenticate']);
 		const { password: userPassword, ...userValues } = user;
 		if (!(await compare(password, userPassword))) {
-			throw new UnauthorizedException();
+			throw new UnauthenticatedException();
 		}
 		return userValues;
 	}
@@ -55,7 +51,7 @@ export class AuthService implements IAuthService {
 	async createTokenByRefreshToken(refreshToken: string): Promise<any> {
 		const response: any = await this.tokenService.getRefreshToken(refreshToken);
 		if (!response) {
-			throw new UnauthorizedException();
+			throw new UnauthenticatedException();
 		}
 		const { user } = response;
 		const { id } = user.toJSON();
