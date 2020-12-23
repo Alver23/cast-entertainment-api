@@ -10,7 +10,6 @@ import { activityRouter } from "../index";
 // Mocks
 jest.mock('@api/activities/infrastructure/dto/activity', () => jest.fn());
 jest.mock('@api/activities/infrastructure/dto/activity/acitvity-updater', () => jest.fn());
-jest.mock('@api/shared/base-crud/infrastructure/dto/retrieve', () => jest.fn());
 
 jest.mock('@api/activities/infrastructure/controllers/activity', () => ({
   ActivityController: require('@mocks/fake-controller').default,

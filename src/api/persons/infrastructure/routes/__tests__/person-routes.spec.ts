@@ -16,6 +16,10 @@ jest.mock('@api/persons/infrastructure/controllers/person', () => ({
   PersonController: require('@mocks/fake-controller').default,
 }));
 
+jest.mock('@api/persons/application/person-service', () => ({
+  PersonService: require('@mocks/fake-service').default,
+}));
+
 
 describe('Emergency contact routes', () => {
   const path = '/persons';

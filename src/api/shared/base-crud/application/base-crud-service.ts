@@ -5,6 +5,8 @@ import { IBaseCrudRepository } from '@api/shared/base-crud/domain/repositories/b
 // Utils
 import { objectToClass } from '@utils/plain-tranformer';
 
+import { PaginatorDto } from './dto/paginator';
+
 export abstract class BaseCrudService<T, U, R extends IBaseCrudRepository<T, U>> implements IBaseCrudService<T, U> {
 	protected schemaItem;
 
@@ -24,9 +26,11 @@ export abstract class BaseCrudService<T, U, R extends IBaseCrudRepository<T, U>>
 		return this.repository.deleteOne(+id);
 	}
 
-	async getAll(): Promise<U[]> {
-		const response = await this.repository.findAll();
-		return this.hasClassTransformer(this.schemaItems, response);
+	async getAll(page: number, limit: number): Promise<U[]> {
+		const response: any = await this.repository.findAll({ page, limit });
+		const collection = this.hasClassTransformer(PaginatorDto, response);
+		collection.items = this.hasClassTransformer(this.schemaItems, response.items);
+		return collection;
 	}
 
 	async getById(id: number | string): Promise<U> {

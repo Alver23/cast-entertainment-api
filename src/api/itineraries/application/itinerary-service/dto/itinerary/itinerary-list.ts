@@ -12,6 +12,6 @@ export class ItineraryListDto {
 	description: string;
 
 	@Expose()
-	@Transform((value, obj) => +obj.dataValues.activitiesNumber)
+	@Transform((value, obj) => obj.dataValues.itineraryHasActivity.length)
 	activitiesNumber: number;
 }

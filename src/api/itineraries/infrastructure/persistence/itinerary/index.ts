@@ -12,7 +12,6 @@ import { IQueryParams } from '@api/shared/base-crud/domain/repositories/base-cru
 
 // Repositories
 import { IItineraryRepository } from '@api/itineraries/domain/repositories/itinerary';
-import { Sequelize } from 'sequelize';
 
 export class ItineraryRepository extends BaseCrudRepository<typeof Itinerary, IItineraryEntity, IItineraryEntity>
 	implements IItineraryRepository {
@@ -20,15 +19,12 @@ export class ItineraryRepository extends BaseCrudRepository<typeof Itinerary, II
 		super(Itinerary);
 	}
 
-	findAll(): Promise<IItineraryEntity[]> {
-		const options = {
-			attributes: {
-				include: [[Sequelize.fn('COUNT', Sequelize.col('itineraryHasActivity.id')), 'activitiesNumber']],
-			},
-			include: [{ association: 'itineraryHasActivity', attributes: [] }],
-			group: ['itinerary.id'],
+	findAll(options = {}): Promise<IItineraryEntity[]> {
+		const buildOptions = {
+			...options,
+			include: [{ association: 'itineraryHasActivity' }],
 		};
-		return super.findAll(options);
+		return super.findAll(buildOptions);
 	}
 
 	async findOne({ query }: IQueryParams): Promise<IItineraryEntity> {

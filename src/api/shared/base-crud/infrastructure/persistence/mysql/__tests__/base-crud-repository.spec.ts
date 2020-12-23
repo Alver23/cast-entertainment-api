@@ -15,6 +15,7 @@ describe('BaseCrudRepository', () => {
     create: spy,
     destroy: spy,
     findAll: spy,
+    findAndCountAll: jest.fn().mockResolvedValue({ rows: [] }),
     findOne: spy,
     findOrCreate: spy,
     update: spy,
@@ -34,7 +35,7 @@ describe('BaseCrudRepository', () => {
     [
       'findAll',
       undefined,
-      undefined,
+      'findAndCountAll',
     ],
     [
       'findOne',
@@ -70,7 +71,7 @@ describe('BaseCrudRepository', () => {
 
   it('should call the finAll method when options is empty', async () => {
     await service.findAll();
-    expect(modelMock.findOne).toHaveBeenCalledWith({});
+    expect(modelMock.findAndCountAll).toHaveBeenCalled();
   });
 
   describe('updateOrCreate method', () => {

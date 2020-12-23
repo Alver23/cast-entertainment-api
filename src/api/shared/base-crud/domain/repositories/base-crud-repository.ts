@@ -19,7 +19,7 @@ export interface IFindOrCreateParams<T> {
 export interface IBaseCrudRepository<T, U> {
 	create(data: T, option?: any): Promise<U>;
 	deleteOne(id: number | string): Promise<U>;
-	findAll(): Promise<U[]>;
+	findAll(options?: any): Promise<U[]>;
 	findOne({ query }: IQueryParams): Promise<U>;
 	findOrCreate({ query, data }: IFindOrCreateParams<T>): Promise<U>;
 	updateOne(id: number | string, data: T): Promise<U>;
@@ -29,6 +29,7 @@ export interface IBaseModel {
 	create(values: any, attributes?: any): Promise<any>;
 	destroy(options: any): Promise<any>;
 	findAll(options: any): Promise<any>;
+	findAndCountAll(options: any): Promise<any>;
 	findOne(options: any): Promise<any>;
 	findOrCreate(options: any): Promise<any>;
 	update(values: any, attributes?: any): Promise<any>;

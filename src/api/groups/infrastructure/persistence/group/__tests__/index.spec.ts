@@ -6,7 +6,6 @@ import { BaseCrudRepository } from "@api/shared/base-crud/infrastructure/persist
 
 // Mocks
 import mocks from './mocks.json';
-jest.mock('@core/sequelize/sequelize', () => require('@core/sequelize/sequelize-mock').sequelizeMock);
 jest.mock('@database/models/group', () => require('@database/models/group/mock').groupMock);
 jest.mock('@database/models/group-itinerary', () => require('@database/models/group-itinerary/mock').groupItineraryMock);
 jest.mock('@database/models/group-person', () => require('@database/models/group-person/mock').groupPersonMock);
@@ -40,11 +39,13 @@ describe('GroupRepository', () => {
       const response = await repository.findAll();
       expect(response)
         .toEqual(
-          expect.arrayContaining([
-            expect.objectContaining({
-              id: expect.any(Number),
-            })
-          ])
+          expect.objectContaining({
+            items: expect.arrayContaining([
+              expect.objectContaining({
+                id: expect.any(Number),
+              })
+            ]),
+          })
         )
     });
   });

@@ -1,5 +1,5 @@
 // Dependencies
-import { Sequelize, Op, Transaction } from 'sequelize';
+import { Op, Transaction } from 'sequelize';
 
 // Entities
 import { IGroupEntity } from '@api/groups/domain/entities/group';
@@ -97,16 +97,13 @@ export class GroupRepository extends BaseCrudRepository<typeof Group, IGroupEnti
 		return super.findOne({ query, options });
 	}
 
-	async findAll(): Promise<IGroupEntity[]> {
-		const options = {
-			attributes: {
-				include: [[Sequelize.fn('COUNT', Sequelize.col('members.id')), 'membersNumber']],
-			},
-			include: [{ association: 'members', attributes: [] }],
-			group: ['group.id'],
+	async findAll(options = {}): Promise<IGroupEntity[]> {
+		const buildOptions = {
+			...options,
+			include: [{ association: 'members' }],
 		};
 
-		return super.findAll(options);
+		return super.findAll(buildOptions);
 	}
 
 	async upsert(data: IGroupEntity, id?: number): Promise<IGroupEntity> {

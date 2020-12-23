@@ -10,7 +10,6 @@ import { groupRouter } from "../index";
 // Mocks
 jest.mock('@api/groups/infrastructure/dto/group', () => jest.fn());
 jest.mock('@api/groups/infrastructure/dto/group/updater', () => jest.fn());
-jest.mock('@api/shared/base-crud/infrastructure/dto/retrieve', () => jest.fn());
 
 jest.mock('@api/groups/infrastructure/controllers/group', () => ({
   GroupController: require('@mocks/fake-controller').default,

@@ -10,7 +10,6 @@ import { itineraryRouter } from "../index";
 // Mocks
 jest.mock('@api/itineraries/infrastructure/dto/itinerary', () => jest.fn());
 jest.mock('@api/itineraries/infrastructure/dto/itinerary/itinerary-updater', () => jest.fn());
-jest.mock('@api/shared/base-crud/infrastructure/dto/retrieve', () => jest.fn());
 
 jest.mock('@api/itineraries/infrastructure/controllers/itinerary', () => ({
   ItineraryController: require('@mocks/fake-controller').default,

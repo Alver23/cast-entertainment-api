@@ -9,7 +9,9 @@ import {
 	IQueryParams,
 } from '@api/shared/base-crud/domain/repositories/base-crud-repository';
 
+// Utils
 import { entityUtils } from '@api/shared/base-crud/infrastructure/persistence/mysql/utils/entity';
+import { paginator } from '@api/shared/base-crud/infrastructure/persistence/mysql/utils/paginator';
 
 export abstract class BaseCrudRepository<K extends IBaseModel, T, U> implements IBaseCrudRepository<T, U> {
 	constructor(protected readonly model: K) {}
@@ -22,8 +24,16 @@ export abstract class BaseCrudRepository<K extends IBaseModel, T, U> implements 
 		return this.model.destroy({ where: { id } });
 	}
 
-	findAll(options = {}): Promise<U[]> {
-		return this.model.findAll(options);
+	async findAll(options: any = {}): Promise<U[]> {
+		const { page, limit, ...otherValues } = options;
+		const offset = page * limit;
+		const buildOptions = {
+			...otherValues,
+			limit,
+			offset,
+		};
+		const response = await this.model.findAndCountAll(buildOptions);
+		return paginator.getPagingData(response, page, limit) as any;
 	}
 
 	async findOne({ query, options = {} }: IQueryParams): Promise<U> {

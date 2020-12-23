@@ -28,10 +28,13 @@ describe('BaseController', () => {
   });
 
   describe('getAll method', () => {
+    const cases = [
+      [null, null],
+      [1, { query: { page: 1} }]
+    ];
 
-    const req = getMockReq();
-
-    it('should get the data correctly', async () => {
+    it.each(cases)('should get the data correctly when page to equal %s', async (page, query: any) => {
+      const req = getMockReq(query);
       await controller.getAll(req, res, next);
       expect(res.responseJson).toHaveBeenCalled();
       expect(next).not.toHaveBeenCalled();
