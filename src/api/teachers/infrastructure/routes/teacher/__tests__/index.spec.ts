@@ -9,7 +9,6 @@ import { teacherRouter } from "../index";
 
 jest.mock('@api/teachers/infrastructure/dto/teacher', () => jest.fn());
 jest.mock('@api/teachers/infrastructure/dto/teacher/updater', () => jest.fn());
-jest.mock('@api/shared/base-crud/infrastructure/dto/retrieve', () => jest.fn());
 jest.mock('@api/teachers/infrastructure/dto/teacher/teacher-artist-creator', () => jest.fn());
 
 

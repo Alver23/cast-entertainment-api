@@ -7,10 +7,12 @@ import { BaseCrudService } from '@api/shared/base-crud/application/base-crud-ser
 // Repositories
 import { IPersonRepository } from '@api/persons/domain/repositories/person';
 
-export class PersonService extends BaseCrudService<IPersonEntity, IPersonEntity, IPersonRepository> {
-	protected schemaItem: undefined;
+import { PersonResponseDto } from '@api/persons/application/dto/person';
 
-	protected schemaItems: undefined;
+export class PersonService extends BaseCrudService<IPersonEntity, IPersonEntity, IPersonRepository> {
+	protected schemaItem = PersonResponseDto;
+
+	protected schemaItems = PersonResponseDto;
 
 	constructor(repository: IPersonRepository) {
 		super(repository);

@@ -5,11 +5,12 @@ import 'reflect-metadata';
 import { RetrieveDto } from "../index";
 
 // Mocks
-import { transformerPlainToClass } from "./../../../../../../__mocks__/plain-class";
+import { transformerPlainToClass } from "@mocks/plain-class";
+jest.unmock('@api/shared/base-crud/infrastructure/dto/retrieve');
 
-describe('RhythmDto', () => {
+describe('RetrieveDto', () => {
 
-  it('should get the model of RhythmDto', () => {
+  it('should get the model of RetrieveDto', () => {
     const model = transformerPlainToClass(RetrieveDto, { id: 1});
     expect(model)
       .toEqual(

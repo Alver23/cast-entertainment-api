@@ -9,7 +9,7 @@ export class GroupListDto {
 	name: string;
 
 	@Expose()
-	@Transform((value, obj) => +obj.dataValues.membersNumber)
+	@Transform((value, obj) => obj.dataValues.members.length)
 	membersNumber: number;
 
 	@Expose()

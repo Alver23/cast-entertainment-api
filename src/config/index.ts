@@ -33,4 +33,8 @@ export const config = {
 		teacher: 'Teacher',
 		student: 'Student',
 	},
+	paginator: {
+		limit: 10,
+		offset: 0,
+	},
 };

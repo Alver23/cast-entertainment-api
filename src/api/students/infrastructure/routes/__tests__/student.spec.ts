@@ -9,7 +9,6 @@ import { studentRouter } from "../student";
 // Mocks
 jest.mock('@api/students/infrastructure/dto/student', () => jest.fn());
 jest.mock('@api/students/infrastructure/dto/student/updater', () => jest.fn());
-jest.mock('@api/shared/base-crud/infrastructure/dto/retrieve', () => jest.fn());
 jest.mock('@api/students/infrastructure/persistence/student', () => ({
   StudentRepository: require('@mocks/fake-service').default,
 }));

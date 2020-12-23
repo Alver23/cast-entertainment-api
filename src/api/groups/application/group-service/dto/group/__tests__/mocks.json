@@ -2,16 +2,27 @@
 	"id": 1,
 	"name": "fake name",
 	"description": "fake description",
-	"members": {
-		"id": 1,
-		"personId": 2,
-		"person": {
-			"firstName": "fake name",
-			"lastName": "fake name"
+	"members": [
+		{
+			"id": 1,
+			"personId": 2,
+			"person": {
+				"firstName": "fake name",
+				"lastName": "fake name"
+			}
 		}
-	},
+	],
 	"dataValues": {
-		"membersNumber": 1
+		"members": [
+			{
+				"id": 1,
+				"personId": 2,
+				"person": {
+					"firstName": "fake name",
+					"lastName": "fake name"
+				}
+			}
+		]
 	},
 	"itineraries": [
 		{

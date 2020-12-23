@@ -9,11 +9,20 @@ import { ICustomResponse } from '@core/middlewares/response/response-interface';
 // Utils
 import { HttpMessages, setResponseForDelete } from '@utils/index';
 
+// Config
+import { config } from '@config/index';
+
+const paginationConfig = config.paginator;
+const { limit: defaultLimit, offset: defaultOffset } = paginationConfig;
+
 export abstract class BaseController<T, U, S extends IBaseCrudService<T, U>> {
 	constructor(protected readonly baseService: S) {}
 
 	public async getAll(req: Request, res: ICustomResponse): Promise<any> {
-		const response = await this.baseService.getAll();
+		const { query } = req;
+		const { page: offset, limit = defaultLimit } = query;
+		const page = offset ? +offset - 1 : defaultOffset;
+		const response = await this.baseService.getAll(page, +limit);
 		res.responseJson({ data: response, message: HttpMessages.LISTS });
 	}
 

@@ -4,12 +4,8 @@ import { UserRepository } from "../index";
 // Shared
 import { BaseCrudRepository } from "@api/shared/base-crud/infrastructure/persistence/mysql/base-crud-repository";
 
-// Models
-import { User } from "@database/models/user";
-
 // Mocks
 import mocks from './mocks.json';
-jest.mock('@core/sequelize/sequelize', () => require('@core/sequelize/sequelize-mock').sequelizeMock);
 jest.mock('@database/models/user', () => require('@database/models/user/user-mock').userMock);
 jest.mock('@api/persons/infrastructure/persistence/person-repository', () => ({
   PersonRepository: require('@mocks/fake-repository').default,
@@ -44,11 +40,13 @@ describe('UserRepository', () => {
       const response = await repository.findAll();
       expect(response)
         .toEqual(
-          expect.arrayContaining([
-            expect.objectContaining({
-              id: expect.any(Number),
-            })
-          ])
+          expect.objectContaining({
+            items: expect.arrayContaining([
+              expect.objectContaining({
+                id: expect.any(Number),
+              })
+            ])
+          })
         )
     });
   });

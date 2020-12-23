@@ -1,2 +1,4 @@
 // Dependencies
-require('./middleware')
+require('./middleware');
+require('./dto');
+require('./sequelize');

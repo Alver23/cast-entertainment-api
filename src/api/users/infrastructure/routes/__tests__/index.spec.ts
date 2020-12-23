@@ -9,7 +9,6 @@ import { userRouter } from "../index";
 
 jest.mock('@api/users/infrastructure/dto/user', () => jest.fn());
 jest.mock('@api/users/infrastructure/dto/user/updater', () => jest.fn());
-jest.mock('@api/shared/base-crud/infrastructure/dto/retrieve', () => jest.fn());
 
 jest.mock('@api/users/infrastructure/persistence/user', () => ({
   UserRepository: require('@mocks/fake-repository').default,

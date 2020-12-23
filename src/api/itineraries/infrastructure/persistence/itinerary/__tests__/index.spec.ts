@@ -36,11 +36,13 @@ describe('ItineraryRepository', () => {
       const response = await repository.findAll();
       expect(response)
         .toEqual(
-          expect.arrayContaining([
-            expect.objectContaining({
-              id: expect.any(Number),
-            })
-          ])
+          expect.objectContaining({
+            items: expect.arrayContaining([
+              expect.objectContaining({
+                id: expect.any(Number),
+              })
+            ]),
+          })
         )
     });
   });
