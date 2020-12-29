@@ -75,8 +75,12 @@ export class ArtistRepository extends BaseCrudRepository<typeof Artist, IArtist,
 		artistInstance: IArtistModel,
 		transaction: Transaction,
 	): Promise<void> {
-		const { id, ipAddress } = data;
-		const { id: emergencyContactId } = await this.emergencyContactRepository.updateOrCreateCustom(data, id, transaction);
+		const { id, ipAddress, ...otherValues } = data;
+		const { id: emergencyContactId } = await this.emergencyContactRepository.updateOrCreateCustom(
+			{ ...otherValues, ipAddress },
+			id,
+			transaction,
+		);
 		if (!id) {
 			await artistInstance.createEmergencyContact({ emergencyContactId, ipAddress }, { transaction });
 		}

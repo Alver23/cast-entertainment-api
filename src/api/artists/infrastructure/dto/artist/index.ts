@@ -11,22 +11,22 @@ import { PersonDto } from '@api/persons/infrastructure/dto/person';
 
 export class Artist extends PersonDto {
 	@Expose()
-	personId?: number;
+	fullNamesFather: string;
 
 	@Expose()
-	fullNamesFather?: string;
+	fullNamesMother: string;
 
 	@Expose()
-	fullNamesMother?: string;
+	nativeLanguage: number;
 
 	@Expose()
-	nativeLanguage?: number;
-
-	@Expose()
-	otherLanguage?: number;
+	otherLanguage: number;
 
 	@Expose()
 	ipAddress: string;
+
+	@Expose()
+	active: boolean;
 
 	@ValidateNested()
 	@Expose()

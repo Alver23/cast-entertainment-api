@@ -6,10 +6,10 @@ import { PersonResponseDto } from '@api/persons/application/dto/person';
 
 export class ArtistBeneficiaryResponse extends PersonResponseDto {
 	@Expose()
-	id?: number;
+	id: number;
 
 	@Expose()
-	personId?: number;
+	personId: number;
 
 	@Expose()
 	percentage: number;

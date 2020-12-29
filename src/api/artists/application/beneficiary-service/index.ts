@@ -3,7 +3,7 @@ import { IArtistBeneficiary } from '@api/artists/domain/entities/artist-benefici
 
 export class ArtistBeneficiaryService {
 	public transformData(data: any): IArtistBeneficiary {
-		return data.map((value) => ({ ...value.dataValues, ...value.person.dataValues }));
+		return data.map((value) => ({ ...value.person.dataValues, ...value.dataValues }));
 	}
 }
 

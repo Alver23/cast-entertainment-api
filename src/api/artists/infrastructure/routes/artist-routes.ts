@@ -12,7 +12,8 @@ import { ArtistController } from '@api/artists/infrastructure/controllers/artist
 
 // DTO's
 import { Artist } from '@api/artists/infrastructure/dto/artist';
-import { RetrieveArtist } from '@api/artists/infrastructure/dto/artist/retrieve';
+import { ArtistUpdaterDto } from '@api/artists/infrastructure/dto/artist/updater';
+import { RetrieveDto } from '@api/shared/base-crud/infrastructure/dto/retrieve';
 
 const artistService = new ArtistService(new ArtistRepository());
 const artistController = new ArtistController(artistService);
@@ -23,7 +24,11 @@ const schema = {
 		body: Artist,
 	},
 	getById: {
-		params: RetrieveArtist,
+		params: RetrieveDto,
+	},
+	put: {
+		body: ArtistUpdaterDto,
+		params: RetrieveDto,
 	},
 };
 export const artistRouter = baseRouter(basePath, artistController, schema);

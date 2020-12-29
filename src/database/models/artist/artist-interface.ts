@@ -7,6 +7,7 @@ export interface ArtistModel {
 	fullNamesMother?: string;
 	nativeLanguage?: number;
 	otherLanguage?: number;
+	active?: boolean;
 	personId: number;
 	ipAddress: string;
 }
