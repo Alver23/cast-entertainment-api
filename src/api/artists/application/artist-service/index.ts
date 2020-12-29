@@ -1,8 +1,4 @@
-// Dependencies
-import { plainToClass } from 'class-transformer';
-
 // Dto's
-import { ArtistResponse } from '@api/artists/application/artist-service/dto/artist';
 
 // Entities
 import { IArtist } from '@api/artists/domain/entities/artist/artist-entity';
@@ -15,17 +11,17 @@ import { artistPassportService } from '@api/artists/application/passport-service
 // Repositories
 import { ArtistRepository } from '@api/artists/domain/repositories/artist-repository';
 import { BaseCrudService } from '@api/shared/base-crud/application/base-crud-service';
+import { ArtistListDto } from './dto/artist-list';
+import { ArtistItemDto } from './dto/artist';
 
 export class ArtistService extends BaseCrudService<IArtist, any, ArtistRepository> {
-	protected schemaItem: undefined;
-
-	protected schemaItems: undefined;
+	protected schemaItems = ArtistListDto;
 
 	constructor(repository: ArtistRepository) {
 		super(repository);
 	}
 
-	async getById(id: number | string): Promise<ArtistResponse> {
+	async getById(id: number | string): Promise<ArtistItemDto> {
 		const response = await super.getById(id);
 		const { person, emergencyContact, passport, beneficiaries, ...artistValues } = response;
 		const values = {
@@ -36,7 +32,6 @@ export class ArtistService extends BaseCrudService<IArtist, any, ArtistRepositor
 			passport: artistPassportService.transformData(passport),
 		};
 
-		const artistResponse = plainToClass(ArtistResponse, values, { excludeExtraneousValues: true });
-		return artistResponse;
+		return this.hasClassTransformer(ArtistItemDto, values);
 	}
 }

@@ -2,7 +2,7 @@
 import 'reflect-metadata';
 
 // Dto's
-import { ArtistResponse } from "../index";
+import { ArtistItemDto } from "../index";
 
 // Mocks
 import mocks from './mocks.json';
@@ -15,7 +15,7 @@ jest.mock('@utils/calculate-age', () => ({
 describe('ArtistResponse', () => {
 
   it('should get the model of artistResponse', () => {
-    const artistModel = transformerPlainToClass(ArtistResponse, mocks);
+    const artistModel = transformerPlainToClass(ArtistItemDto, mocks);
     expect(artistModel)
       .toEqual(
         expect.objectContaining({

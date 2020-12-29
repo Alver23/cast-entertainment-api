@@ -45,6 +45,7 @@ Artist.init(
 		otherLanguage: DataTypes.INTEGER.UNSIGNED,
 		fullNamesFather: DataTypes.STRING,
 		fullNamesMother: DataTypes.STRING,
+		active: DataTypes.BOOLEAN,
 		ipAddress: DataTypes.STRING,
 	},
 	{

@@ -6,7 +6,7 @@ import { ArtistSkill } from "../index";
 
 // Mocks
 import mocks from './mocks.json';
-import { transformerPlainToClass } from "../../../../../__mocks__/plain-class";
+import { transformerPlainToClass } from "@mocks/plain-class";
 
 describe('ArtistSkill', () => {
 

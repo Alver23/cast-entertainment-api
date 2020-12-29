@@ -1,0 +1,15 @@
+{
+	"fullNamesFather": "fake fake 1",
+	"fullNamesMother": "fake fake 2",
+	"nativeLanguage": 1,
+	"otherLanguage": 2,
+	"fakeKey": "fake Key",
+	"id": 1,
+	"createdAt": "2020-12-01",
+	"updatedAt": "2020-12-01",
+	"ipAddress": "127.0.0.1",
+	"person": {
+		"firstName": "Fake name",
+		"lastName": "fake name"
+	}
+}

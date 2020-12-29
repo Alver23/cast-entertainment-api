@@ -40,6 +40,10 @@ module.exports = {
       },
       full_names_father: Sequelize.STRING,
       full_names_mother: Sequelize.STRING,
+      active: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: true,
+      },
       ip_address: Sequelize.STRING,
       created_at: {
         allowNull: false,

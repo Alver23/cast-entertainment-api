@@ -13,6 +13,7 @@ const genders = [
   {
     id: 2,
     name: 'male',
+    description: 'Male',
     parent_id: 1,
     ip_address: '127.0.0.1',
     created_at: today,
@@ -21,6 +22,7 @@ const genders = [
   {
     id: 3,
     name: 'female',
+    description: 'Female',
     parent_id: 1,
     ip_address: '127.0.0.1',
     created_at: today,
@@ -137,7 +139,7 @@ const relationship = [
   {
     id: 16,
     name: 'wife',
-    description: 'wife',
+    description: 'Wife',
     parent_id: 13,
     ip_address: '127.0.0.1',
     created_at: today,

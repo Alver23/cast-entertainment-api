@@ -8,7 +8,7 @@ import { ArtistBeneficiaryResponse } from '@api/artists/application/artist-servi
 import { PersonResponseDto } from '@api/persons/application/dto/person';
 import { EmergencyContactResponse } from '@api/emergency-contact/application/dto/emergency-contact';
 
-export class ArtistResponse extends PersonResponseDto {
+export class ArtistItemDto extends PersonResponseDto {
 	@Expose()
 	id: number;
 
@@ -26,6 +26,9 @@ export class ArtistResponse extends PersonResponseDto {
 
 	@Expose()
 	fullNamesMother: string;
+
+	@Expose()
+	active: boolean;
 
 	@Expose()
 	@Type(() => EmergencyContactResponse)
