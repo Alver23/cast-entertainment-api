@@ -14,4 +14,5 @@ export interface IFilterForFullName {
 }
 export interface IPersonRepository extends IBaseCrudRepository<IPersonEntity, IPersonEntity> {
 	getFilterForFullName(fullName: string): IFilterForFullName;
+	getPersonByEmail(email: string, id?: number): Promise<IPersonEntity>;
 }

@@ -1,11 +1,6 @@
 // Repositories
 import { AuthRepository } from "../index";
 
-// Mocks
-jest.mock('@api/persons/infrastructure/persistence/person-repository', () => ({
-  PersonRepository: require('@mocks/fake-repository').default,
-}));
-
 describe('AuthRepository', () => {
   let repository: AuthRepository;
 

@@ -2,7 +2,7 @@
 import 'reflect-metadata';
 
 // Mocks Utils
-import { transformerPlainToClass } from "../../../../__mocks__/plain-class";
+import { transformerPlainToClass } from "@mocks/plain-class";
 
 // Entities
 import { PersonDto } from "../person";

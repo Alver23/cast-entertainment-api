@@ -11,10 +11,6 @@ import { BaseCrudRepository } from "@api/shared/base-crud/infrastructure/persist
 import mocks from './mocks.json';
 jest.mock('@database/models/rhythm', () => require('@database/models/rhythm/rhythm-mock').rhythmMock);
 jest.mock('@database/models/student', () => require('@database/models/student/student-mock').studentMock);
-
-jest.mock('@api/persons/infrastructure/persistence/person-repository', () => ({
-  PersonRepository: require('@api/persons/infrastructure/persistence/person-repository-mock').default
-}));
 jest.mock('@api/students/infrastructure/persistence/tutor', () => ({
   TutorRepository: require('@mocks/fake-repository').default,
 }));

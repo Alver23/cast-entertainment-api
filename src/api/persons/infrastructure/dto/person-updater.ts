@@ -2,10 +2,14 @@
 import { IsEmail, IsNotEmpty, ValidateIf } from 'class-validator';
 import { Expose, Type } from 'class-transformer';
 
-// Custom validation
+// Custom Validations
 import { isNotNull } from '@utils/custom-validation/is-not-null';
+import { IsPersonAlreadyExist } from '@utils/custom-validation/email';
 
 export class PersonUpdaterDto {
+	@Expose()
+	personId: number;
+
 	@Expose()
 	address: string;
 
@@ -34,6 +38,9 @@ export class PersonUpdaterDto {
 	documentType: number;
 
 	@ValidateIf((object, value) => isNotNull(value))
+	@IsPersonAlreadyExist({
+		message: 'The email $value already exists. Choose another email.',
+	})
 	@IsEmail()
 	@Expose()
 	email: string;
