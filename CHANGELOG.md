@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.20.0](https://github.com/Alver23/cast-entertainment/compare/v1.19.0...v1.20.0) (2020-12-30)
+
+
+### Features
+
+* add paginator for all endpoints ([4c6a2f2](https://github.com/Alver23/cast-entertainment/commit/4c6a2f2758c8db02ec11b190cb3646536a01192b))
+* added dto response ([376b941](https://github.com/Alver23/cast-entertainment/commit/376b941093575c0f7e38c55386614e3b507927c4))
+* added email validations ([ff9784f](https://github.com/Alver23/cast-entertainment/commit/ff9784f5c4165114cd507268dc3f0b83fbf6d227))
+* added filters of query params ([dd3f045](https://github.com/Alver23/cast-entertainment/commit/dd3f045ad5469543340786e11a25daca8f431a30))
+
 ## [1.19.0](https://github.com/Alver23/cast-entertainment/compare/v1.18.2...v1.19.0) (2020-12-22)
 
 
