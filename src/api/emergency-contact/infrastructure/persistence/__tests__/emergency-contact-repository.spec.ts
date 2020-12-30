@@ -11,9 +11,6 @@ import { BaseCrudRepository } from "@api/shared/base-crud/infrastructure/persist
 import mocks from './mocks.json';
 
 jest.mock('@database/models/emergency-contact', () => require('@database/models/emergency-contact/emergency-contact-mock').emergencyContactMock);
-jest.mock('@api/persons/infrastructure/persistence/person-repository', () => ({
-  PersonRepository: require('@mocks/fake-repository').default,
-}));
 
 describe('EmergencyContactRepository', () => {
 

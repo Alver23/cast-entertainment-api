@@ -9,9 +9,6 @@ import { personRouter } from "../person";
 
 // Mocks
 jest.mock('@api/persons/infrastructure/dto/person', () => jest.fn());
-jest.mock('@api/persons/infrastructure/persistence/person-repository', () => ({
-  PersonRepository: require('@mocks/fake-repository').default,
-}));
 jest.mock('@api/persons/infrastructure/controllers/person', () => ({
   PersonController: require('@mocks/fake-controller').default,
 }));

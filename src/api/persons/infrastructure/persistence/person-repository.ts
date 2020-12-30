@@ -1,3 +1,6 @@
+// Dependencies
+import { Op } from 'sequelize';
+
 // Entities
 import { IPersonEntity } from '@api/persons/domain/entities/person';
 
@@ -26,5 +29,18 @@ export class PersonRepository extends BaseCrudRepository<typeof Person, IPersonE
 			},
 			order: [[Sequelize.literal('score'), 'DESC']],
 		};
+	}
+
+	getPersonByEmail(email: string, id?: number): Promise<IPersonEntity> {
+		let query: any = { email };
+		if (id) {
+			query = {
+				...query,
+				id: {
+					[Op.ne]: id,
+				},
+			};
+		}
+		return super.findOne({ query });
 	}
 }

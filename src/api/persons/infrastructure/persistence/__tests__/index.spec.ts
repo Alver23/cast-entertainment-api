@@ -4,6 +4,7 @@ import { BaseCrudRepository } from "@api/shared/base-crud/infrastructure/persist
 
 // Mocks
 jest.mock('@database/models/person', () => require('@database/models/person/person-mock').personMock);
+jest.unmock('@api/persons/infrastructure/persistence/person-repository');
 
 describe('PersonRepository', () => {
 
@@ -28,6 +29,22 @@ describe('PersonRepository', () => {
           order: expect.any(Array),
         }),
       )
+  });
+
+  describe('getPersonByEmail method', () => {
+    const cases = [
+      ['fake@fake.com', undefined],
+      ['fake2@fake.com', 1]
+    ]
+    it.each(cases)('should get a person by email when the email to equal %s', async (email: string, personId: number) => {
+      const response = await repository.getPersonByEmail(email, personId);
+      expect(response)
+        .toEqual(
+          expect.objectContaining({
+            id: expect.any(Number),
+          })
+        )
+    });
   });
 
 });

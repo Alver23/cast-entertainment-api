@@ -7,9 +7,6 @@ import { BaseCrudRepository } from "@api/shared/base-crud/infrastructure/persist
 // Mocks
 import mocks from './mocks.json';
 jest.mock('@database/models/user', () => require('@database/models/user/user-mock').userMock);
-jest.mock('@api/persons/infrastructure/persistence/person-repository', () => ({
-  PersonRepository: require('@mocks/fake-repository').default,
-}));
 
 describe('UserRepository', () => {
 
