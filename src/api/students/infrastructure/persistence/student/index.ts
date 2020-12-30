@@ -1,5 +1,6 @@
 // Entities
 import { IStudentEntity } from '@api/students/domain/entities/student';
+import { IStudentRepository } from '@api/students/domain/repositories/student';
 
 // ORM
 import { sequelize } from '@core/sequelize/sequelize';
@@ -17,7 +18,7 @@ import { Student } from '@database/models/student';
 import { Rhythm } from '@database/models/rhythm';
 import { IQueryParams } from '@api/shared/base-crud/domain/repositories/base-crud-repository';
 
-export class StudentRepository extends BaseCrudRepository<typeof Student, IStudentEntity, IStudentEntity> {
+export class StudentRepository extends BaseCrudRepository<typeof Student, IStudentEntity, IStudentEntity> implements IStudentRepository {
 	private readonly personRepository: PersonRepository;
 
 	private readonly tutorRepository: TutorRepository;
@@ -29,6 +30,23 @@ export class StudentRepository extends BaseCrudRepository<typeof Student, IStude
 		this.personRepository = new PersonRepository();
 		this.tutorRepository = new TutorRepository();
 		this.rhythmRepository = new RhythmRepository();
+	}
+
+	findAll(options?: any): Promise<IStudentEntity[]> {
+		const { filters, ...otherFilters } = options;
+		let buildOptions = {
+			...otherFilters,
+		};
+		if (filters.name) {
+			const { attributes, ...values } = this.personRepository.getFilterForFullName(filters.name);
+			buildOptions = {
+				...buildOptions,
+				...values,
+				attributes: ['id', 'active', 'personId', ...attributes],
+			};
+		}
+
+		return super.findAll(buildOptions);
 	}
 
 	public async findOne({ query }: IQueryParams): Promise<IStudentEntity> {

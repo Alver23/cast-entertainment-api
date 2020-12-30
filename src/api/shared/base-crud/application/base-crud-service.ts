@@ -26,8 +26,8 @@ export abstract class BaseCrudService<T, U, R extends IBaseCrudRepository<T, U>>
 		return this.repository.deleteOne(+id);
 	}
 
-	async getAll(page: number, limit: number): Promise<U[]> {
-		const response: any = await this.repository.findAll({ page, limit });
+	async getAll(page: number, limit: number, filters: any): Promise<U[]> {
+		const response: any = await this.repository.findAll({ page, limit, filters });
 		const collection = this.hasClassTransformer(PaginatorDto, response);
 		collection.items = this.hasClassTransformer(this.schemaItems, response.items);
 		return collection;

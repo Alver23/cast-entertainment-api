@@ -7,12 +7,27 @@ jest.mock('@database/models/person', () => require('@database/models/person/pers
 
 describe('PersonRepository', () => {
 
+  let repository: PersonRepository;
+
+  beforeEach(() => {
+    repository = new PersonRepository();
+  });
+
   it('should get an class instance', () => {
+    expect(repository).toBeInstanceOf(BaseCrudRepository)
+  });
 
-    expect(
-      new PersonRepository()
-    ).toBeInstanceOf(BaseCrudRepository)
-
+  it('should get filter for full name', () => {
+    const response = repository.getFilterForFullName('alver');
+    expect(response)
+      .toEqual(
+        expect.objectContaining({
+          attributes: expect.any(Array),
+          where: expect.any(Object),
+          replacements: expect.any(Object),
+          order: expect.any(Array),
+        }),
+      )
   });
 
 });

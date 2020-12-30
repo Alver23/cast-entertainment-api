@@ -35,19 +35,21 @@ describe('GroupRepository', () => {
   });
 
   describe('findAll method', () => {
-    it('should call method successfully', async () => {
-      const response = await repository.findAll();
-      expect(response)
-        .toEqual(
-          expect.objectContaining({
-            items: expect.arrayContaining([
-              expect.objectContaining({
-                id: expect.any(Number),
-              })
-            ]),
-          })
-        )
+    const cases = [
+      [{filters: {name: 'alver'}}],
+      [undefined],
+    ];
+
+    it.each(cases)('should get the data whne the parameters to equal %s', async (params) => {
+      const mockData: any = {
+        attributes: [],
+      };
+
+      const response: any = await repository.findAll(params);
+      expect(response).toHaveProperty('totalItems', 1);
+      expect(response.items).toHaveLength(1);
     });
+
   });
 
   describe('create method', () => {

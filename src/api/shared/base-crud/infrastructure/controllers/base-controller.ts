@@ -1,5 +1,5 @@
 // Dependencies
-import { CREATED, NOT_FOUND, OK } from 'http-status-codes';
+import { CREATED, OK } from 'http-status-codes';
 import { Request } from 'express';
 
 // Interfaces
@@ -20,9 +20,9 @@ export abstract class BaseController<T, U, S extends IBaseCrudService<T, U>> {
 
 	public async getAll(req: Request, res: ICustomResponse): Promise<any> {
 		const { query } = req;
-		const { page: offset, limit = defaultLimit } = query;
+		const { page: offset, limit = defaultLimit, ...otherFilters } = query;
 		const page = offset ? +offset - 1 : defaultOffset;
-		const response = await this.baseService.getAll(page, +limit);
+		const response = await this.baseService.getAll(page, +limit, otherFilters);
 		res.responseJson({ data: response, message: HttpMessages.LISTS });
 	}
 
@@ -32,8 +32,7 @@ export abstract class BaseController<T, U, S extends IBaseCrudService<T, U>> {
 		} = req;
 
 		const response = await this.baseService.getById(id);
-		const status = response ? OK : NOT_FOUND;
-		res.responseJson({ data: response, status });
+		res.responseJson({ data: response, status: OK });
 	}
 
 	public async create(req: Request, res: ICustomResponse): Promise<any> {

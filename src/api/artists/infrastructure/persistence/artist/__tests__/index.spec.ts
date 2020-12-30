@@ -1,5 +1,6 @@
 // repositories
-import { ArtistRepository } from "../artist-repository";
+import { ArtistRepository } from "../index";
+import { PersonRepository } from "@api/persons/infrastructure/persistence/person-repository";
 
 // Models
 import { Artist } from "@database/models/artist";
@@ -12,7 +13,7 @@ import mocks from './mocks.json';
 jest.mock('@database/models/artist', () => require('@database/models/artist/artist-mock').artistMock);
 
 jest.mock('@api/persons/infrastructure/persistence/person-repository', () => ({
-  PersonRepository: require('@mocks/fake-repository').default,
+  PersonRepository: require('@api/persons/infrastructure/persistence/person-repository-mock').default
 }));
 jest.mock('@api/emergency-contact/infrastructure/persistence/emergency-contact-repository', () => ({
   EmergencyContactRepository: class FakeClass {
@@ -33,9 +34,11 @@ jest.mock('@api/artists/infrastructure/persistence/artist-passport/artist-passpo
 
 describe('ArtistRepository', () => {
   let repository: ArtistRepository;
+  let personRepository: PersonRepository;
 
   beforeEach(() => {
     repository = new ArtistRepository();
+    personRepository = new PersonRepository();
   });
 
   afterEach(() => {
@@ -44,9 +47,7 @@ describe('ArtistRepository', () => {
 
   it('should get an class instance', () => {
 
-    expect(
-      new ArtistRepository()
-    ).toBeInstanceOf(BaseCrudRepository)
+    expect(repository).toBeInstanceOf(BaseCrudRepository)
 
   });
 
@@ -105,6 +106,23 @@ describe('ArtistRepository', () => {
 
       await expect(repository.updateOne(1, {} as any)).rejects.toThrow();
     });
+  });
+
+  describe('findAll method', () => {
+    const cases = [
+      [{filters: {name: 'alver'}}],
+      [{filters: {}}],
+    ];
+
+    it.each(cases)('should get the data whne the parameters to equal %s', async (params) => {
+      const mockData: any = {
+        attributes: [],
+      };
+
+      const response = await repository.findAll(params);
+      expect(response).toHaveProperty('totalItems', 1)
+    });
+
   });
 
 });

@@ -15,7 +15,7 @@ import { Teacher } from '@database/models/teacher';
 import { BaseCrudRepository } from '@api/shared/base-crud/infrastructure/persistence/mysql/base-crud-repository';
 
 // Repositories
-import { ArtistRepository } from '@api/artists/infrastructure/persistence/artist/artist-repository';
+import { ArtistRepository } from '@api/artists/infrastructure/persistence/artist';
 import { PersonRepository } from '@api/persons/infrastructure/persistence/person-repository';
 
 // Models
@@ -34,6 +34,23 @@ export class TeacherRepository extends BaseCrudRepository<typeof Teacher, ITeach
 		super(Teacher);
 		this.personRepository = new PersonRepository();
 		this.artistRepository = new ArtistRepository();
+	}
+
+	public async findAll(options?: any): Promise<ITeacherEntity[]> {
+		const { filters, ...otherValues } = options;
+		let buildOptions = {
+			...otherValues,
+		};
+		if (filters.name) {
+			const { attributes, ...values } = this.personRepository.getFilterForFullName(filters.name);
+			buildOptions = {
+				...buildOptions,
+				...values,
+				attributes: ['id', 'personId', ...attributes],
+			};
+		}
+
+		return super.findAll(buildOptions);
 	}
 
 	public async findOne({ query }: IQueryParams): Promise<ITeacherEntity> {

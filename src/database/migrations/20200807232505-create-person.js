@@ -33,7 +33,7 @@ module.exports = {
           key: 'id'
         },
       },
-      document_number: Sequelize.BIGINT(20),
+      document_number: Sequelize.BIGINT,
       height: Sequelize.DECIMAL(10, 2),
       country_id: {
         type: Sequelize.INTEGER.UNSIGNED,

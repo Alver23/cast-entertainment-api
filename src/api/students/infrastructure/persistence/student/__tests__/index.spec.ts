@@ -13,7 +13,7 @@ jest.mock('@database/models/rhythm', () => require('@database/models/rhythm/rhyt
 jest.mock('@database/models/student', () => require('@database/models/student/student-mock').studentMock);
 
 jest.mock('@api/persons/infrastructure/persistence/person-repository', () => ({
-  PersonRepository: require('@mocks/fake-repository').default,
+  PersonRepository: require('@api/persons/infrastructure/persistence/person-repository-mock').default
 }));
 jest.mock('@api/students/infrastructure/persistence/tutor', () => ({
   TutorRepository: require('@mocks/fake-repository').default,
@@ -35,9 +35,7 @@ describe('StudentRepository', () => {
   });
 
   it('should get an class instance', () => {
-
     expect(repository).toBeInstanceOf(BaseCrudRepository)
-
   });
 
   describe('findOne method', () => {
@@ -95,6 +93,24 @@ describe('StudentRepository', () => {
 
       await expect(repository.updateOne(1, {} as any)).rejects.toThrow();
     });
+  });
+
+  describe('findAll method', () => {
+    const cases = [
+      [{filters: {name: 'alver'}}],
+      [{filters: {}}],
+    ];
+
+    it.each(cases)('should get the data whne the parameters to equal %s', async (params) => {
+      const mockData: any = {
+        attributes: [],
+      };
+
+      const response: any = await repository.findAll(params);
+      expect(response).toHaveProperty('totalItems', 1);
+      expect(response.items).toHaveLength(1);
+    });
+
   });
 
 });
