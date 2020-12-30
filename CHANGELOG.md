@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.21.0](https://github.com/Alver23/cast-entertainment/compare/v1.20.0...v1.21.0) (2020-12-30)
+
+
+### Features
+
+* added catalog module ([63d18a4](https://github.com/Alver23/cast-entertainment/commit/63d18a4eac1a3cf28eb630ef6d848d84ac722946))
+
 ## [1.20.0](https://github.com/Alver23/cast-entertainment/compare/v1.19.0...v1.20.0) (2020-12-30)
 
 
