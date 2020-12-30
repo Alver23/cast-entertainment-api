@@ -46,8 +46,15 @@ Group.init(
 		modelName: 'group',
 		tableName: 'group',
 		underscored: true,
+		indexes: [
+			{
+				type: 'FULLTEXT',
+				fields: ['name', 'description'],
+			},
+		],
 	},
 );
 
+Group.sync();
 Group.hasMany(GroupItinerary, { as: 'itineraries' });
 Group.hasMany(GroupPerson, { as: 'members' });

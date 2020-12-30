@@ -2,8 +2,8 @@
 import { ISchemaValidator } from '@core/middlewares/schema-validator/schema-validator-interface';
 
 // Dto's
+import { QueryParamsDto } from '@api/shared/base-crud/infrastructure/dto/query';
 import { RetrieveDto } from '@api/shared/base-crud/infrastructure/dto/retrieve';
-import { PaginationParamsDto } from '@api/shared/base-crud/infrastructure/dto/pagination';
 
 export interface ISchemaStructure {
 	get?: ISchemaValidator;
@@ -15,7 +15,7 @@ export interface ISchemaStructure {
 
 export const defaultSchema: ISchemaStructure = {
 	get: {
-		query: PaginationParamsDto,
+		query: QueryParamsDto,
 	},
 	getById: {
 		params: RetrieveDto,

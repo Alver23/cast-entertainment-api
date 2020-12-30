@@ -2,7 +2,7 @@
 import { baseRouter } from '@api/shared/base-crud/infrastructure/router/base-router';
 
 // Repository
-import { ArtistRepository } from '@api/artists/infrastructure/persistence/artist/artist-repository';
+import { ArtistRepository } from '@api/artists/infrastructure/persistence/artist';
 
 // Application
 import { ArtistService } from '@api/artists/application/artist-service';

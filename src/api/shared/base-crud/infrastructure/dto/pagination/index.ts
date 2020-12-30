@@ -1,7 +1,7 @@
 // Dependencies
 import { Expose, Type } from 'class-transformer';
 
-export class PaginationParamsDto {
+export class PaginationQueryParamsDto {
 	@Expose()
 	@Type(() => Number)
 	page: number;

@@ -8,6 +8,7 @@ import { sequelize } from '@core/sequelize/sequelize';
 import { ItineraryHasActivity } from '@database/models/itinerary-has-activity';
 
 // Interfaces
+import { Person } from '@database/models/person';
 import { ItineraryCreationAttributes, ItineraryModel } from './itinerary-interface';
 
 export class Itinerary extends Model<ItineraryModel, ItineraryCreationAttributes> implements ItineraryModel {
@@ -44,8 +45,15 @@ Itinerary.init(
 		modelName: 'itinerary',
 		tableName: 'itinerary',
 		underscored: true,
+		indexes: [
+			{
+				type: 'FULLTEXT',
+				fields: ['name', 'description'],
+			},
+		],
 	},
 );
 
+Itinerary.sync();
 Itinerary.hasMany(ItineraryHasActivity, { as: 'itineraryHasActivity' });
 ItineraryHasActivity.belongsTo(Itinerary);

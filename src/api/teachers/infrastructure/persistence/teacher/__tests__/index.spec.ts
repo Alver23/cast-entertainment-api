@@ -1,6 +1,6 @@
 // Repositories
 import { TeacherRepository } from "../index";
-import { ArtistRepository } from "@api/artists/infrastructure/persistence/artist/artist-repository";
+import { ArtistRepository } from "@api/artists/infrastructure/persistence/artist";
 
 // Models
 import { Teacher } from "@database/models/teacher";
@@ -13,9 +13,9 @@ import mocks from './mocks.json';
 jest.mock('@database/models/rhythm', () => require('@database/models/rhythm/rhythm-mock').rhythmMock);
 jest.mock('@database/models/teacher', () => require('@database/models/teacher/teacher-mock').teacherMock);
 jest.mock('@api/persons/infrastructure/persistence/person-repository', () => ({
-  PersonRepository: require('@mocks/fake-repository').default,
+  PersonRepository: require('@api/persons/infrastructure/persistence/person-repository-mock').default
 }));
-jest.mock('@api/artists/infrastructure/persistence/artist/artist-repository', () => ({
+jest.mock('@api/artists/infrastructure/persistence/artist', () => ({
   ArtistRepository: require('@mocks/fake-repository').default,
 }));
 
@@ -117,6 +117,24 @@ describe('TeacherRepository', () => {
             personId: expect.any(Number),
           })
         )
+    });
+
+  });
+
+  describe('findAll method', () => {
+    const cases = [
+      [{filters: {name: 'alver'}}],
+      [{filters: {}}],
+    ];
+
+    it.each(cases)('should get the data whne the parameters to equal %s', async (params) => {
+      const mockData: any = {
+        attributes: [],
+      };
+
+      const response: any = await repository.findAll(params);
+      expect(response).toHaveProperty('totalItems', 1);
+      expect(response.items).toHaveLength(1);
     });
 
   });

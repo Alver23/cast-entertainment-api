@@ -9,15 +9,15 @@ import { artistEmergencyContactService } from '@api/artists/application/emergenc
 import { artistPassportService } from '@api/artists/application/passport-service';
 
 // Repositories
-import { ArtistRepository } from '@api/artists/domain/repositories/artist-repository';
+import { IArtistRepository } from '@api/artists/domain/repositories/artist-repository';
 import { BaseCrudService } from '@api/shared/base-crud/application/base-crud-service';
 import { ArtistListDto } from './dto/artist-list';
 import { ArtistItemDto } from './dto/artist';
 
-export class ArtistService extends BaseCrudService<IArtist, any, ArtistRepository> {
+export class ArtistService extends BaseCrudService<IArtist, any, IArtistRepository> {
 	protected schemaItems = ArtistListDto;
 
-	constructor(repository: ArtistRepository) {
+	constructor(repository: IArtistRepository) {
 		super(repository);
 	}
 

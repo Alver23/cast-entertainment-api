@@ -1,5 +1,5 @@
 // Dependencies
-import { Op, Transaction } from 'sequelize';
+import { Op, Sequelize, Transaction } from 'sequelize';
 
 // Entities
 import { IGroupEntity } from '@api/groups/domain/entities/group';
@@ -97,12 +97,25 @@ export class GroupRepository extends BaseCrudRepository<typeof Group, IGroupEnti
 		return super.findOne({ query, options });
 	}
 
-	async findAll(options = {}): Promise<IGroupEntity[]> {
-		const buildOptions = {
-			...options,
+	async findAll(options: any = { filters: {} }): Promise<IGroupEntity[]> {
+		const { filters, ...otherValues } = options;
+		let buildOptions = {
+			...otherValues,
 			include: [{ association: 'members' }],
 		};
 
+		if (filters.name) {
+			const sentence = Sequelize.literal('MATCH (name, description) AGAINST (:name)');
+			buildOptions = {
+				...buildOptions,
+				attributes: ['id', 'name', 'description', 'state', [sentence, 'score']],
+				where: sentence,
+				replacements: {
+					name: filters.name,
+				},
+				order: [[Sequelize.literal('score'), 'DESC']],
+			};
+		}
 		return super.findAll(buildOptions);
 	}
 

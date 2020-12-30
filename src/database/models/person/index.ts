@@ -57,10 +57,10 @@ Person.init(
 		address: DataTypes.STRING,
 		city: DataTypes.STRING,
 		cellPhone: DataTypes.STRING,
-		gender: DataTypes.NUMBER,
-		documentType: DataTypes.NUMBER,
-		documentNumber: DataTypes.NUMBER,
-		height: DataTypes.NUMBER,
+		gender: DataTypes.INTEGER.UNSIGNED,
+		documentType: DataTypes.INTEGER.UNSIGNED,
+		documentNumber: DataTypes.BIGINT,
+		height: DataTypes.DECIMAL(10, 2),
 		countryId: DataTypes.INTEGER.UNSIGNED,
 		ipAddress: DataTypes.STRING,
 	},
@@ -69,6 +69,17 @@ Person.init(
 		modelName: 'Person',
 		tableName: 'people',
 		underscored: true,
+		indexes: [
+			{
+				type: 'UNIQUE',
+				fields: ['email'],
+			},
+			{
+				name: 'full_names',
+				type: 'FULLTEXT',
+				fields: ['first_name', 'last_name'],
+			},
+		],
 		defaultScope: {
 			order: [['createdAt', 'DESC']],
 			include: 'document',
@@ -76,4 +87,5 @@ Person.init(
 	},
 );
 
+Person.sync();
 Person.belongsTo(Catalog, { foreignKey: 'documentType', as: 'document' });

@@ -31,12 +31,14 @@ export class UserRepository extends BaseCrudRepository<typeof User, IUserEntity,
 		}
 	}
 
-	async findAll(options = {}): Promise<IUserEntity[]> {
+	async findAll(options: any = { filters: {} }): Promise<IUserEntity[]> {
+		const { filters, ...otherValues } = options;
 		const buildOptions = {
-			...options,
-			attributes: { exclude: ['personId'] },
+			...otherValues,
 			include: ['person', 'roles'],
+			attributes: { exclude: ['personId'] },
 		};
+
 		return super.findAll(buildOptions);
 	}
 

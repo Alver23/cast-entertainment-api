@@ -1,5 +1,5 @@
 // Dependencies
-import { Transaction } from 'sequelize';
+import { Transaction, Sequelize } from 'sequelize';
 
 // Entities
 import { IArtistPassport } from '@api/artists/domain/entities/artist-passport/artist-passport-entity';
@@ -21,6 +21,7 @@ import { ArtistPassportRespository } from '@api/artists/infrastructure/persisten
 import { sequelize } from '@core/sequelize/sequelize';
 
 // Entities
+import { IArtistRepository } from '@api/artists/domain/repositories/artist-repository';
 import { IArtist } from '@api/artists/domain/entities/artist/artist-entity';
 
 // Shared
@@ -32,7 +33,7 @@ interface IArtistModel extends Artist {
 	createPassport(data, attributes): Promise<any>;
 }
 
-export class ArtistRepository extends BaseCrudRepository<typeof Artist, IArtist, any> {
+export class ArtistRepository extends BaseCrudRepository<typeof Artist, IArtist, any> implements IArtistRepository {
 	private readonly personRepository: PersonRepository;
 
 	private readonly emergencyContactRepository: EmergencyContactRepository;
@@ -55,6 +56,23 @@ export class ArtistRepository extends BaseCrudRepository<typeof Artist, IArtist,
 	async create(data: IArtist): Promise<any> {
 		const response = await this.upsert(data);
 		return response;
+	}
+
+	async findAll(options?: any): Promise<IArtist[]> {
+		const { filters, ...otherValues } = options;
+		let buildOptions = {
+			...otherValues,
+		};
+		if (filters.name) {
+			const { attributes, ...values } = this.personRepository.getFilterForFullName(filters.name);
+			buildOptions = {
+				...buildOptions,
+				...values,
+				attributes: ['id', 'active', 'personId', ...attributes],
+			};
+		}
+
+		return super.findAll(buildOptions);
 	}
 
 	async findOne({ query }: IQueryParams): Promise<any> {
