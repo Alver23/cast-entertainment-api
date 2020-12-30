@@ -7,4 +7,5 @@ export default class FakeController {
   createMany(request, response) {
     return response.json();
   }
+
 }

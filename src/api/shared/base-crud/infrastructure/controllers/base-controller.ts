@@ -18,10 +18,19 @@ const { limit: defaultLimit, offset: defaultOffset } = paginationConfig;
 export abstract class BaseController<T, U, S extends IBaseCrudService<T, U>> {
 	constructor(protected readonly baseService: S) {}
 
-	public async getAll(req: Request, res: ICustomResponse): Promise<any> {
+	protected getQueryParams(req: Request) {
 		const { query } = req;
 		const { page: offset, limit = defaultLimit, ...otherFilters } = query;
 		const page = offset ? +offset - 1 : defaultOffset;
+		return {
+			page,
+			limit,
+			otherFilters,
+		};
+	}
+
+	public async getAll(req: Request, res: ICustomResponse): Promise<any> {
+		const { page, limit, otherFilters } = this.getQueryParams(req);
 		const response = await this.baseService.getAll(page, +limit, otherFilters);
 		res.responseJson({ data: response, message: HttpMessages.LISTS });
 	}

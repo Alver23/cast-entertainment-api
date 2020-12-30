@@ -23,6 +23,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       description: Sequelize.STRING,
+      orden: Sequelize.TINYINT,
       ip_address: Sequelize.STRING,
       created_at: {
         allowNull: false,

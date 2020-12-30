@@ -52,6 +52,10 @@ jest.mock('@api/groups/infrastructure/routes/group', () => ({
   groupRouter: jest.fn(),
 }));
 
+jest.mock('@api/catalogs/infrastructure/routes/catalog', () => ({
+  catalogRouter: jest.fn(),
+}));
+
 
 describe('RouteConfig', () => {
   const app = {
