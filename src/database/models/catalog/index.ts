@@ -4,7 +4,10 @@ import { Model, DataTypes } from 'sequelize';
 // ORM
 import { sequelize } from '@core/sequelize/sequelize';
 
-export class Catalog extends Model {
+// Interfaces
+import { CatalogModel, CatalogCreationAttributes } from '@database/models/catalog/interface';
+
+export class Catalog extends Model<CatalogModel, CatalogCreationAttributes> implements CatalogModel {
 	public id!: number;
 
 	public parentId!: number;
@@ -12,6 +15,10 @@ export class Catalog extends Model {
 	public name: string;
 
 	public description: string;
+
+	public orden: number;
+
+	public ipAddress: string;
 
 	// timestamps!
 	public readonly createdAt!: Date;
@@ -31,6 +38,8 @@ Catalog.init(
 		name: DataTypes.STRING,
 		parentId: DataTypes.INTEGER.UNSIGNED,
 		description: DataTypes.STRING,
+		orden: DataTypes.TINYINT,
+		ipAddress: DataTypes.STRING,
 	},
 	{
 		sequelize,

@@ -31,7 +31,6 @@ describe('IsPersonAlreadyExist', () => {
     it.each(cases)('should return %s', async (expected: boolean, email: string) => {
       const response = await validationService.validate(email, args);
       expect(response).toBe(expected);
-      console.log('response', response);
     });
   });
 

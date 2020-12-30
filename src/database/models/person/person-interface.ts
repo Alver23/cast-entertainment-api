@@ -1,7 +1,8 @@
 // Dependencies
 import { Optional } from 'sequelize';
 
-export interface PersonRequest {
+export interface PersonModel {
+	id: number;
 	firstName: string;
 	lastName: string;
 	email: string;
@@ -15,10 +16,6 @@ export interface PersonRequest {
 	height?: number;
 	countryId: number;
 	ipAddress: string;
-}
-
-export interface PersonModel extends PersonRequest {
-	id: number;
 }
 
 export type PersonCreationAttributes = Optional<PersonModel, 'id'>;
