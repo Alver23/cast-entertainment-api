@@ -16,19 +16,21 @@ export class AuthController {
 	constructor(private readonly service: IAuthService) {}
 
 	public async login(req: Request, res: ICustomResponse, next: NextFunction): Promise<any> {
-		return passport.authenticate('basic', (error: any, user: IAuthUserEntity) => {
-			if (error) {
-				return next(error);
-			}
-
-			return req.login(user, { session: false }, async (errorLogin: any) => {
-				if (errorLogin) {
-					return next(errorLogin);
+		return (
+			await passport.authenticate('basic', (error: any, user: IAuthUserEntity) => {
+				if (error) {
+					return next(error);
 				}
-				const response = await this.service.createToken(user);
-				res.responseJson({ data: response });
-			});
-		})(req, res, next);
+
+				return req.login(user, { session: false }, async (errorLogin: any) => {
+					if (errorLogin) {
+						return next(errorLogin);
+					}
+					const response = await this.service.createToken(user);
+					res.responseJson({ data: response });
+				});
+			})
+		)(req, res, next);
 	}
 
 	public async refreshToken(req: Request, res: ICustomResponse): Promise<any> {

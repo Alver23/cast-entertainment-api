@@ -1,5 +1,5 @@
 // Dependencies
-import { compare } from 'bcrypt';
+import { compare } from 'bcryptjs';
 
 // Repository
 import { IAuthRepository } from '@api/auth/domain/repositories/auth';
