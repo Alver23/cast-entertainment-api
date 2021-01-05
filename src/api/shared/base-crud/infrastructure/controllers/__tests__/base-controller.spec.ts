@@ -29,7 +29,7 @@ describe('BaseController', () => {
 
   describe('getAll method', () => {
     const cases = [
-      [null, null],
+      [null, {}],
       [1, { query: { page: 1} }]
     ];
 

@@ -16,6 +16,10 @@ describe('UserRepository', () => {
     repository = new UserRepository();
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should get an class instance', () => {
     expect(repository).toBeInstanceOf(BaseCrudRepository)
   });
@@ -61,6 +65,7 @@ describe('UserRepository', () => {
   });
 
   describe('update method', () => {
+
     it('should call method successfully', async () => {
       const response = await repository.updateOne(1, mocks.caseTwo as any);
       expect(response)
@@ -77,11 +82,24 @@ describe('UserRepository', () => {
         .mockImplementation(() => {
           return {
             id: 1,
+            addRoles: jest.fn().mockResolvedValue(null),
             getRoles: jest.fn().mockResolvedValue(null),
           } as any
         });
 
       const response = await repository.updateOne(1, mocks.caseTwo as any);
+      expect(response)
+        .toEqual(
+          expect.objectContaining({
+            id: expect.any(Number),
+          }),
+        )
+
+    });
+
+    it('should call method successfully when roleIds is empty', async () => {
+      const { rolesId, ...otherValues } = mocks.caseTwo;
+      const response = await repository.updateOne(1, otherValues as any);
       expect(response)
         .toEqual(
           expect.objectContaining({

@@ -62,7 +62,7 @@ export class UserRepository extends BaseCrudRepository<typeof User, IUserEntity,
 
 			const userModel: any = await this.updateOrCreate({ ipAddress, password, personId: newPersonId }, id && { id }, transaction);
 
-			if (id) {
+			if (id && rolesId?.length > 0) {
 				await this.removeRoles(userModel, transaction);
 			}
 
