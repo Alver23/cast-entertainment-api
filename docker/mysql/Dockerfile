@@ -1,2 +1,1 @@
-# Base image
-FROM mysql:5.7.30
+FROM mysql:8
