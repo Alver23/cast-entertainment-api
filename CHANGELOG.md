@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.22.0](https://github.com/Alver23/cast-entertainment/compare/v1.21.0...v1.22.0) (2021-01-06)
+
+
+### Features
+
+* change bcrypt to bcrptjs ([ffbfe5c](https://github.com/Alver23/cast-entertainment/commit/ffbfe5c371d662534a2c237c51c37a8408e70291))
+* optimize dockerfiles ([d67f54f](https://github.com/Alver23/cast-entertainment/commit/d67f54f23552f4bb4269339e8c8c8272024624ce))
+
+
+### Bug Fixes
+
+* fixed bug save roles ([e1d822c](https://github.com/Alver23/cast-entertainment/commit/e1d822c7485369504a213e381f9b5b75a715591a))
+
 ## [1.21.0](https://github.com/Alver23/cast-entertainment/compare/v1.20.0...v1.21.0) (2020-12-30)
 
 
