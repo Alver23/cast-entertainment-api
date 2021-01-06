@@ -1,5 +1,5 @@
 // Dependencies
-import { hash } from 'bcrypt';
+import { hash } from 'bcryptjs';
 
 // Entities
 import { IUserEntity } from '@api/users/domain/entities/user';

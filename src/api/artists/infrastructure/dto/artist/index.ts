@@ -41,7 +41,7 @@ export class Artist extends PersonDto {
 	@ValidateNested()
 	@Expose()
 	@Type(() => ArtistSkill)
-	skills: ArtistSkill;
+	skills: ArtistSkill[];
 
 	@ValidateNested()
 	@Expose()

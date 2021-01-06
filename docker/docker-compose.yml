@@ -1,17 +1,10 @@
 version: '3.7'
 services:
-  reverse_proxy:
-    container_name: cas-entertainment-nginx
-    build:
-      context: .
-      dockerfile: ./nginx/Dockerfile
-    ports:
-    - 80:80
-    - 443:443
-    depends_on:
-      - server_node
-  server_mysql:
+  server_db:
     container_name: cas-entertainment-mysql
+    image: mysql:8
+    cap_add:
+      - SYS_NICE
     build:
       context: .
       dockerfile: ./mysql/Dockerfile
@@ -21,29 +14,41 @@ services:
       - MYSQL_DATABASE=${DB_DATABASE}
       - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
       - TZ=America/Bogota
-    command: --max-allowed-packet=512M
+    command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
-      - type: volume
-        source: mysql_db
-        target: /var/lib/mysql
+      - my-db:/var/lib/mysql
+    networks:
+      - cas-network
     restart: always
-  server_node:
+  server_api:
     container_name: cas-entertainment-node
     build:
       context: ./..
       dockerfile: ./docker/node/Dockerfile
     depends_on:
-      - server_mysql
-    volumes:
-      - type: volume
-        source: node_app
-        target: /opt/app/build/
+      - server_db
     environment:
       - NODE_ENV=${ENV}
     ports:
-      - 5001:5001
+      - 5001:${PORT}
+    networks:
+      - cas-network
     restart: always
+  reverse_proxy:
+    container_name: cas-entertainment-nginx
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    ports:
+      - 80:80
+    networks:
+      - cas-network
+    depends_on:
+      - server_api
 
 volumes:
-  mysql_db:
-  node_app:
+  my-db:
+
+networks:
+  cas-network:
+

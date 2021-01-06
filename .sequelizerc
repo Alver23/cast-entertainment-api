@@ -1,7 +1,7 @@
 // Dependencies
 const path = require('path');
 
-const rootDir = 'src/database/';
+const rootDir = 'build/database/';
 const basePath = path.join(__dirname, rootDir);
 
 module.exports = {

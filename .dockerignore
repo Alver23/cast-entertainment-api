@@ -10,6 +10,7 @@
 .prettierrc.json
 CHANGELOG.md
 node_modules
+build
 docker-run.sh
 README.md
 .vscode

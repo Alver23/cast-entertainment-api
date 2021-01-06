@@ -1,5 +1,5 @@
 // Dependencies
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 // Services
 import { AuthService } from "../index";
