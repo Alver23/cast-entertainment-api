@@ -1,13 +1,13 @@
-version: '3.7'
+version: '3'
 services:
   server_db:
     container_name: cas-entertainment-mysql
-    image: mysql:8
+    image: db-cas-mysql
     cap_add:
       - SYS_NICE
     build:
       context: .
-      dockerfile: ./mysql/Dockerfile
+      dockerfile: ./docker/mysql/Dockerfile
     ports:
       - 3306:3306
     environment:
@@ -22,8 +22,9 @@ services:
     restart: always
   server_api:
     container_name: cas-entertainment-node
+    image: api-cas-node
     build:
-      context: ./..
+      context: ./
       dockerfile: ./docker/node/Dockerfile
     depends_on:
       - server_db
@@ -36,9 +37,10 @@ services:
     restart: always
   reverse_proxy:
     container_name: cas-entertainment-nginx
+    image: cas-proxy-nginx
     build:
       context: .
-      dockerfile: ./nginx/Dockerfile
+      dockerfile: ./docker/nginx/Dockerfile
     ports:
       - 80:80
     networks:
