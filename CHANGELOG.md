@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.22.1](https://github.com/Alver23/cast-entertainment/compare/v1.22.0...v1.22.1) (2021-01-11)
+
+
+### Bug Fixes
+
+* **artist:** fixed bug the artist many ([45959f1](https://github.com/Alver23/cast-entertainment/commit/45959f1984e716f1b52526bc0eab2857bc7c2261))
+
 ## [1.22.0](https://github.com/Alver23/cast-entertainment/compare/v1.21.0...v1.22.0) (2021-01-06)
 
 
