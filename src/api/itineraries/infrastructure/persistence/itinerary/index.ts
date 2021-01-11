@@ -16,7 +16,8 @@ import { IQueryParams } from '@api/shared/base-crud/domain/repositories/base-cru
 // Repositories
 import { IItineraryRepository } from '@api/itineraries/domain/repositories/itinerary';
 
-export class ItineraryRepository extends BaseCrudRepository<typeof Itinerary, IItineraryEntity, IItineraryEntity>
+export class ItineraryRepository
+	extends BaseCrudRepository<typeof Itinerary, IItineraryEntity, IItineraryEntity>
 	implements IItineraryRepository {
 	constructor() {
 		super(Itinerary);

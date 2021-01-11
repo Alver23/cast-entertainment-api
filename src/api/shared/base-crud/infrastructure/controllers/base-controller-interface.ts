@@ -8,3 +8,9 @@ export interface IBaseController {
 	update(req: Request, res: Response, next: NextFunction): Promise<any>;
 	delete(req: Request, res: Response, next: NextFunction): Promise<any>;
 }
+
+export interface IQueryParams {
+	page: string | number;
+	limit: string | number;
+	otherFilters: any;
+}

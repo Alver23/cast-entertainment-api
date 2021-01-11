@@ -10,7 +10,8 @@ import {
 	ArtistHasPassportCreationAttributes,
 } from '@database/models/artist-has-passport/artist-has-passport-interface';
 
-export class ArtistHasPassport extends Model<ArtistHasPassportModel, ArtistHasPassportCreationAttributes>
+export class ArtistHasPassport
+	extends Model<ArtistHasPassportModel, ArtistHasPassportCreationAttributes>
 	implements ArtistHasPassportModel {
 	public id!: number;
 

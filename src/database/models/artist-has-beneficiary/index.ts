@@ -14,7 +14,8 @@ import {
 import { Catalog } from '@database/models/catalog';
 import { Person } from '@database/models/person';
 
-export class ArtistHasBeneficiary extends Model<ArtistHasBeneficiaryModel, ArtistHasBeneficiaryCreationAttributes>
+export class ArtistHasBeneficiary
+	extends Model<ArtistHasBeneficiaryModel, ArtistHasBeneficiaryCreationAttributes>
 	implements ArtistHasBeneficiaryModel {
 	public id!: number;
 

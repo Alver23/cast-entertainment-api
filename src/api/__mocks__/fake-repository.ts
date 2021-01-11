@@ -14,7 +14,9 @@ export default class FakeRepository {
   }
 
   async findAll() {
-    return [1, 2];
+    return {
+      items: [1, 2]
+    };
   }
   async findOne() {
     return 1;

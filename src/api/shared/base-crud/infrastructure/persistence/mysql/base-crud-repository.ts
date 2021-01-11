@@ -25,15 +25,15 @@ export abstract class BaseCrudRepository<K extends IBaseModel, T, U> implements 
 	}
 
 	async findAll(options: any = {}): Promise<U[]> {
-		const { page, limit, ...otherValues } = options;
-		const offset = page * limit;
+		const { page, limit: size, ...otherValues } = options;
+		const { offset, limit } = paginator.getPagination(page, size);
 		const buildOptions = {
 			...otherValues,
 			limit,
 			offset,
 		};
 		const response = await this.model.findAndCountAll(buildOptions);
-		return paginator.getPagingData(response, page, limit) as any;
+		return paginator.getPagingData(response, offset, limit) as any;
 	}
 
 	async findOne({ query, options = {} }: IQueryParams): Promise<U> {

@@ -1,7 +1,19 @@
 // Interfaces
-import { IPagingData } from './interface';
+import { config } from '@config/index';
+import { IPagingData, IPagination } from './interface';
+
+// Config
+
+const paginationConfig = config.paginator;
+const { limit: defaultLimit, offset: defaultOffset } = paginationConfig;
 
 export class Paginator {
+	getPagination(page: number | string, size: number | string): IPagination {
+		const limit = size ? +size : defaultLimit;
+		const offset = page ? (+page - 1) * limit : defaultOffset;
+		return { limit, offset };
+	}
+
 	getPagingData(data: any, page: number, limit: number): IPagingData {
 		const { count: totalItems, rows: items } = data;
 		const currentPage = page ? page + 1 : 1;
