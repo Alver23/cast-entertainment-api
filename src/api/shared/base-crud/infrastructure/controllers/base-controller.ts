@@ -5,23 +5,17 @@ import { Request } from 'express';
 // Interfaces
 import { IBaseCrudService } from '@api/shared/base-crud/application/base-crud-interface';
 import { ICustomResponse } from '@core/middlewares/response/response-interface';
+import { HttpMessages, setResponseForDelete } from '@utils/index';
+import { IQueryParams } from './base-controller-interface';
 
 // Utils
-import { HttpMessages, setResponseForDelete } from '@utils/index';
-
-// Config
-import { config } from '@config/index';
-
-const paginationConfig = config.paginator;
-const { limit: defaultLimit, offset: defaultOffset } = paginationConfig;
 
 export abstract class BaseController<T, U, S extends IBaseCrudService<T, U>> {
 	constructor(protected readonly baseService: S) {}
 
-	protected getQueryParams(req: Request) {
+	protected getQueryParams(req: Request): IQueryParams {
 		const { query } = req;
-		const { page: offset, limit = defaultLimit, ...otherFilters } = query;
-		const page = offset ? +offset - 1 : defaultOffset;
+		const { page, limit, ...otherFilters } = query as any;
 		return {
 			page,
 			limit,
@@ -31,7 +25,7 @@ export abstract class BaseController<T, U, S extends IBaseCrudService<T, U>> {
 
 	public async getAll(req: Request, res: ICustomResponse): Promise<any> {
 		const { page, limit, otherFilters } = this.getQueryParams(req);
-		const response = await this.baseService.getAll(page, +limit, otherFilters);
+		const response = await this.baseService.getAll(page, limit, otherFilters);
 		res.responseJson({ data: response, message: HttpMessages.LISTS });
 	}
 

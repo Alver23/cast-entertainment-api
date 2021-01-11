@@ -107,7 +107,7 @@ describe('ArtistRepository', () => {
   describe('findAll method', () => {
     const cases = [
       [{filters: {name: 'alver'}}],
-      [{filters: {}}],
+      [{}],
     ];
 
     it.each(cases)('should get the data whne the parameters to equal %s', async (params) => {

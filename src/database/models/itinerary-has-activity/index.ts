@@ -10,7 +10,8 @@ import { ItineraryActivityCreationAttributes, ItineraryActivityModel } from './i
 
 // Models
 
-export class ItineraryHasActivity extends Model<ItineraryActivityModel, ItineraryActivityCreationAttributes>
+export class ItineraryHasActivity
+	extends Model<ItineraryActivityModel, ItineraryActivityCreationAttributes>
 	implements ItineraryActivityModel {
 	public id!: number;
 

@@ -108,10 +108,10 @@ export class TeacherRepository extends BaseCrudRepository<typeof Teacher, ITeach
 			},
 		};
 
-		const response = await this.artistRepository.findAll(options);
-		if (response.length > 0) {
+		const { items } = (await this.artistRepository.findAll(options)) as any;
+		if (items.length > 0) {
 			return (await Promise.all(
-				response.map(async (artist: IArtist) => {
+				items.map(async (artist: IArtist) => {
 					const { nativeLanguage, otherLanguage, personId } = artist;
 					const item = await this.model.findOne({ where: { personId } });
 					const values = { nativeLanguage, otherLanguage, ipAddress };

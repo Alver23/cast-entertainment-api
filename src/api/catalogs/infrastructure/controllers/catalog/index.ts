@@ -27,7 +27,7 @@ export class CatalogController extends BaseController<ICatalogEntity, ICatalogEn
 		} = req;
 		const { page, limit, otherFilters } = this.getQueryParams(req);
 
-		const response = await this.baseService.getByParentId(+id, page, +limit, otherFilters);
+		const response = await this.baseService.getByParentId(+id, page, limit, otherFilters);
 		res.responseJson({ data: response, message: HttpMessages.LISTS });
 	}
 }

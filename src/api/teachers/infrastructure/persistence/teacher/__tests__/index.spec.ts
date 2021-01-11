@@ -94,7 +94,7 @@ describe('TeacherRepository', () => {
     it('should return array empty when the artists no exist', async () => {
       jest
         .spyOn(repository.artistRepository, 'findAll')
-        .mockResolvedValue([]);
+        .mockResolvedValue({ items: [] } as any);
 
       const response = await repository.createMany({artistIds, ipAddress: '123'});
       expect(response).toEqual([]);

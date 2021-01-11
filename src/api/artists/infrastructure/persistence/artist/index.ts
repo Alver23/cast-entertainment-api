@@ -63,7 +63,7 @@ export class ArtistRepository extends BaseCrudRepository<typeof Artist, IArtist,
 		let buildOptions = {
 			...otherValues,
 		};
-		if (filters.name) {
+		if (filters?.name) {
 			const { attributes, ...values } = this.personRepository.getFilterForFullName(filters.name);
 			buildOptions = {
 				...buildOptions,

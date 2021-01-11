@@ -14,7 +14,8 @@ import { IItineraryService } from './itinerary-interfaces';
 import { ItineraryDto } from './dto/itinerary';
 import { ItineraryListDto } from './dto/itinerary/itinerary-list';
 
-export class ItineraryService extends BaseCrudService<IItineraryEntity, IItineraryEntity, IItineraryRepository>
+export class ItineraryService
+	extends BaseCrudService<IItineraryEntity, IItineraryEntity, IItineraryRepository>
 	implements IItineraryService {
 	protected schemaItem = ItineraryDto;
 

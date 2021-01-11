@@ -4,3 +4,8 @@ export interface IPagingData {
 	totalPages: number;
 	currentPage: number;
 }
+
+export interface IPagination {
+	limit: number;
+	offset: number;
+}
