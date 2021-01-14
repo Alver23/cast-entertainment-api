@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.23.0](https://github.com/Alver23/cast-entertainment/compare/v1.22.1...v1.23.0) (2021-01-14)
+
+
+### Features
+
+* add endpoint for get the user menus ([ad2acdc](https://github.com/Alver23/cast-entertainment/commit/ad2acdc422a4e36259743a80a9a661adf6ae6e2b))
+* the new endpoint to get user menus ([96660f1](https://github.com/Alver23/cast-entertainment/commit/96660f10ba152a1364ff57c54d97f095adea45db))
+
 ### [1.22.1](https://github.com/Alver23/cast-entertainment/compare/v1.22.0...v1.22.1) (2021-01-11)
 
 
