@@ -11,6 +11,7 @@ import { BaseCrudService } from '@api/shared/base-crud/application/base-crud-ser
 import { IUserRepository } from '@api/users/domain/repositories/user';
 
 // Dto's
+import { IUserMenu } from '@api/users/domain/entities/menu';
 import { UserDto } from './dto/user';
 
 export class UserService extends BaseCrudService<IUserEntity, IUserEntity, IUserRepository> {
@@ -37,5 +38,20 @@ export class UserService extends BaseCrudService<IUserEntity, IUserEntity, IUser
 			newData.password = await hash(password, this.saltOrRound);
 		}
 		return super.update(+id, data);
+	}
+
+	async getUserMenus(id: number): Promise<IUserMenu[]> {
+		const menus: IUserMenu[] = await this.repository.getMenus(id);
+		const menuItems: IUserMenu[] = Array.from(
+			menus
+				.reduce((acc, item) => {
+					if (item?.id) {
+						acc.set(item.id, item);
+					}
+					return acc;
+				}, new Map())
+				.values(),
+		);
+		return menuItems;
 	}
 }
