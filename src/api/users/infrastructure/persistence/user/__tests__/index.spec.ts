@@ -111,5 +111,21 @@ describe('UserRepository', () => {
 
   });
 
+  describe('getMenus method', () => {
+    it('should call method successfully', async () => {
+      const response = await repository.getMenus(1);
+      expect(response).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            id: expect.any(Number),
+            name: expect.any(String),
+            description: expect.any(String),
+            orden: expect.any(Number),
+          })
+        ]),
+      );
+    });
+  });
+
 
 });

@@ -15,7 +15,11 @@ jest.mock('@api/users/infrastructure/persistence/user', () => ({
 }));
 
 jest.mock('@api/users/infrastructure/controllers/user', () => ({
-  UserController: require('@mocks/fake-controller').default,
+  UserController: jest.fn()
+    .mockImplementation(() => ({
+      getAll: (request, response) => response.json(),
+      getMenus: (request, response) => response.json(),
+    })),
 }));
 
 jest.mock('@api/users/application/user-service', () => ({
@@ -29,6 +33,13 @@ describe('User routes', () => {
 
   it('/ GET', async () => {
     const response = await supertest(fakeServer).get(path).set('Accept', 'application/json');
+    expect(response.status).toEqual(200);
+  });
+
+  it('POST /users/1/menus', async () => {
+    const response = await supertest(fakeServer)
+      .get(`${path}/1/menus`)
+      .set('Accept', 'application/json');
     expect(response.status).toEqual(200);
   });
 

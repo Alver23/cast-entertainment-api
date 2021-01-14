@@ -4,6 +4,7 @@ import { IQueryParams } from '@api/shared/base-crud/domain/repositories/base-cru
 
 // Entities
 import { IUserEntity } from '@api/users/domain/entities/user';
+import { IUserMenu } from '@api/users/domain/entities/menu';
 
 // ORM
 import { sequelize } from '@core/sequelize/sequelize';
@@ -72,5 +73,22 @@ export class UserRepository extends BaseCrudRepository<typeof User, IUserEntity,
 
 			return userModel;
 		});
+	}
+
+	public async getMenus(userId: number): Promise<IUserMenu[]> {
+		const buildOptions = {
+			include: ['roles'],
+		};
+
+		const user: any = await super.findOne({ query: { id: userId }, options: buildOptions });
+		const roles = await user.getRoles();
+		const menus: any = await Promise.all(
+			roles.map(async (role) => {
+				const menuItems = await role.getMenus();
+				return menuItems.map(({ id, name, description, orden }) => ({ id, name, description, orden }));
+			}),
+		);
+
+		return menus.flat();
 	}
 }

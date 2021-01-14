@@ -1,8 +1,30 @@
 {
-	"firstName": "fake name",
-	"lastName": "fake name",
-	"email": "fake@fake.com",
-	"cellPhone": "1234",
-	"password": "123456789",
-	"roles": [1]
+	"user": {
+		"firstName": "fake name",
+		"lastName": "fake name",
+		"email": "fake@fake.com",
+		"cellPhone": "1234",
+		"password": "123456789",
+		"roles": [1]
+	},
+	"menus": [
+		{
+			"id": 1,
+			"name": "artists",
+			"description": null,
+			"orden": 1
+		},
+		{
+			"id": 2,
+			"name": "students",
+			"description": null,
+			"orden": 2
+		},
+		{
+			"id": 1,
+			"name": "artists",
+			"description": null,
+			"orden": 1
+		}
+	]
 }

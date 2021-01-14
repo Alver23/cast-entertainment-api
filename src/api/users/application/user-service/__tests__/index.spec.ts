@@ -12,6 +12,7 @@ describe('UserService', () => {
   const fakeRepository = {
     create: jest.fn().mockResolvedValue([]),
     updateOne: jest.fn().mockResolvedValue([]),
+    getMenus: jest.fn().mockResolvedValue([...mocks.menus]),
   }
 
   beforeEach(() => {
@@ -23,23 +24,30 @@ describe('UserService', () => {
   });
 
   it('should call create method', async () => {
-    const response = await service.create(mocks as any);
+    const response = await service.create(mocks.user as any);
     expect(response).toEqual([]);
     expect(fakeRepository.create).toHaveBeenCalled();
   });
 
   it('should call update method', async () => {
-    const response = await service.update(1, mocks as any);
+    const response = await service.update(1, mocks.user as any);
     expect(response).toEqual([]);
     expect(fakeRepository.updateOne).toHaveBeenCalled();
   });
 
   it('should call update method whe password is empty', async () => {
-    const mockData = {...mocks};
+    const mockData = {...mocks.user};
     delete mockData.password;
     const response = await service.update(1, mockData as any);
     expect(response).toEqual([]);
     expect(fakeRepository.updateOne).toHaveBeenCalled();
+  });
+
+  it('should call getUserMenus method successfully', async () => {
+    const response = await service.getUserMenus(1);
+    const menus = [...mocks.menus];
+    menus.splice(0, 1);
+    expect(response).toEqual(menus.reverse());
   });
 
 })
