@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.23.1](https://github.com/Alver23/cast-entertainment/compare/v1.23.0...v1.23.1) (2021-01-15)
+
+
+### Bug Fixes
+
+* adjustment generating the user data when the token is refreshed ([4340d10](https://github.com/Alver23/cast-entertainment/commit/4340d10e9a735eb8a66d82c2e526038d0ae0d9a4))
+
 ## [1.23.0](https://github.com/Alver23/cast-entertainment/compare/v1.22.1...v1.23.0) (2021-01-14)
 
 
