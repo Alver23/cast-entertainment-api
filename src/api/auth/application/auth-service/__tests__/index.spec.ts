@@ -17,7 +17,7 @@ describe('AuthService', () => {
       .mockResolvedValue({
         user: {
           toJSON: jest.fn().mockReturnValue({ id: 1}),
-          getPerson: jest.fn().mockResolvedValue({ id: 1}),
+          getPerson: jest.fn().mockResolvedValue({ toJSON: () => ({ name: 'fake' }) }),
           getRoles: jest.fn().mockResolvedValue([]),
         }
       }),

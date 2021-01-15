@@ -53,12 +53,13 @@ export class AuthService implements IAuthService {
 		if (!response) {
 			throw new UnauthenticatedException();
 		}
+
 		const { user } = response;
 		const { id } = user.toJSON();
 		const roles = await user.getRoles();
 		const person = await user.getPerson();
 		const payload: IAuthUserEntity = objectToClass(UserDto, {
-			...person,
+			...person.toJSON(),
 			id,
 			roles,
 		});
