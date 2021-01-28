@@ -33,7 +33,7 @@ export abstract class BaseCrudRepository<K extends IBaseModel, T, U> implements 
 			offset,
 		};
 		const response = await this.model.findAndCountAll(buildOptions);
-		return paginator.getPagingData(response, offset, limit) as any;
+		return paginator.getPagingData(response, page, limit) as any;
 	}
 
 	async findOne({ query, options = {} }: IQueryParams): Promise<U> {
