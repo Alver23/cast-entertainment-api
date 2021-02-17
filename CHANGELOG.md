@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.24.0](https://github.com/Alver23/cast-entertainment/compare/v1.23.2...v1.24.0) (2021-02-17)
+
+
+### Features
+
+* added 'groupIds' property to response DTO for artist ([622fdeb](https://github.com/Alver23/cast-entertainment/commit/622fdeb9966c5d1410086f5b906939518ca13dd0))
+* added field name and description to artist skills ([61307d9](https://github.com/Alver23/cast-entertainment/commit/61307d92b261725955791eda11adf5d2394e26fb))
+* added options for group filter by various ids ([1c43ae3](https://github.com/Alver23/cast-entertainment/commit/1c43ae34ae1b28617b6dcde368d97f5725e62e87))
+
 ### [1.23.2](https://github.com/Alver23/cast-entertainment/compare/v1.23.1...v1.23.2) (2021-01-28)
 
 
