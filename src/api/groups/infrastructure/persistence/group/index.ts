@@ -109,13 +109,29 @@ export class GroupRepository extends BaseCrudRepository<typeof Group, IGroupEnti
 			buildOptions = {
 				...buildOptions,
 				attributes: ['id', 'name', 'description', 'state', [sentence, 'score']],
-				where: sentence,
+				where: { sentence },
 				replacements: {
 					name: filters.name,
 				},
 				order: [[Sequelize.literal('score'), 'DESC']],
 			};
 		}
+
+		if (filters.groupId) {
+			const groupIds = filters.groupId;
+			const filter = typeof groupIds === 'number' ? [groupIds] : groupIds;
+			const { where } = buildOptions;
+			buildOptions = {
+				...buildOptions,
+				where: {
+					...where,
+					id: {
+						[Op.in]: filter,
+					},
+				},
+			};
+		}
+
 		return super.findAll(buildOptions);
 	}
 

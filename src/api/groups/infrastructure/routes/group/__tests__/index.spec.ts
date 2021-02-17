@@ -9,6 +9,7 @@ import { groupRouter } from "../index";
 
 // Mocks
 jest.mock('@api/groups/infrastructure/dto/group', () => jest.fn());
+jest.mock('@api/groups/infrastructure/dto/query', () => jest.fn());
 jest.mock('@api/groups/infrastructure/dto/group/updater', () => jest.fn());
 
 jest.mock('@api/groups/infrastructure/controllers/group', () => ({

@@ -36,11 +36,12 @@ describe('GroupRepository', () => {
 
   describe('findAll method', () => {
     const cases = [
-      [{filters: {name: 'alver'}}],
+      [{filters: {name: 'alver', groupId: [1]}}],
+      [{filters: {groupId: 1}}],
       [undefined],
     ];
 
-    it.each(cases)('should get the data whne the parameters to equal %s', async (params) => {
+    it.each(cases)('should get the data whne the parameters to equal %s', async (params: any) => {
       const mockData: any = {
         attributes: [],
       };

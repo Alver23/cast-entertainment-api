@@ -10,6 +10,7 @@ import { GroupRepository } from '@api/groups/infrastructure/persistence/group';
 // Dto's
 import { GroupCreatorDto } from '@api/groups/infrastructure/dto/group';
 import { GroupUpdaterDto } from '@api/groups/infrastructure/dto/group/updater';
+import { QueryDto } from '@api/groups/infrastructure/dto/query';
 
 // Shared
 import { RetrieveDto } from '@api/shared/base-crud/infrastructure/dto/retrieve';
@@ -19,6 +20,9 @@ const service = new GroupService(new GroupRepository());
 const controller = new GroupController(service);
 
 const schema = {
+	get: {
+		query: QueryDto,
+	},
 	post: {
 		body: GroupCreatorDto,
 	},

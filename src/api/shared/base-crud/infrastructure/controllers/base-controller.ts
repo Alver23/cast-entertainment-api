@@ -2,13 +2,13 @@
 import { CREATED, OK } from 'http-status-codes';
 import { Request } from 'express';
 
+// Utils
+import { HttpMessages, setResponseForDelete } from '@utils/index';
+
 // Interfaces
 import { IBaseCrudService } from '@api/shared/base-crud/application/base-crud-interface';
 import { ICustomResponse } from '@core/middlewares/response/response-interface';
-import { HttpMessages, setResponseForDelete } from '@utils/index';
 import { IQueryParams } from './base-controller-interface';
-
-// Utils
 
 export abstract class BaseController<T, U, S extends IBaseCrudService<T, U>> {
 	constructor(protected readonly baseService: S) {}

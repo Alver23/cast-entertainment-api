@@ -45,4 +45,5 @@ GroupPerson.init(
 	},
 );
 
+Person.hasMany(GroupPerson, { as: 'groupPerson' });
 GroupPerson.belongsTo(Person, { as: 'person' });

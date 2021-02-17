@@ -78,7 +78,7 @@ export class ArtistRepository extends BaseCrudRepository<typeof Artist, IArtist,
 	async findOne({ query }: IQueryParams): Promise<any> {
 		const options = {
 			include: [
-				{ association: 'person' },
+				{ association: 'person', include: [{ association: 'groupPerson' }] },
 				{ association: 'emergencyContact' },
 				{ association: 'passport' },
 				{ association: 'beneficiaries' },
