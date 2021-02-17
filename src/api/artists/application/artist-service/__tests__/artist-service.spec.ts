@@ -11,7 +11,12 @@ describe('ArtistService', () => {
   let artistService: ArtistService;
 
   const fakeRepository = {
-    findOne: async () => mocks
+    findOne: async () => ({
+      ...mocks,
+      skills: [{
+        toJSON: jest.fn().mockReturnValue({ "id": 1, "name":  "fake name", "description": "fake description"})
+      }]
+    })
   }
 
   beforeEach(() => {

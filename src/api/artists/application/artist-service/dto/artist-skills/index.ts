@@ -7,4 +7,10 @@ export class ArtistSkillResponse {
 
 	@Expose()
 	skillId: number;
+
+	@Expose()
+	name: string;
+
+	@Expose()
+	description: string;
 }
