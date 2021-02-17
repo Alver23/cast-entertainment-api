@@ -7,5 +7,6 @@
 	"id": 1,
 	"createdAt": "2020-12-01",
 	"updatedAt": "2020-12-01",
-	"ipAddress": "127.0.0.1"
+	"ipAddress": "127.0.0.1",
+	"groupPerson": [{ "groupId": 1 }]
 }

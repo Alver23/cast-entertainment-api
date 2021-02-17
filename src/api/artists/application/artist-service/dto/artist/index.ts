@@ -1,5 +1,5 @@
 // Dependencies
-import { Expose, Type } from 'class-transformer';
+import { Expose, Transform, Type } from 'class-transformer';
 
 // Dto's
 import { ArtistPassportResponse } from '@api/artists/application/artist-service/dto/artist-passport';
@@ -45,4 +45,8 @@ export class ArtistItemDto extends PersonResponseDto {
 	@Expose()
 	@Type(() => ArtistBeneficiaryResponse)
 	beneficiaries: ArtistBeneficiaryResponse[];
+
+	@Expose({ name: 'groupPerson' })
+	@Transform((value, obj) => obj.groupPerson.map(({ groupId }) => groupId))
+	groupIds: number[];
 }
