@@ -14,6 +14,6 @@ export interface IArtist extends IPersonEntity {
 	emergencyContact?: IArtistEmergencyContact;
 	passport?: IArtistPassport;
 	skills?: IArtistSkill[];
-
+	active?: boolean;
 	personId?: number;
 }
