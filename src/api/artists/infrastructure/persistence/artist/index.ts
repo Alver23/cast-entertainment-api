@@ -144,7 +144,7 @@ export class ArtistRepository extends BaseCrudRepository<typeof Artist, IArtist,
 	}
 
 	async updateOrCreateArtist(data: IArtist, artistId?: number, transaction?: Transaction): Promise<any> {
-		const { fullNamesFather, fullNamesMother, nativeLanguage, otherLanguage, personId, ipAddress, ...personValues } = data;
+		const { fullNamesFather, fullNamesMother, nativeLanguage, otherLanguage, active, personId, ipAddress, ...personValues } = data;
 
 		const { id: newPersonId } = await this.personRepository.updateOrCreate(
 			{ ...personValues, ipAddress },
@@ -153,7 +153,7 @@ export class ArtistRepository extends BaseCrudRepository<typeof Artist, IArtist,
 		);
 
 		const artistModel = await this.updateOrCreate(
-			{ fullNamesFather, fullNamesMother, nativeLanguage, otherLanguage, ipAddress, personId: newPersonId },
+			{ fullNamesFather, fullNamesMother, nativeLanguage, otherLanguage, active, ipAddress, personId: newPersonId },
 			artistId && { id: artistId },
 			transaction,
 		);
