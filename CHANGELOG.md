@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.24.1](https://github.com/Alver23/cast-entertainment/compare/v1.24.0...v1.24.1) (2021-03-04)
+
+
+### Bug Fixes
+
+* added column active for artist update ([aec60c1](https://github.com/Alver23/cast-entertainment/commit/aec60c1ca0c47267f2db89b554a9776301b99f93))
+
 ## [1.24.0](https://github.com/Alver23/cast-entertainment/compare/v1.23.2...v1.24.0) (2021-02-17)
 
 
